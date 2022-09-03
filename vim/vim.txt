@@ -1,1 +1,104 @@
+VIM
 
+
+youtube: "vim tutorial" by Ben Awad, I stopped @ 18:25 : https://www.youtube.com/watch?v=IiwGbcd8S7I
+
+
+plugins:
+    - nerd tree
+    - highlights?
+    - git gutter
+
+
+
+// start editing a file
+$ vim foo.txt
+
+
+shortcuts:
+
+//-----------------------------------------------------------
+
+i // insert mode
+
+ESC // command mode
+
+dd // delete line and copy line
+
+10dd // delete 10 lines and copy 10 lines
+
+G // go to the bottom
+
+gg // go to top
+
+} // go down code block
+
+10} // go down 10 code blocks
+
+u // undo
+
+10u // undo 10 times
+
+CTRL + R // redo
+
+. // re-does the thing you just did
+
+
+//-----------------------------------------------------------
+
+yy // copies line
+
+p // paste on next line
+
+P // paste on above line
+
+Vjjj // visual mode, for visual selection
+
+d // delete section
+
+o // insert line bellow, and goes to insert mode 
+
+O // same as "o" but line above
+
+d} // delete code block
+
+//-----------------------------------------------------------
+
+w // go to begining of next word
+
+b // go to begining of previous word
+
+:30 // go to line 30
+
+0 // go to begining of line
+
+^ // go to begining of first word in line
+
+$ // go to end of line
+
+//-----------------------------------------------------------
+
+f! // find "!"
+
+t! // find "!" go back one
+
+//-----------------------------------------------------------
+
+:q! // quit, dont save
+
+:wq // quit, save
+
+:w // just save
+
+
+j // go down 1 line
+k // go up 1 line
+l // go to the right
+h // go to the left
+
+10j // go down 10 lines
+10k // go up 10 lines
+10l // go to the right 10 characters
+10h // go to the left 10 characters
+
+//-----------------------------------------------------------
