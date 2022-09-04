@@ -11,7 +11,9 @@ Gco feature
 $ Git rebase master 
 # could have conflicts
 $ git add file
-$ git rebase  - -continue
+$ git rebase  --continue
+
+https://youtu.be/f1wnYdLEpgI
 
 
 //--------------------------------------------------------------------------------
