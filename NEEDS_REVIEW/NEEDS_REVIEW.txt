@@ -1,1 +1,35 @@
 
+new github repo
+
+references-2022
+
+
+HTML
+CSS
+Javascript / react
+GIT
+HTTP
+UDP
+IP
+
+JWT
+ssl / key store / trust store
+
+Websockets
+Ruby / ROR
+DSA
+RSA
+VIM
+CORS
+XSRF
+OWASP
+Grammar 
+base64
+TCP/IP
+Sockets
+OSI
+Docker
+Scrum
+networking / internet 
+radio signal
+Bash
