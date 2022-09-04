@@ -1,6 +1,17 @@
 //--------------------------------------------------------------------------------
 
+https://github.com/treehouse/cheatsheets
+
+- git submodules
+ 
+
 Git log --oneline
+
+Git add -u
+
+Git add -am
+
+Git squash
 
 //--------------------------------------------------------------------------------
 rebase
