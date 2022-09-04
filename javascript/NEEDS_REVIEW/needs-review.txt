@@ -1,0 +1,124 @@
+//-------------------------------------------------------------------------------- TODO 
+
+React testing library
+
+get react notes from my papers
+
+React controlled input - just an input tag that react controls , I already do that
+
+React forms
+
+Read react docs
+
+Node https://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js
+
+Test mongo scalability
+
+Socket.io build example
+
+Print in a webapp
+
+//--------------------------------------------------------------------------------
+
+http://blog.klipse.tech/javascript/2016/08/31/monads-javascript.html
+
+
+Es6 red black tree
+Implementation
+https://medium.com/@julianknodt/red-black-trees-in-javascript-c20eec1d5d1c
+
+//--------------------------------------------------------------------------------
+
+Mock fetch
+
+
+
+
+beforeEach(() => {
+  jest.spyOn(global, 'fetch').mockResolvedValue({
+    json: jest.fn().mockResolvedValue(mockResponse)
+  })
+});
+
+afterEach(() => {
+  jest.restoreAllMocks();
+});
+
+
+//--------------------------------------------------------------------------------
+
+jest
+
+
+
+let fn = jest.fn(() => 123);
+
+
+https://jestjs.io/docs/mock-functions
+
+
+
+import axios from 'axios';
+import Users from './users'; jest.mock('axios');
+
+
+axios.get.mockResolvedValueOnce(users);
+
+
+https://vhudyma-blog.eu/3-ways-to-mock-axios-in-jest/#Way-1-jest.mock()
+
+
+.mockImplementation()
+
+const myMockFn = jest.fn() .mockImplementationOnce(cb => cb(null, true)) .mockImplementationOnce(cb => cb(null, false));
+
+
+
+
+
+// src/utils/currency.test.js
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    json: () => Promise.resolve({ rates: { CAD: 1.42 } }),
+  })
+);
+
+
+
+//--------------------------------------------------------------------------------
+Js fetch
+
+fetch('https://api.github.com/users/KrunalLathiya')
+.then(response => response.json())
+.then(data => {
+  console.log(data) // Prints result from `response.json()` in getRequest
+})
+.catch(error => console.error(error))
+
+
+://///:::
+
+
+postRequest('https://appdividend.com/api/v1/users', {user: 'Krunal'})
+  .then(data => console.log(data)) // Result from the `response.json()` call
+  .catch(error => console.error(error))
+
+function postRequest(url, data) {
+  return fetch(url, {
+    credentials: 'same-origin', // 'include', default: 'omit'
+    method: 'POST', // 'GET', 'PUT', 'DELETE', etc.
+    body: JSON.stringify(data), // Coordinate the body type with 'Content-Type'
+    headers: new Headers({
+      'Content-Type': 'application/json'
+    }),
+  });
+  .then(response => response.json())
+}
+
+
+
+
+
+//--------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------

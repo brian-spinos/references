@@ -1,0 +1,155 @@
+//-------------------------------------------------------------------------------- TODO?
+
+Ruby websocket server
+Build a ruby socket server
+Event machine on mac
+Smpt for ruby and php
+rails chat
+Write ruby code that gets executed by js
+Code chords so I can play with it! Ruby
+Ruby music: https://github.com/sausheong/muse
+
+//--------------------------------------------------------------------------------
+
+Link to
+
+https://api.rubyonrails.org/classes/ActionView/Helpers/UrlHelper.html#method-i-link_to
+
+
+As suggested here<https://github.com/heartcombo/devise/issues/5439#issuecomment-997927041>, the following will suffice:
+
+<%= link_to "Sign Out", destroy_user_session_path, data: { "turbo-method": :delete } %>
+
+
+
+
+
+link_to "Profile", controller: "profiles", action: "show", id: @profile
+# => <a href="/profiles/show/1">Profile</a>
+
+
+
+<%= link_to(@profile) do %>
+  <strong><%= @profile.name %></strong> -- <span>Check it out!</span>
+<% end %>
+# => <a href="/profiles/1">
+       <strong>David</strong> -- <span>Check it out!</span>
+     </a>
+
+
+
+Articles", articles_path, id: "news", class: "article"
+# => <a href="/articles" class="article" id="news">Articles</a>
+
+
+
+link_to "Articles", { controller: "articles" }, id: "news", class: "article"
+# => <a href="/articles" class="article" id="news">Articles</a>
+
+
+%= link_to
+
+<%= link_to "Delete Book", @book, method: "delete", { confirm: "Are you sure?", disable_with: "Processing..." } %>
+
+
+
+
+
+<%= link_to "Delete Song", @book, method: "delete", { confirm: "Are you sure?", disable_with: "Processing..." } %>
+
+
+
+
+
+<%= link_to "Click Here!", {:controller => "controller", :action => "action"}, {:title => "Example"} %>
+
+
+
+
+{ data: { foo: "bar" } }
+
+
+
+link_to “Contacts”, contacts_path, :data => {:foo => ‘bar’}
+
+
+
+
+
+
+//--------------------------------------------------------------------------------
+Ruby modules
+
+
+module SuperPowers
+  
+  def self.included(base)
+    
+    #
+    # Add class methods
+    #
+    base.extend(ClassMethods)
+    
+    #
+    # Add instance methods
+    #
+    base.class_eval do
+
+      def fly
+      puts '(instance method called) flying'
+      end
+
+      def swim
+      puts '(instance method called) swimming'
+      end
+
+    end
+  end
+
+  module ClassMethods
+    def run
+      puts '(class method called) running'
+    end
+    
+    def fire
+      puts '(class method called) firing'
+    end
+  end
+
+end
+
+class Person
+  include SuperPowers
+end
+
+brian = Person.new
+
+brian.fly 
+brian.swim 
+
+Person.run 
+Person.fire 
+
+
+#
+# OUTPUT:
+#
+# (instance method called) flying
+# (instance method called) swimming
+# (class method called) running
+# (class method called) firing
+#
+
+
+
+
+
+//--------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------

@@ -1,0 +1,8 @@
+Basically: if we can submit user data with HTML + JS in the <script> tag, and the website executes the JS, then we hacked the website! - we can add any JS and it will be executed in other users browsers
+
+
+We can inject css too! With the <style> tag
+
+
+
+And sql
