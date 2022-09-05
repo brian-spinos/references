@@ -29,6 +29,96 @@ https://youtu.be/f1wnYdLEpgI
 
 //--------------------------------------------------------------------------------
 
+git notes
+
+
+conflicts
+
+
+// but its better to fix locally if complex...
+github - can fix merge conflicts -- diff (if same line changes)
+
+hello
+<<<<<<< feature/branch2
+this is also a change from b2
+=======
+this is a change from b1
+>>>>>>> main
+
+
+
+aaa
+
+- to fix conflicts locally:
+$ git fetch --all && git merge origin/main  # local main branch would still be behind
+
+
+=============
+
+
+$ git branch # diplay local branches
+$ git branch -r # diplay remote branches
+
+
+=============
+
+updating a feature branch without pulling from main:
+- you can still do it, but there will be merge conflicts in github, for you to fix
+
+- and if you merge main into your old feature branch, and push and try to do a PR to main:
+    - if there is no code diff, github will let you know :) and there is no need to merge the PR :) 
+=============
+
+if the changes happen in diff lines (maybe a close line might not be the case)
+- then there is no conflicts in GITHUB !!!
+
+=============
+conflicts happen when 
+you have an open PR, but
+someone else merges their PRs before you, 
+and are updating the same lines of code 
+
+-- what to do now?
+
+git fetch --all && git merge origin/main   
+
+# and fix the conflict locally
+
+# OR:  $ git reset --hard HEAD  # to blow away merge conflicts
+
+
+
+
+
+
+=============
+
+if you push to an old feature branch, you will need to create the PR manually in github, 
+github will not display the new PRs on the top of the github page for you
+
+=============
+
+
+Ahh, nice one. I thought 
+git fetch 
+would update the master branch even if I am currently on a different one. Turns out it does not
+
+You can do git 
+fetch --all
+, but this only fetches the branches, it doesn't pull them.
+
+
+// works! 
+ git fetch --all && git merge origin/main
+
+
+=============
+
+$ git merge main   # Already up to date.
+$ git merge origin main   # Already up to date.
+$ git merge origin/main   # Already up to date.
+
+
 
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
