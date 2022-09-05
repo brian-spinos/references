@@ -53,6 +53,9 @@ aaa
 $ git fetch --all && git merge origin/main  # local main branch would still be behind
 
 
+
+$ git fetch --all # updates all remote branches in my local ??? I am 90% sure
+
 =============
 
 
