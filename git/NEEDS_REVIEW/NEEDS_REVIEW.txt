@@ -121,6 +121,44 @@ $ git merge origin/main   # Already up to date.
 
 
 //--------------------------------------------------------------------------------
+
+Remove changes from 1 file
+
+Add changes from another branch to 1 file
+
+
+Move fast from a wip branch to another branch, and back
+
+diff branches:
+feature/foo
+origin/feature/foo
+
+
+
+Rebase, issues?
+
+
+How to handle complex merges: its a risk
+
+
+
+Git checkout a specific commit:
+$ git checkout <commit-sha>
+# dettached head state here
+# to go back:
+$ git checkout <branch-name>
+
+
+
+
+
+HEAD is a pointer to a commit
+
+
+The branch name point to the latest commit in that branch ??? Not sure
+
+
+
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
