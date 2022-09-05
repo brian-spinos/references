@@ -180,7 +180,23 @@ The branch name point to the latest commit in that branch ??? Not sure
 
 
 
-//--------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------- 
+rebase: I am not confident about this:
+
+
+// Fetch the latest changes from main:
+// git fetch origin main
+
+
+
+// rebase:  (complicated) // make sure you create a backup branch !!!
+$ git rebase main
+// multiple times:
+fix merge conflicts, git add
+git rebase --continue
+// then git commit, and git push
+
+
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
