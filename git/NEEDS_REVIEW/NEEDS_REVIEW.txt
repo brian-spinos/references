@@ -199,5 +199,30 @@ git rebase --continue
 
 
 //--------------------------------------------------------------------------------
+
+main is not automatically synched up with origin/main 
+-- you would have to manually checkout main branch and do a git pull
+
+
+
+$ git fetch --all # this does not update main branch 
+
+
+git fetch origin main   # this will not update main branch 
+-- you would have to checkout main branch and do a git pull
+-- does it update origin/main ???  I think it does,I am 90% sure
+
+
+
+=======
+
+#
+# Remember, a pull is a fetch and a merge.
+#
+git pull origin main  # merge conflict can occur  # it will (try) to merge into your current branch 
+
+
+
+
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
