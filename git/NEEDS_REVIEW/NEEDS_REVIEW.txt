@@ -58,7 +58,7 @@ $ git fetch --all && git merge origin/main  # local main branch would still be b
 
 $ git branch # diplay local branches
 $ git branch -r # diplay remote branches
-
+$ git branch --all # display all branches
 
 =============
 
