@@ -102,10 +102,12 @@ github will not display the new PRs on the top of the github page for you
 Ahh, nice one. I thought 
 git fetch 
 would update the master branch even if I am currently on a different one. Turns out it does not
+// !!! SEEMS THE ABOVE INFO IS WRONG !!!
 
 You can do git 
 fetch --all
 , but this only fetches the branches, it doesn't pull them.
+// !!! SEEMS THE ABOVE INFO IS WRONG !!!
 
 
 // works! 
@@ -124,7 +126,26 @@ $ git merge origin/main   # Already up to date.
 
 Remove changes from 1 file
 
-Add changes from another branch to 1 file
+
+
+
+
+
+
+// Add changes from another branch to 1 file
+#
+# $ git fetch --all
+# $ git checkout <other-branch-name> -- ./path/to/your/folder
+#
+$ git fetch --all # to update my origin/main branch (this is needed)
+$ git checkout origin/main -- ./file.txt
+# this causes a change to the file, so you would need to `git add` it
+
+
+
+
+
+
 
 
 Move fast from a wip branch to another branch, and back
