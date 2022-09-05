@@ -124,7 +124,8 @@ $ git merge origin/main   # Already up to date.
 
 //--------------------------------------------------------------------------------
 
-Remove changes from 1 file
+// Remove changes from 1 file
+$ git checkout HEAD -- ./file.txt 
 
 
 
