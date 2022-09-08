@@ -82,10 +82,357 @@ https://www.youtube.com/channel/UC-XpO_JZJI75PtL8MNchszA
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
+react class, hooks
+jest, testing
+redux
+router
+
+
+------------------------------------------------
+
+
+jest.fn(() => {...})
+jest.mockImplementationOnce(fn) mockReturnValueOnce()//
+m.mock.calls[0][0]
+m.mock.results[0].value
+
+jest.mock('axios')
+axios.get.mockImplementation(() => Promise.resolve(123)) // mockReturnValueOnce
+
+expect(1).toBe(1)
+foo toEqual bar 
+toBeGreaterThanOrEqual
+less 
+toHaveBeenCalledWith()
+
+axios.get.mockResolvedValue()
+
+
+jest.spyOn(global, "fetch").mockImplementation()
+
+------------------------------------------------
+
+CoSEMRCaRlID  28
+
+
+const CTX = createContext({})
+
+// <CTX.Provider value={data}>
+//   <Foo />
+// </CTX.Provider>
+
+
+let val = useCOntext(CTX)
+
+------------------------------------------------
+
+const [foo,setFoo] = useState(() => {
+	adsdh(props)
+})
+
+
+------------------------------------------------
+// lifecycle
+
+useEffect(() => {
+
+	callAPI()
+
+	returh () => {
+		doSOmething()
+	}
+}, [a,b])
+
+------------------------------------------------
+
+// only first time, or when a b is updated
+const val = useMemo(() => {
+	return aaa(a,b);
+}, [a,b])
+
+
+
+
+
+------------------------------------------------
+// for complex state
+
+useReducer(red, is)
+useReducer(red, data, initFn)
+
+
+
+const [state, dispatch] = useReducer(red, is)
+
+
+const reducer = (state, action) => {
+	switch(action.type){
+		case: 'AAA':
+		    return {...state, ...obj, aaa: action.payload}
+		default:
+		    throw new Error('whoops')
+	}
+}
+
+
+
+{
+	users: [
+		'aaa',
+		'bbb'
+	]
+}
+
+
+
+let initFn = (data) => {
+
+	return initState
+
+}
+
+------------------------------------------------
+
+useRef()
+
+
+
+let btn = useRef(null)
+
+
+btn.current.click()
+
+let r = useRef(123)
+
+
+r.current = 456
+
+------------------------------------------------
+setTimeout(() => {}, 1000) clearTimeout
+setInterval fn 1000 clearInterval(id )
+
+------------------------------------------------
+
+CoSEMRCaRlID  28
+
+
+
+const fn = useCallback(() => {
+	aaa(a,b)
+}, [a,b])
+
+
+Foo = React.memo(Foo)
+
+------------------------------------------------
+
+// layout x paint
+useLayoutEffect(() => {})
+
+------------------------------------------------
+
+useImperativeHandle()
+
+
+
+
+Foo = (props, ref) => {
+	let innerRef = useRef()
+
+	useImperativeHandle(ref, () => ({
+		focus: () => {
+			innerRef.current.focus()
+		}
+	}))
+
+
+
+	return <button ref={innerRef} />
+}
+
+React.forwardRef(Foo)
+
+
+------------------------------------------------
+
+// inside custom hooks
+
+useDebug('aaa')
+
+
+
+------------------------------------------------
+
+
+import {render, waitFor, fireEvent, screen} from '@testing-library/react'
+
+------------------------------------------------
+// redux 
+
+
+import Provider from 'react-reduc'
+
+
+
+// <Provider store={store}>
+// </Provider>
+
+
+
+const store = createStore(combineReducers({
+	users: usersRed,
+	users: usersRed,
+	users: usersRed,
+	users: usersRed,
+	users: usersRed,
+	users: usersRed,
+	users: usersRed,
+	users: usersRed,
+	users: usersRed,
+	users: usersRed,
+	users: usersRed,
+	users: usersRed,
+	users: usersRed,
+	users: usersRed,
+	users: usersRed,
+	users: usersRed,
+	users: usersRed,
+	users: usersRed,
+	users: usersRed,
+	users: usersRed,
+}))
+
+
+
+
+const users = useSelector(s => s.users)
+const dispatch = useDispatch()
+
+dispatch({type: 'AAA', payload: data})
+
+
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+  	users: state.users,
+  	users: state.users,
+  	users: state.users,
+  	users: state.users,
+  	users: state.users,
+  }
+}
+
+
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+	return {
+		callAPI: (x) => dispatch({type: 'AAA'}, payload: x)
+	}
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Foo)
+------------------------------------------------
+
+
+
+------------------------------------------------
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
+// react class, hooks
+// jest, testing
+// redux
+// router
+
+
+// ------------------------------------------------------------------------------------------------ jest
+
+
+
+jest.fn(() => {});
+.mockImplementationOnce()
+.mockResolvedValue // promise
+.mockReturnValue
+
+expect()toBe, toEqual obj tbgrathanorEqual
+
+
+jest.spyOn(global, "fetch").mockImplementation(() => Promise.resolve({
+	json: Promise.resolve(data);
+}))
+
+jest.mock("axios")
+
+
+axios.get.mockResolvedValue(data)
+
+
+
+
+
+// ------------------------------------------------------------------------------------------------ test
+
+
+import {render, waitFor, screen, fireEvent} from '@testing-library/react'
+
+beforeEach(() => {
+	jest.restoreAllMocks();
+})
+
+let comp = render(<Foo />)
+comp.unmount()
+comp.remount()
+com.getByTestId('aaa'); // data-testid="aaa"
+
+
+fireEvent.click(btn) // let btn = comp.getByTesId('aaa')
+
+
+fireEvent.change(input, {target: {value: 'aaa'}})
+
+// ------------------------------------------------------------------------------------------------ hooks
+
+
+
+
+CoSEMRCaRLID
+
+
+
+
+
+const MYCONTEXT = createContext(defaultVal)
+
+let val = useCOntext(MYCONTEXT) // will trigger rerender when value change, u can use React.memo() for performance
+
+
+
+
+
+let [foo,setFoo] = useState(() => {
+	return myState(props) // complex - lazy load
+})
+
+// ------------------------------------------------------------------------------------------------
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
