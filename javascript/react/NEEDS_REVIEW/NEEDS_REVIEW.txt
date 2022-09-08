@@ -534,10 +534,543 @@ move declarations to top of scope (script or fn)
 // "=" is not hoisted
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+
+=====================================================================================================
+
+react-testing-library-reference.txt
+
+
+
+
+
+===================================================================================================== Example of test
+
+
+// Foo.test.jsx
+import {render, fireEvent, waitFor, screen} from '@testing-library/react'
+import Child from './Child';
+import React from 'react';
+
+
+// const component = render(<Child />)
+// component.container
+// component.debug(); // display HTML in terminal
+// component.fireEvent()
+// component.click()
+// component.unmount() // unmounts component ???
+// component.rerender()
+// component.getByTestId('abc')
+// component.findByTestId('abc')
+// component.queryByTestId('abc')
+// const {container, unmount} = render(<Child />)
+// const pTag = component.findByTestId("child-full-name"); // data-testid="child-full-name"
+
+// jest.spyOn(Foo, "meth").mockImplementation(() => 1)
+
+// expect(1).toEqual(1);
+// expect(1).toBe(1);
+// expect("abc").toEqual("abc");
+// expect("abc").toBe("abc");
+// expect({a:1}).toEqual({a:1});
+// expect({a:1}).toBe({a:1}); // fails
+
+// expect(screen.getByText('DATA!')).toBeInTheDocument()
+
+=====================================================================================================
+
+
+const originalUseRef = React.useRef;
+
+describe("Child", () => {
+
+    beforeEach(() => {
+        React.useRef = originalUseRef;
+    });
+
+    it("should get parent last name", () => {
+        const component = render(<Child parentLastName={"Smith"}/>);
+        const pTag = component.getByTestId("child-full-name");
+        expect(pTag).toHaveTextContent(/Isabella Smith/i);
+    });
+
+    it("should change child name", () => {
+        const component = render(<Child/>);
+        const input = component.getByTestId('child-name-input');
+
+        fireEvent.change(input, {
+            target: { value: 'Bella'}
+        });
+
+        const pTag = component.getByTestId('child-full-name');
+        expect(pTag).toHaveTextContent('Bella');
+        
+    });
+
+    it("mock prop func", () => {
+        const mockFunc = jest.fn();
+        const component = render(<Child parentLastName={"Smith"} func={mockFunc}/>);
+        const btn = component.getByTestId("exec-func-btn");
+
+        fireEvent.click(btn);
+
+        expect(mockFunc).toHaveBeenCalledTimes(1);
+    });
+
+    it("mocks useRef", () => {
+        React.useRef = jest.fn(() => {
+            return {current: "ABC"};
+        });
+
+        const component = render(<Child />);
+
+        const pTag = component.getByTestId("ref-value");
+        expect(pTag).toHaveTextContent("ABC");
+    });
+
+    it("unmocks useRef", () => {
+        // React.useRef = jest.fn(() => {
+        //     return {current: "ABC"};
+        // });
+
+        const component = render(<Child />);
+
+        const pTag = component.getByTestId("ref-value");
+        expect(pTag).toHaveTextContent(123);
+    });
+
+    xit("mock useEffect?", () => {
+        // React.useEffect = jest.fn((func, depArr) => {
+        //     func();
+        // });
+        React.useEffect = jest.fn((f) => {
+            console.log("useEffect MOCK");
+            f();
+        });
+
+        const component = render(<Child parentLastName={"Smith"}/>);
+
+        const pTag = component.getByTestId("child-full-name");
+        expect(pTag).toHaveTextContent("Smith");
+    });
+
+    // it("mock fetch", () => {
+    //     const mockResponse = {name: 'brian'};
+    //     jest.spyOn(global, 'fetch').mockResolvedValue({
+    //         json: jest.fn().mockResolvedValue(mockResponse)
+    //     });
+
+    //     jest.restoreAllMocks(); // cleanup
+    // });
+});
+
+
+
+
+// describe("Child", () => {
+//     it("should work-2", () => {
+//         // const component = render(<Child />);
+
+//         
+
+//         // const btn = component.getByTestId("my-btn");
+//         // fireEvent.click(btn);
+
+//         // const linkElement = screen.getByText(/Child full name/i);
+//         // expect(linkElement).toBeInTheDocument();
+//     });
+// });
+
+
+// jest.mock('../hooks/use-auth', () => {
+//     return jest.fn(() => ({
+//        isLoggedIn: mockIsLoggedIn
+//     }))
+// })
+
+//================================================================================================
+
+// const video = require('./video');
+
+// test('plays video', () => {
+//   const spy = jest.spyOn(video, 'play');
+//   const isPlaying = video.play();
+
+//   expect(spy).toHaveBeenCalled();
+//   expect(isPlaying).toBe(true);
+
+//   spy.mockRestore();
+// });
+// //https://jestjs.io/docs/jest-object#jestspyonobject-methodname
+
+//================================================================================================
+
+// https://reactjs.org/docs/testing-recipes.html
+
+
+
+//  jest.spyOn(global, "fetch").mockImplementation(() =>
+//     Promise.resolve({
+//       json: () => Promise.resolve(fakeUser)
+//     })
+//   );
+//================================================================================================
+
+
+// https://jestjs.io/docs/mock-functions
+
+
+// import axios from 'axios';
+// import Users from './users'; jest.mock('axios');
+
+
+// axios.get.mockResolvedValueOnce(users);
+
+
+// https://vhudyma-blog.eu/3-ways-to-mock-axios-in-jest/#Way-1-jest.mock()
+
+
+
+// .mockImplementation()
+
+// const myMockFn = jest.fn() .mockImplementationOnce(cb => cb(null, true)) .mockImplementationOnce(cb => cb(null, false));
+
+
+
+// // src/utils/currency.test.js
+// global.fetch = jest.fn(() =>
+//   Promise.resolve({
+//     json: () => Promise.resolve({ rates: { CAD: 1.42 } }),
+//   })
+// );
+
+
+
+//================================================================================================
+
+
+//================================================================================================
+
+
+
+=====================================================================================================
+
+
+import {render, waitFor, fireEvent, screen} from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
+import Parent from './Parent';
+
+describe('Parent', () => {
+    afterEach(() => {
+        jest.restoreAllMocks(); // cleanup
+    });
+
+    it('normal fetch should work', async () => {
+        const component = render(<Parent />);
+        const pTag = component.getByTestId("user-details");
+
+        // await, waitFor, expect
+        await waitFor(() => {
+          expect(pTag).toHaveTextContent("Brian 101");
+        });
+        //expect(screen.queryByText(/Loading/)).toBeNull(); // we don't have to await this one because we awaited the proper condition in the previous line
+    });
+
+    it('mock fetch', async () => {
+        const mockResponse = {name: 'Erich', id: 999};
+        jest.spyOn(global, 'fetch').mockImplementation(() => {
+            return Promise.resolve({
+                json: () => Promise.resolve(mockResponse)
+              })
+        });
+
+        const component = render(<Parent />);
+        const pTag = await component.findByTestId("user-details");
+        expect(pTag).toHaveTextContent("Erich 999");
+    });
+
+    it('normal fetch should work #2', async () => {
+        const component = render(<Parent />);
+        const pTag = component.getByTestId("user-details");
+
+        // `waitFor` waits until the callback doesn't throw an error
+        await waitFor(() => {
+            expect(pTag).toHaveTextContent("Brian 101");
+        });
+        //expect(screen.queryByText(/Loading/)).toBeNull(); // we don't have to await this one because we awaited the proper condition in the previous line
+    });
+
+    it('usinf ACT to test fetch (needs fetch mock)', async () => {
+        let component;
+
+        const mockResponse = {name: 'AAA', id: 888};
+        jest.spyOn(global, 'fetch').mockImplementation(() => {
+            return Promise.resolve({
+                json: () => Promise.resolve(mockResponse)
+              })
+        });
+
+        // Use the asynchronous version of act to apply resolved promises
+        // await, act, async
+        await act(async () => {
+            component = render(<Parent />);
+        });
+        
+        // component.debug();
+        const pTag = component.getByTestId("user-details");
+        expect(pTag).toHaveTextContent("AAA 888");
+    });
+
+    it('mock fetch #2', async () => {
+        const mockResponse = {name: 'Erich', id: 999};
+        jest.spyOn(global, 'fetch').mockImplementation(() => {
+            return Promise.resolve({
+                json: () => Promise.resolve(mockResponse)
+              })
+        });
+
+        const component = render(<Parent />);
+        const pTag = await component.findByText(/Erich 999/i);
+        // const pTag = await component.findByTestId("user-details");
+        expect(pTag).toHaveTextContent("Erich 999");
+    });
+
+    it('normal fetch should work #3', async () => {
+        const component = render(<Parent />);
+
+        // wait until u see the result !!!
+        const pTag = await component.findByText(/Brian 101/i);
+        // const pTag = await component.findByTestId("user-details");
+        expect(pTag).toHaveTextContent("Brian 101");
+    });
+
+    // it.only('ONLY TEST', async () => {
+    //     //...
+    // });
+
+    it('snapshot test', async () => {
+        const component = render(<Parent />);
+
+        // wait until u see the result !!!
+        const pTag = await component.findByText(/Brian 101/i);
+        // const pTag = await component.findByTestId("user-details");
+        expect(pTag).toHaveTextContent("Brian 101");
+
+        //expect(pTag).toMatchSnapshot(); // creates a __snapshots__ folder the first time
+    });
+});
+
+=====================================================================================================
+
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+
+unit test:
+
+
+// NEED TO CHECK ON THESE:
+https://testing-library.com/docs/react-testing-library/intro
+https://testing-library.com/docs/react-testing-library/api
+https://testing-library.com/docs/react-testing-library/cheatsheet
+https://testing-library.com/docs/react-testing-library/migrate-from-enzyme
+
+
+https://github.com/testing-library/jest-dom#tobeinthedocument
+
+
+
+
+// use data-testid="foo" <------
+
+
+ // JEST, seems it already comes with React
+npm install --save-dev @testing-library/react
+
+
+
+import {render, fireEvent, waitFor, screen} from '@testing-library/react'
+
+
+
+
+const {container, unmount} = render(<Login />)
+unmount()
+
+
+
+
+
+
+https://reactjs.org/docs/testing-recipes.html <--- ??? not sure if it is good
+
+
+https://testing-library.com/docs/react-testing-library/intro <--- intro to react testing library
+
+
+
+================================================================================
+
+
+import PropTypes from 'prop-types';
+
+
+class Foo extends React.Component {
+	constructor(props){
+		super(props);
+		this.state = {
+			counter: 0
+		};
+	}
+
+	componentDidMount(){}
+	componentDidUpdate(){}
+	componentWillUnmount(){}
+
+
+	this.setState({foo: 'aaa'});
+
+	render(){
+		return(<></>);
+	}
+}
+
+Foo.defaultProps = {
+	foo: 'aaa',
+	bar: () => 123
+};
+
+
+Foo.propTypes = {
+	'foo': PropTypes.func.isRequired, .string .bool .func .array .number .obj    FABONS
+}
+
+
+const mapStateToProps = (state, ownProps) => ({
+   count: state.users.count
+});
+
+const mapDispatchToProps = (dispatch) => {
+	action1: (action1) => dispatch(action1)//  {type: 'AAA', payload: 'BBB'}
+};
+
+
+export default connect()(Foo)
+
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+
+fetch(url, {
+	'method': 'POST',
+	headers: {
+		'Content-Type': 'application/json'
+	},
+	body: JSON.stringify(body)
+}).then(res => res.json())
+.then(data => {
+  doSomething(data);
+});
+
+// side effects, changes something outside of the scope of the function
+
+
+
+
+import {render, fireEvent} from '@test-library/react';
+
+describe("aaa", () => {
+	it("aaa", () => {
+		const component = render(<Foo />)
+
+		const btn = component.findByTestId("lala"); // data-testid="lala"
+
+		fireEvent.click(btn);
+
+		fireEvent.change(btn, {
+			target: {
+				value: 'aaa'
+			}
+		})
+
+
+		jest.spyOn(Foo, "meth").mockImplementation(() => 1)
+		jest.
+
+	});
+});
+
+
+
+================================================================================================
+
+const video = require('./video');
+
+test('plays video', () => {
+  const spy = jest.spyOn(video, 'play');
+  const isPlaying = video.play();
+
+  expect(spy).toHaveBeenCalled();
+  expect(isPlaying).toBe(true);
+
+  spy.mockRestore();
+});
+//https://jestjs.io/docs/jest-object#jestspyonobject-methodname
+
+
+
+================================================================================
+
+
+import PropTypes from 'prop-types';
+
+
+class Foo extends React.Component {
+	constructor(props){
+		super(props);
+		this.state = {
+			counter: 0
+		};
+	}
+
+	componentDidMount(){}
+	componentDidUpdate(){}
+	componentWillUnmount(){}
+
+
+	this.setState({foo: 'aaa'});
+
+	render(){
+		return(<></>);
+	}
+}
+
+Foo.defaultProps = {
+	foo: 'aaa',
+	bar: () => 123
+};
+
+
+Foo.propTypes = {
+	'foo': PropTypes.func.isRequired, .string .bool .func .array .number .obj    FABONS
+}
+
+
+const mapStateToProps = (state, ownProps) => ({
+   count: state.users.count
+});
+
+const mapDispatchToProps = (dispatch) => {
+	action1: (action1) => dispatch(action1)//  {type: 'AAA', payload: 'BBB'}
+};
+
+
+export default connect()(Foo)
+
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------------------------------
