@@ -1,6 +1,9 @@
-Using Vim Plug to Install Plugins for Vim
+// Using Vim Plug to Install Plugins for Vim
 https://www.youtube.com/watch?v=gRxGH2HA2_8
 
 
 https://stackoverflow.com/questions/20007588/paste-text-at-the-end-of-the-line-with-a-space-between-in-vim
 
+
+// How to move around in Vim (for beginners) - Vim-Fu #1
+https://www.youtube.com/watch?v=l-FKO2UXFdk
