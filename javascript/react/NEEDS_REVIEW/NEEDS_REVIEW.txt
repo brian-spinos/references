@@ -1,0 +1,73 @@
+// https://teamtreehouse.com/tracks/learn-react
+
+
+
+({prop1, prop2})
+
+
+this.func.bind(this)
+
+
+// arrow functions automatically bind to the scope they are defined
+onClick={() => this.func()} // where func is a normal class method (not an arrow method)
+
+
+
+{items.map( item => 
+    <div key={item.id.toString()}> {/* react docs ask for a key as a string */}
+        <p>Hello</p>
+    </div>
+)}
+
+
+
+// "key" error in browser logs
+
+// see this text --> check the render method of `MyComponent`. See <url>
+
+
+
+
+// - react dev tools, I can search for a component
+//     - we can see the props and state of the component
+//     - we can change the state on the spot
+
+
+
+
+// STATE
+//   - two types of state: app state and component state
+
+
+
+// delete item in array:  arr.filter(x => x.id !== id)
+
+
+
+// npx: downloads a CLI and runs the command at the same time, always using the lattest version of the CLI, example:
+// $ npx create-react-app my-app
+
+
+// react scripts
+When you create a project with Create React App, it installs the latest version of React and React-DOM, 
+as well as the latest version of react-scripts, a development dependency that manages all other 
+dev dependencies that run, test and build your app.
+
+
+
+// import react in all jsx files
+
+
+// const Foo = () => {}
+// export default Foo; // this should work
+
+
+
+// .map((foo, index) => {...})
+
+
+// synthetic event: react wraps the event for cross-browser compatibility -- its the normal:   const func = (e) => {}
+
+
+
+this.setState(prevState => {...});
