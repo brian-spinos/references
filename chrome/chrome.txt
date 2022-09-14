@@ -1,0 +1,4 @@
+
+// reopen closed tab:
+Right click on the top of the browser, 
+and select "reopen closed tab"
