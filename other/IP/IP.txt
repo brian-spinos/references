@@ -51,6 +51,7 @@ IP class A (for devices) - small number of class A networks
         - range: 1.0.0.0 to 126.0.0.0
         - default subnet mask:  255.0.0.0
         - Class A IP address format is thus: 0NNNNNNN.HHHHHHHH.HHHHHHHH.HHHHHHHH
+        - private IP range: 10.0.0.0 to 10.255.255.255
 
 - The IP range 127.x.x.x is reserved for loopback IP addresses.
 
@@ -62,6 +63,7 @@ IP class B (for devises)
         - range: 128.0.0.0 to 191.255.0.0
         - The default subnet mask for Class B is 255.255.x.x.
         - IP address format is: 10NNNNNN.NNNNNNNN.HHHHHHHH.HHHHHHHH
+        - private IP range: 172.16.0.0 to 172.31.255.255
 
 IP class C (for devices)
         - network address is the first 3 octets - in "223.255.255.0"  it is "223.255" 
@@ -71,6 +73,7 @@ IP class C (for devices)
         - range: 192.0.0.0 to 223.255.255.0
         - The default subnet mask for Class C is 255.255.255.x.
         - Class C IP address format is: 110NNNNN.NNNNNNNN.NNNNNNNN.HHHHHHHH
+        - private IP range: 192.168.0.0 to 192.168.255.255
 
 IP class D (for multicast) 
         - In multicasting data is not destined for a particular host
