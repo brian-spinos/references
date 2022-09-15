@@ -141,3 +141,8 @@ CIDR notation: 172.16.1.0/24  ->  first 24 bits are 1 for mask -> 11111111.11111
 - We can join networks, also called supernetting !
 
 ==============================================================================
+
+A broadcast address is an IP address that is used to target all systems on a specific subnet network instead of single hosts. In other words broadcast address allows information to be sent to all machines on a given subnet rather than to a specific machine.
+
+
+
