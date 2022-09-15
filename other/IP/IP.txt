@@ -144,5 +144,12 @@ CIDR notation: 172.16.1.0/24  ->  first 24 bits are 1 for mask -> 11111111.11111
 
 A broadcast address is an IP address that is used to target all systems on a specific subnet network instead of single hosts. In other words broadcast address allows information to be sent to all machines on a given subnet rather than to a specific machine.
 
+he highest address in a subnet is the broadcast address. Determine the broadcast address for your IP address. The lowest address of the subnet your IP address falls in is the network address. The highest address in the subnet your IP address falls in is the broadcast address
+
+The broadcast address can be used to send data packets in IP networks to all participants of a local network. The individual addresses of each party in the network do not have to be known for this to work
+
+
+
+
 
 
