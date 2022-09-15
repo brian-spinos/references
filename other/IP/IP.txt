@@ -1,0 +1,143 @@
+ // IP
+
+==============================================================================
+
+// The Internet Protocol (IP) 
+    - is the method for sending data from one computer to another over the internet.
+
+============================================================================== Router
+
+- A router connects networks 
+
+==============================================================================
+
+IP addresses can be converted to binary:
+Address:   126.0.0.0 
+Address (binary): 01111110.00000000.00000000.00000000
+
+
+
+IP as 4 octets (numbers separated by the dots): "1.2.3.4"
+
+
+IP number identifies its Network, and its host (devise/machine)
+172.16.0.1  
+- the [172.16] is the network address
+- the [0.1] is the host address
+
+
+
+
+// IP class
+defines which part of the IP address to use to identify the network,
+and which part to use to identify hosts 
+
+
+// network class 
+based on how many hosts it can have.
+example: 
+    - class A -> has more hosts, 
+    - class C -> has less hosts, 
+
+
+============================================================================== IP classes 
+
+IP class A (for devices) - small number of class A networks 
+        - network address are first octet - in "126.0.0.0"  it is "126.0" 
+        - starts with binary number "0" (when the IP is converted to binary) --> 00000001.00000000.00000000.00000000 ?
+        - 1.2.3.4 "1" is network address, "2.3.4" is host address 
+        - 126 networks
+        - ~16M hosts
+        - range: 1.0.0.0 to 126.0.0.0
+        - default subnet mask:  255.0.0.0
+        - Class A IP address format is thus: 0NNNNNNN.HHHHHHHH.HHHHHHHH.HHHHHHHH
+
+- The IP range 127.x.x.x is reserved for loopback IP addresses.
+
+IP class B (for devises) 
+        - network address are first 2 octets - in "172.16.0.1"  it is "172.16" 
+        - starts with binary number "10"  (when the IP is converted to binary) --> 10000000.00000000.00000000.00000000 ?
+        - network count: 16384
+        - host count: 65534
+        - range: 128.0.0.0 to 191.255.0.0
+        - The default subnet mask for Class B is 255.255.x.x.
+        - IP address format is: 10NNNNNN.NNNNNNNN.HHHHHHHH.HHHHHHHH
+
+IP class C (for devices)
+        - network address is the first 3 octets - in "223.255.255.0"  it is "223.255" 
+        - starts with binary number "110" (when the IP is converted to binary) --> 11000000.00000000.00000000.00000000 ?
+        - network count: 2097152
+        - host count: 254
+        - range: 192.0.0.0 to 223.255.255.0
+        - The default subnet mask for Class C is 255.255.255.x.
+        - Class C IP address format is: 110NNNNN.NNNNNNNN.NNNNNNNN.HHHHHHHH
+
+IP class D (for multicast) 
+        - In multicasting data is not destined for a particular host
+        - range: 224.0.0.0 – 239.255.255.255
+        - starts with binary number "1110"  (when the IP is converted to binary) --> 11101111.00000000.00000000.00000000 ?
+
+IP class E (reserved, for experimental purposes only)
+        - range: 240.0.0.0 to 255.255.255.254
+
+============================================================================== Subnet masks
+
+- it is used to identify which part of the IP is for the network and which part of the IP is for the host
+
+
+class A - 255.0.0.0 -- itendifies that the first octet of an IP is used to identify the network
+class B - 255.255.0.0 -- itendifies that the first two octet of an IP is used to identify the network
+class C - 255.255.255.0 -- itendifies that the first three octet of an IP is used to identify the network
+
+
+benefit of subnet masking: break a large network into smaller ones
+
+
+CIDR: classless interdomain routing
+
+CIDR notation: 172.16.1.0/24  ->  first 24 bits are 1 for mask -> 11111111.11111111.11111111 .00000000
+
+
+".../8"     --> binary mask: 11111111.00000000.00000000.00000000
+".../16"    --> binary mask: 11111111.11111111.00000000.00000000
+".../24"    --> binary mask: 11111111.11111111.11111111.00000000
+
+// Not the same network: (because of the CIDR notation)
+// in this case, the CIDR notation of ".../24" makes the first 3 octets of the IP be reserved for the network address
+172.16.0.0/24
+172.16.1.0/24
+
+============================================================================== Subnet (Subnetwork)
+
+// Example of subnetwork:  original network was (128.0.x.x)
+// but with subnetwork: the network address is now (128.0.1.x, 128.0.2.x, 128.0.3.x)
+- 128.0.1.100
+- 128.0.1.101
+- 128.0.1.102
+
+- 128.0.2.103
+- 128.0.2.104
+- 128.0.2.105
+
+- 128.0.3.106
+- 128.0.3.107
+- 128.0.3.108
+
+
+
+- Organizations will use a subnet to subdivide large networks into smaller
+- One goal of a subnet is to split a large network into a grouping of smaller, interconnected networks to help minimize traffic
+
+- Devices in same subnet must be in same IP network
+        - IF they are in different networks: They will not be able to comunicate !!!
+
+============================================================================== NAT 
+
+- NAT: network address translation 
+        - maps many internal IPs and presents it to the internet as 1 IP (the router's IP), and vice-versa
+
+============================================================================== Supernetting
+
+- We can join networks, also called supernetting !
+
+==============================================================================
