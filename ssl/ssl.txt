@@ -1,1 +1,14 @@
+TLS / SSL
 
+1. Browser requests a secure page (HTTPS) from the server
+2. Server sends public key with SSL certificate (that is signed by the CA)
+3. Browser checks the certificate signature from the server against the CA's public key 
+3.1 Once checked, a green padlock appears in the top left corner of the browser
+4. Browser creates symetric keys, and encrypts it (using servers public key), and sends one of the symetric keys to the server.
+5. Server uses its private key to decrypt and get the browser's symetric key 
+6. Now all traffic between the browser and the server will be encrypted and decrypted with the same symetric key 
+
+Green padlock: It only indicates that the communication is encrypted, hackers can get SSL certificates for their websites as well
+Symetric key: shared keys, same two keys 
+Asymetric key: there are two keys, public key and private key. private key encrypts data, and public key decrypts data
+    - It can work the other way arround also.
