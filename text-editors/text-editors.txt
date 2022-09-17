@@ -1,1 +1,4 @@
 
+// instal `$ code` commandline:
+// from vscode editor:
+// Now open the Command Palette (SHIFT + COMMAND + P) and type "shell command" to find the "Shell Command: Install 'code' command in PATH", click it, that is it!
