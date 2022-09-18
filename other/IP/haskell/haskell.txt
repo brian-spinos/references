@@ -1,0 +1,23 @@
+ghc  # glasgow haskell compiler
+
+ghci
+
+
+// tutorial
+http://learnyouahaskell.com/chapters
+
+
+// https://www.youtube.com/watch?v=pUN3algpvMs // haskell for JS devs???
+
+$ brew install haskell-stack # not sure we needed this
+$ brew install ghc
+
+
+
+
+$ ghci               -- haskell console
+ghci> :l foo.hs      -- load your haskell file in the haskell console 
+      :r             --  for reload ?
+
+
+-- CONTROL + D  to exit the console 
