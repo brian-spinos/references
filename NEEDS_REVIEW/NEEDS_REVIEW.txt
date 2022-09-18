@@ -69,6 +69,8 @@ div {
 $ git log -2 # 2 most recent commits 
 
 
+============================================================================================= javascript DSA
+
 
 ============================================================================================= javascript
 
@@ -77,8 +79,40 @@ $ git log -2 # 2 most recent commits
 https://www.youtube.com/watch?v=IJ6EgdiI_wU
 
 
+============================================================================================= express.js
+const x = require(“x”)
+
+module.exports = fn
+
+//post
+app.use(express.json())
+app.use(express.urlencoded({extended: false}))
+app.post(“/users”, fn) // req.body.username
 
 
+Middleware:
+app.use(fn) // (req, res, next)
+
+“/users/:id” // parseInt(req.params.id)
+
+res.status(500).json(data)
+
+ Router:
+const router = express.Router()
+router.get(…)
+app.use(“/users”, router)
+
+============================================================================================= axios (mock)
+
+jest.mock("axios");
+
+axios.get.mockResolvedValueOnce(users);
+
+      // when
+      const result = await fetchUsers();
+
+      // then
+      expect(axios.get).toHaveBeenCalledWith(`${BASE_URL}/users`);
 ============================================================================================= react.js
 
 
@@ -86,7 +120,16 @@ https://www.youtube.com/watch?v=IJ6EgdiI_wU
 
 
 
+//UseCallback
+Wrap parent func a n useCallback with a deps
+Wrap child component with React.memo()
 
+
+============================================================================================= Haskell
+
+
+
+See haskell from “iphone notes app”
 
 
 =============================================================================================
