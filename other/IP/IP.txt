@@ -42,6 +42,23 @@ example:
 
 ============================================================================== IP classes 
 
+--------------------- TODO: update info below to this format:
+- ... 
+IP example: 
+    - network ID: "X" (network address is the first octet: in "X"  it is "X")
+    - host ID: "X"
+IP example (binary): XXXXX  (starts with binary 0)
+IP example (binary): XXXXXX
+default subnet mask: XXXXX
+default subnet mask (binary): XXXXX
+range: 
+private range: 
+network count: 
+host count: 
+----------------------
+
+
+
 IP class A (for devices) - small number of class A networks 
         - network address are first octet - in "126.0.0.0"  it is "126" 
         - starts with binary number "0" (when the IP is converted to binary) --> 00000001.00000000.00000000.00000000 ?
