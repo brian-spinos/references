@@ -1,0 +1,398 @@
+
+
+---------------------------------------------------------------------------------------------------- VIM 
+
+plugins
+
+
+---------------------------------------------------------------------------------------------------- network
+Wild card mask: reverse of subnet mask
+
+
+IP: x.x.x.0 is network address, x.x.x.255 is broadcast address, x.x.x.1 is router address
+
+MakeOSI/ tcp/ip paper 
+
+---------------------------------------------------------------------------------------------------- JS
+
+Console.table(obj)
+
+More js array funcs
+
+
+Neural network from scratch js
+
+Mockapi.io
+
+
+---------------------------------------------------------------------------------------------------- react.js 
+Data-testid in browser?
+
+----------------------------------------------------------------------------------------------------
+
+
+Build os from scratch
+----------------------------------------------------------------------------------------------------
+
+Kql: kibana query
+
+Aaa.bbb:”foo”
+
+"foo`$*"
+
+"foo`*"
+
+---------------------------------------------------------------------------------------------------- GIT
+
+
+Remove changes from 1 file
+
+Add changes from another branch to 1 file
+
+
+Move fast from a wip branch to another branch, and back
+
+diff branches:
+feature/foo
+origin/feature/foo
+
+
+
+Rebase, issues?
+
+
+How to handle complex merges: its a risk
+
+
+
+Git checkout a specific commit:
+$ git checkout <commit-sha>
+# dettached head state here
+# to go back:
+$ git checkout <branch-name>
+
+
+
+
+
+HEAD is a pointer to a commit
+
+
+The branch name point to the latest commit in that branch ??? Not sure
+
+
+
+
+---------------------------------------------------------------------------------------------------- CSS GRID
+
+Div mt-8 grid lg:grid-cols-3 gap-10
+   Div col-span-2 // item will span 2 columns
+
+
+
+
+lg:
+md:
+sm:
+
+
+gap-10 // space all around item
+gap-x-8
+gap-y-12
+
+grid-rows-4
+
+grid-flow-col // instes of left to right, columns will go top to bottom
+
+grid-flow-row // default ???
+
+
+
+
+////// classes on the cchild
+
+justify-self: start | end // content inside item goes left| right
+
+col-start-4 // item isbplaces on the 4th place
+col-end-7 // item is placed at the end of the row ??
+
+row-span-2
+col-span-2
+
+
+
+////// parent
+align-items: start | end // items start on the top | bottom
+
+justify-items: start | end // items start left | right
+
+
+
+
+//////
+
+
+
+
+---------------------------------------------------------------------------------------------------- CSS Tailwind
+
+Parent div: grid lg:grid-cols-3 gap-10
+// grid with 3 cols on large screens, and gap of 10 between items
+
+Child div: col-span-2
+// span 2 cols instead of 1
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------
+Same origin policy
+
+---------------------------------------------------------------------------------------------------- LDAP
+Ldap is like a Enterprise address book!
+---------------------------------------------------------------------------------------------------- Nasm
+
+ https://youtu.be/5eWiz3soaEM
+
+
+
+
+
+----------------------------------------------------------------------------------------------------
+
+Study agile, features, epics
+
+----------------------------------------------------------------------------------------------------
+
+Scala 
+
+play
+
+
+Graphql
+
+How okta works
+
+Fibonacci heap // https://youtu.be/fRpsjKCfQjE
+
+
+Jmusic
+
+
+---------------------------------------------------------------------------------------------------- SMTP server 
+
+email client sends data to SMTP server !
+
+Gmail has an SMTP server, yahoo has one
+Hotmail has one…
+
+SMTP servers communicate among them selves too
+
+
+
+// prorocols: 
+IMAP
+POP
+
+
+SMTP Username, password, host - to connect!
+
+
+
+smtp.gmail.com:587
+
+
+
+
+---------------------------------------------------------------------------------------------------- java 
+
+
+Java reflection api
+https://www.baeldung.com/java-reflection
+
+
+
+Jvm on paper
+JVM calls the main method
+https://media-geeksforgeeks-org.cdn.ampproject.org/ii/w820/s/media.geeksforgeeks.org/wp-content/uploads/jvm-3.jpg
+https://www.google.com/amp/s/www.geeksforgeeks.org/jvm-works-jvm-architecture/amp/
+
+
+---------------------------------------------------------------------------------------------------- Powermock
+
+Org.mockito.ArgumentMatchers.any()
+
+.any(Foo.class)
+.anyBoolean()
+
+Foo spy = PowerMockito.spy(foo);
+
+Mockito.any(Foo.class)
+
+
+Arg captor, injectMocks, mock void methods to do stuff, partial mocking using spies
+https://dzone.com/articles/unit-testing-using-mockito-and-powermock
+
+
+
+.
+
+
+@PowerMockIgnore("javax.management.*")
+
+
+
+
+@RunWith(PowerMockRunner.class)
+@PowerMockIgnore("javax.management.*")
+@PrepareForTest({SomeClass.class, Thread.class})
+public class SomeClassTestCase {
+
+@Test(expected=Test.None.class)
+public void testRun() throws Exception {
+PowerMockito.mockStatic(Thread.class);
+PowerMockito.doThrow(new RuntimeException("mock error")).when(Thread.class);
+Thread.sleep(Matchers.anyLong());
+
+SomeClass someClass = new SomeClass();
+
+// test
+someClass.run();
+}
+}
+
+
+
+---------------------------------------------------------------------------------------------------- Gradle
+What is a configuration?
+
+
+
+Tasks > build > clean
+
+Source sets:
+Src/main/java
+Src/test/java
+Src/main/gradle
+Src/test/gradle
+
+
+
+
+Build - folder for java compiled code!
+
+
+
+Build/reports/tests/test/index.html // test results!!!
+
+
+----------------------------------------------------------------------------------------------------Maven
+Phases are bound to plugins ?
+
+
+Default - the default lifecycle 
+
+Clean - is a different lifecycle 
+
+Site - a different lifecycle 
+
+// Gradle multi app
+https://youtu.be/Ae4liqjPJNc
+include “foo-bar”
+
+
+---------------------------------------------------------------------------------------------------- Ejb setup
+
+https://www.baeldung.com/ejb-intro
+
+----------------------------------------------------------------------------------------------------
+
+Integration vs func testing
+Regression and progression
+
+---------------------------------------------------------------------------------------------------- Zookeeper paper
+
+When working with Apache Kafka, ZooKeeper is primarily used to track the status of nodes in the Kafka cluster and maintain a list of Kafka topics and messages.
+
+
+ZooKeeper has five primary functions.  Specifically, ZooKeeper is used for controller election, cluster membership, topic configuration, access control lists, and quotas.
+
+#1 Controller Election.  The controller is the broker responsible for maintaining the leader/follower relationship for all partitions.  If ever a node shuts down, ZooKeeper ensures that other replicas take up the role of partition leaders replacing the partition leaders in the node that is shutting down.
+
+#2 Cluster Membership.  ZooKeeper keeps a list of all functioning brokers in the cluster.
+
+#3 Topic Configuration.  ZooKeeper maintains the configuration of all topics, including the list of existing topics, number of partitions for each topic, location of the replicas, configuration overrides for topics, preferred leader node, among other details.
+
+#4 Access Control Lists (ACLs).  ZooKeeper also maintains the ACLs for all topics.  This includes who or what is allowed to read/write to each topic, list of consumer groups, members of the groups, and the most recent offset each consumer group received from each partition.
+
+#5 Quotas.  ZooKeeper accesses how much data each client is allowed to read/write.
+
+
+
+---------------------------------------------------------------------------------------------------- K8s
+
+Kubernetes deploys and manages/Orchestrates the many containers/pods in a node
+ 
+And scales pods up and down
+
+K8s Cluster: a set of nodes/VMs
+Master node
+Worker node
+
+
+Pods: the smallest deployable unit in k8s, it has:
+- main container
+-init container
+- side car containers (support the main container)
+- volumes (to share data between containers)
+- a unique IP address for the pod
+
+
+
+---------------------------------------------------------------------------------------------------- Spring security
+
+https://youtu.be/her_7pa0vrg
+
+
+https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/
+
+
+---------------------------------------------------------------------------------------------------- Good jdbc
+
+https://youtu.be/0uLqdBpYAVA
+
+
+
+GitHub:
+
+https://github.com/danvega/hello-jdbc
+
+
+---------------------------------------------------------------------------------------------------- SpringBoot turorial with jdbc and auth
+https://youtu.be/5VUjP1wMqoE
+
+---------------------------------------------------------------------------------------------------- TCP/IP packet diagram
+
+http://nullhaus.com/2014/01/deep-packet-inspection-dpi/
+
+
+
+---------------------------------------------------------------------------------------------------- Hmac
+
+Secures data in transit? 
+
+Basically uses a private key that signs the payload?
+
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
