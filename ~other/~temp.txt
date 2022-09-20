@@ -153,12 +153,27 @@ Same origin policy
 
 ---------------------------------------------------------------------------------------------------- LDAP
 Ldap is like a Enterprise address book!
+
+
+- Ldap server
+
+
+
+Used to store data about employees of a big company ?? 
+
+Eduardo souza:
+Normalmente para ser usado como um central repository para username e passwords
+
+
+
+
 ---------------------------------------------------------------------------------------------------- Nasm
 
  https://youtu.be/5eWiz3soaEM
 
 
-
+// Nasm cool
+https://cs.lmu.edu/~ray/notes/nasmtutorial/
 
 
 ----------------------------------------------------------------------------------------------------
@@ -219,6 +234,19 @@ Jvm on paper
 JVM calls the main method
 https://media-geeksforgeeks-org.cdn.ampproject.org/ii/w820/s/media.geeksforgeeks.org/wp-content/uploads/jvm-3.jpg
 https://www.google.com/amp/s/www.geeksforgeeks.org/jvm-works-jvm-architecture/amp/
+
+
+// Java hash
+Map<String,String> map = new HashMap<>();
+
+Set<String> s1 = map.keyset();
+Set<Map.Entry<String,String>> es = map.entrySet();
+map.valueSet();
+
+for( String key : map.keySet()){
+  // map.get(key);
+}
+
 
 
 ---------------------------------------------------------------------------------------------------- Powermock
@@ -387,10 +415,124 @@ Secures data in transit?
 Basically uses a private key that signs the payload?
 
 
-----------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------- Java spring
+
+Lynda.com
+
+
+https://youtu.be/CtD9B9TU_cY
+
+
+
+Groovy other half
+Derek bannas - youtube
+
+
+https://www.tutorialspoint.com/gradle/gradle_overview.htm
+
+
+Java generic classes
+Peggy fisher
+
+
+Java data structures
+Peggy Fisher 
+
+
+
+
+Java 8 File io
+
+
+Websocket
+SSL
+TCP/IP
+
+
+Excel 2019 Essential training
+Chapter 6, video 1
+
+
+Pluralsight: programming with dates and time in java 8
+Chapter 4, video 5
+
+
+Gradle - I need to know build script
+
+
+————————————————— DONE:
+
+Java 8 essential training
+David gassner
+
+Spring mvc
+
+Spring: framework in depth
+
+Learning Spring with spring boot
+
+Springboot essential training
+
+Spring 5 frank moley
+
+———————
+// reads foo.bar from the application.properties file!!!
+// there is still more work to be done for this to work
+@Value(“${foo.bar}”)
+private String fooBar;
+
+
+
+Session bean - like rails session
+Request bean - 1 instance per request
+
+
+
+
+
+---------------------------------------------------------------------------------------------------- mac
+
+Shift command 5 - record screen
+
+---------------------------------------------------------------------------------------------------- TCP
+
+https://www.quora.com/What-is-the-difference-between-an-HTTP-server-and-a-TCP-server-in-NodeJS
+
+
+In TCP (sockets), it is a different paradigm. The client opens a longer-lived channel between it and the server, where both can send each other anything (data) anytime. Any one can terminate at any time.
+
+
+TLS handshake happens after the TCP handshake
+
+
+.
+SSL is the old version of TLS
+
+.
+
+https://www.cloudflare.com/learning/ssl/what-is-ssl/
+
+.
+
+HTTP messages are, ultimately, delivered through TCP/IP connections.
+
+
+
+---------------------------------------------------------------------------------------------------- Monad
+
+Monads are used for composition!!!
+
+
+Like vertx compose chain
+
+
+.compose is the >>= operator!!!
+
+Future<String> fs is the monad!!!!
+
+
+
+
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
