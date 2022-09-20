@@ -1,0 +1,16 @@
+XML
+
+
+Namespaces:
+
+<html
+    xmlns=“http://www.example.com/foo”
+    xmlns:h=“http://www.example.com/bar”>
+    <h:head>
+        <!— content —>
+    </h:head>
+</html>
+
+
+In JSF these namespaces help with autocomplete!!!
+

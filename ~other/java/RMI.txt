@@ -1,0 +1,12 @@
+RMI
+
+call methods from other java projects
+
+
+
+One project binds to a port and creates a registry with a string key for the class
+
+
+The other project gets the registry, by string key, IP address and port
+
+You need to add the other projects jars???

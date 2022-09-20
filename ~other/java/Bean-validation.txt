@@ -1,0 +1,33 @@
+Bean validation
+
+You can create your own validators!
+
+// optional:
+constraints.xml
+validation.xml
+
+Basically a set of annotations to validate bean fields, methods and classes
+
+https://dzone.com/articles/bean-validation-20
+
+@Email, @Positive, @PositiveOrZero, @Negative, @NegativeOrZero, @PastOrPresent, @FutureOrPresent, @NotEmpty, and @NotBlank
+
+
+@AssertTrue
+@AssertFalse
+@Past
+
+
+
+@NotNull
+@Size(min=10, max=50)
+@Future
+//... etc...
+
+
+
+
+
+
+
+

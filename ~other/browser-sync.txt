@@ -1,0 +1,23 @@
+browser-sync
+
+You need node.js
+
+$ npm install -g browser-sync
+
+
+It has an executable to run a browser-sync server, that watches for changes in your code.
+
+If you are already using a server, like apache with PHP, you can use browser-sync as a proxy between the browser and apache/PHP
+
+$ browser-sync start
+—proxy “localhost:8080” #your existing server
+—files “*”
+# the default url for browser-sync server is localhost:3000 
+
+Browser —> 
+browser-sync server (localhost:3000) —> apache/PHP server (localhost:8080)
+
+
+It makes an IP available to your phone! Cool!
+
+ 

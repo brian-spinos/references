@@ -1,0 +1,384 @@
+Java
+
+ Arrays are not print friendly, collections are!
+ Arrays.toString(myArray); // use this for arrays
+
+_____________________________________________
+
+
+
+
+
+JIT:
+The JIT compiler is enabled by default, and is activated when a Java method is called. The JIT compiler compiles the bytecode of that method into native machine code, compiling it "just in time" to run. When a method has been compiled, the JVM calls the compiled code of that method directly instead of interpreting it.
+
+
+_____________________________________________
+
+JVM - environment in which java bytecode is executed  (does not physically exist) - it is called by the “java” command
+
+JRE - JVM + libraries(jars), you need JRE just for running code, not developing code (JRE is the implementation of the JVM) (JRE physically exists)
+
+JDK - JRE + development tools (debugger, compiler, executor, javadoc) (you need JDK to develop java)
+
+
+_____________________________________________
+****THIS IS CORRECT****
+
+export JAVA_HOME=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+
+// of course the jdk version can be different 
+
+$JAVA_HOME/bin/java -version
+# the above needs to work!
+
+_____________________________________________
+
+// important!!! (JAVA_HOME should point
+// to the parent folder of bin/java
+
+$JAVA_HOME/bin/java
+$JAVA_HOME/bin/java
+$JAVA_HOME/bin/java
+_____________________________________________
+
+
+The purpose is to point to where Java is installed. $JAVA_HOME/bin/java should execute the Java runtime.
+
+The JAVA_HOME environment variable points to the directory where the Java runtime environment (JRE) is installed on your computer, so the parent folder to “jre” ???
+
+_____________________________________________
+
+java file
+_____________________________________________
+
+Optional<Book> book = getABookNow();
+
+Optional<Book> book = Optional.ofNullable(book1);
+
+// book.isPresent(); // boolean 
+// book.get() // the book from optional
+_____________________________________________
+
+
+java regex
+
+boolean isMatch = Pattern
+    .compile(myRegexString)
+    .matcher(myString)
+    .matches()
+
+
+
+
+
+_____________________________________________
+
+https://youtu.be/oYXivKMSEqM interview
+
+_____________________________________________
+
+===> Strings are IMUTABLE
+
+for mutability, use StringBuilder or StringBuffer
+
+String newStr = str.concat(“abc”);
+
+// if u modify strings a lot:
+StringBuffer is thread safe
+StringBuilder is not thread safe, but fast?
+
+_____________________________________________
+
+finalize() // destructor
+// called when reference is set to null and the Garbage collector runs
+System.gc();
+
+_____________________________________________
+// streams (java 8)
+getUserNamesList()
+        .stream()
+        .forEach(System.out::println);
+
+
+List number = Arrays.asList(2,3,4,5);number.stream()
+.map(x->x*x)
+.forEach(y->System.out.println(y));
+
+_____________________________________________
+
+A classpath is also the directories where you put 
+your java classes and jar files, it is also an 
+environment variable
+_____________________________________________
+import static org.junit.Assert.*;
+
+// imports all static methods and nested classes of the “Assert” class!
+
+fail(); // was Assert.fail();
+
+
+_____________________________________________
+
+// array to list
+Integer[] sourceArray = 
+{ 0, 1, 2, 3, 4, 5 };
+
+// fixed size list
+List<Integer> targetList = 
+    Arrays.asList(sourceArray);
+
+// non-fixed size list
+List<Integer> targetList = 
+    new ArrayList<Integer>(
+        Arrays.asList(sourceArray)
+    );
+
+_____________________________________________
+
+@SuppressWarnings(“unchecked”)
+
+_____________________________________________
+
+// Date
+
+LocalDate date = LocalDate.now(); // 2018-04-30
+
+LocalDate date = LocalDate.of(1988,Month.OCTOBER,16);
+
+
+LocalTime t = LocalTime.now(); // 17:06:20.523
+
+LocalTime t = LocalTime.of(12,35,10,999);
+
+LocalDateTime dt = LocalDateTime.now();
+
+LocalDateTime dt = LocalDateTime.of(...); // ???
+
+_____________________________________________
+
+// Interfaces
+All methods are by default public abstract
+
+Used for swiping classes during mocking in test?
+_____________________________________________
+
+boolean foo = true;
+
+_____________________________________________
+// run war application:
+$ java -jar foo.war
+$ java -jar jenkins.war
+
+1 public class per file. 
+
+A file can have multiple non public classes
+
+Inner classes and Anonymous classes.
+
+In the main method, we can instantiate the class
+
+Fields: String name;
+
+Byte 120
+Short 30k
+Int 2B
+long x = 1000L; // 9 quinqualhão
+float x = 155.2f; // no money, not safe
+double d1 = 123.4; // no money, Not safe
+BigDecimal x = 123.45; // yes money! It is safe
+
+null
+
+int decimal = 100; 
+int octal = 0144;
+int hexa = 0x64;
+
+Heap, stack
+
+a^b // xor, true if different
+
+~a // NOT, it flips the bits
+
++=
+
+boolean result = name instanceof String;
+
+else if
+
+_____________________________________________
+
+Integer, Long, Byte, Double, Float, Short) are 
+subclasses of the abstract class Number.
+
+_____________________________________________
+
+
+This is boxing!
+Integer x = 5; // boxes int to an Integer object
+x = x + 10; // unboxes the Integer to a int System.out.println(x); 
+
+Character x = ‘a’; // boxing a char 
+
+
+int[] x = {1,2,3}; // array
+
+_____________________________________________
+
+
+String pattern = "yyyy-MM-dd";
+SimpleDateFormat simpleDateFormat = 
+new SimpleDateFormat(pattern);
+
+String date = 
+simpleDateFormat.format(new Date());
+
+System.out.println(date);
+
+
+The Date instance passed to the format() method is a java.util.Date instance.
+The output printed from the above SimpleDateFormat example would be:
+2018-09-09
+
+_____________________________________________
+
+Inside a static method: 
+- You can instantiate, or call a static member
+- You can NOT call an instance member directly
+
+_____________________________________________
+
+- this -> don’t use it if you don’t need to?
+           - this can be a constructor:  
+              this(“Brian”, 29);
+
+_____________________________________________
+
+// ellipsis 
+public void foo(int x, int... ys){/**/}
+// ys will be an array
+
+
+protected void finalize(){} // destructor
+
+
+Nested/Outer classes
+
+Constructors are not members, so they are not inherited by subclasses
+
+super // the “this” of the super class
+
+
+Is-a - inheritance, interface
+Has-a - field
+
+
+Can @Override if not final
+
+_____________________________________________
+
+The type of the reference variable would
+determine the methods that it can invoke on the object.
+
+_____________________________________________
+
+// virtual method invocation
+
+/**
+ * p.foo() will call class Child method, 
+ * even though it’s variable is class Parent, 
+ * because class Child overrides that method 
+ * from class Parent
+ */
+Parent p = new Child()
+p.foo() // calls overridden method in Child!
+
+Normally a method call is based on the reference type, BUT:
+If you use a parent reference to a child,
+And call a method that is overridden, 
+The overridden method will be executed.
+
+_____________________________________________
+
+Abstraction: hide implementation details 
+Encapsulation: data hiding
+
+_____________________________________________
+
+
+public interface Football extends Sports {}
+
+_____________________________________________
+
+$ javac -d Destination_folder file_name.java
+
+_____________________________________________
+
+Classes in the same package find each other 
+without any special syntax.
+    -> No need to import them??
+
+
+The name of the package must match the directory structure where the corresponding bytecode resides.
+
+In general, a company uses its reversed Internet domain name for its package names.
+
+
+The full path to the classes directory,
+<the-path-to>\classes,
+is called the class path,
+and is set with the $CLASSPATH system variable.
+
+
+_____________________________________________
+Domain
+
+For example, in a shop application, some of 
+your domain model classes would be Product, 
+Order, ShoppingCart and Customer.
+_____________________________________________
+Inner classes ???
+
+class Foo {
+    // this.lala
+    class Bar {
+        // Foo.this.lele
+        // this.lili
+    }
+}
+
+Foo f = new Foo();
+Bar b = f.new Bar();
+_____________________________________________
+Protected:
+
+Used when you want to share variables in parent and child classes...
+_____________________________________________
+Packages
+
+Works like a namespace!
+
+// file: /src/com/foo/Bar.java
+package com.foo;
+class Bar {}
+
+// another file:
+import com.foo.Bar;
+class Baz{}
+_____________________________________________
+Array
+
+int[] x = new int[]{ 1,2,3,4,5,6,7,8,9,10 }; 
+ // Declaring array literal
+// There is no need to write the new int[] part in the latest versions of Java
+
+
+int[][] intArray = new int[10][20]; //a 2D array or matrix
+int[][][] intArray = new int[10][20][10]; //a 3D array
+_____________________________________________
+
+_____________________________________________
+
+_____________________________________________
+
+

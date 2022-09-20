@@ -1,0 +1,33 @@
+Thymeleaf
+
+Thymeleaf can fully replace JSP 
+
+xmlns:th=“http://www.thymeleaf.org”
+
+th:class
+
+th:href=“@{/app.css}”
+
+th:text=“${user.id}”
+
+${user.id}
+
+<img th:src=“@{/foo/bar.gif}” />
+
+<div th:each=“foo : ${foos}”>
+
+/src/main/resources/templates/foo.html
+
+
+// in controller method:
+model.addAttributes(“foos”, fooList);
+return “foo”; // foo.html
+
+
+
+
+/src/main/resources/static/css/*
+/src/main/resources/static/js/*
+
+
+

@@ -1,0 +1,10 @@
+Instrumentation
+
+Instrumentation: querying the memory usage of a Java object
+
+requires the Instrumentation framework introduced in Java 5
+
+import java.lang.instrument.*;
+
+
+

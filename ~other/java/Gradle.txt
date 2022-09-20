@@ -1,0 +1,80 @@
+Gradle
+
+Docs:
+https://docs.gradle.org/current/dsl/
+
+
+
+buildScript: like devDependencies in Node.js, top-level is dependencies
+
+SourceSet represents a logical group of Java source and resource files.
+
+
+
+```
+group ‘foo’
+version ‘1.0-SNAPSHOT’
+
+apply plugin: “java” // plugin has many tasks!
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile “org.apache.commons:commons-lang3:3.3.2”
+
+}
+
+
+```
+
+$ gradle run # downloads all dependencies???
+
+$ gradle tasks # lists tasks
+
+$ gradle jar # creates a jar!
+
+$ gradle init # like npm init ???
+
+$ gradle test # runs unit test
+
+$ gradle clean # deletes the build directory 
+
+$ gradle build # runs tests also???
+
+$ gradle dependencies # lists all dependencies 
+
+
+Jar goes in: /build/libs/myjar.jar
+
+$ java -jar build/libs/myjar.jar “hello world”
+
+
+project is the root object in gradle ???
+
+
+—————
+Tasks: task belong to a group and have descriptions!
+
+
+Configuration phase
+
+
+
+Execution phase
+
+
+ext.foo = 123
+println “hello $foo” // hello 123
+
+
+Tasks of a type have properties and methods available to it! See gradle docs, a type example is: Exec, Jar
+
+
+Tasks can depend on other tasks: which means the other task needs to run first! Then our task should run
+
+
+

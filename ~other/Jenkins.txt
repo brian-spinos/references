@@ -1,0 +1,95 @@
+Jenkins
+
+Lynda.com
+
+Jenkins in docker: pull the Jenkins image, create a container , and have it point to a port, which you can access from your browser, dummy!!!
+
+
+Upstream - previous job
+No stream - next job
+
+
+Pipeline - also known as workflow
+
+Checkpoints: used to survive slave failures?
+
+. You can set up pipelines that fork, join, loop, and even execute items in parallel. 
+
+Each pipeline generally consists of three things: Steps, Nodes, and Stages.
+
+
+———
+
+# Jenkins
+
+
+- can have plugins (adds functionality)
+
+- project/job - collection of tasks
+
+- tasks is same as "build step"
+
+- build is one run of the project/job
+
+
+- build trigger: event that starts a build
+
+
+----------
+
+java 8
+
+# initial password
+cat /Users/Shared/Jenkins/Home/secrets/initialAdminPassword
+
+
+# Jenkins can run inside docker!
+$ docker pull jenkins/jenkins:lts
+$ docker run \
+  --detach \
+  --publish 8080:8080 \
+  --volume jenkins_home:/var/jenkins_home \
+  --name jenkins \
+  jenkins/jenkins:lts
+
+# get the password
+$ docker exec jenkins \
+  cat /var/jenkins_home/secret/initialAdminPassword
+
+# in your browser
+localhost:8080
+
+
+-------
+
+
+have jenkins installed on a server where all 
+developers can access via SSH
+
+
+jenkins website:
+
+new item: create a job
+
+people:  known users defined on the system
+
+build history:
+
+manage jenkins: configuring jenkins
+
+-------
+
+Jenkins needs to restart to completely uninstall plugins
+
+- you can start a job after another job finishes!
+
+- you can add parameters to your jobs!
+
+$ java -jar jenkins.war —httpPort=8081
+
+- workspace: where the builds and code reside?
+
+- jenkins can setup authorization on different users!
+
+
+

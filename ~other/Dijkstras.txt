@@ -1,0 +1,6 @@
+Dijkstras
+- matrix
+- Distance array for each node to index
+- Visited array - 
+- Array preD for path
+- 

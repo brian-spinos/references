@@ -1,0 +1,47 @@
+JBoss (wildfly)
+
+
+Deploy : it also means running the app???
+
+
+====== usage:
+
+
+
+Download zipped folder
+
+Unzip the folder
+
+Point IntelliJ to the unzipped folder!
+
+In IntelliJ, top right, on the left of the “play” button, select from the dropdown: “Edit configurations “ , in the new window, click “+”
+In the top left, select “JBoss server”, then “Local”, then on the “Application server:” click “Configure”, and click “+”
+In the top left, click “...” for the “JBoss Home:” and select the folder where the unzipped folder is. Click “ok”
+
+Select something for the “JRE:”, something like: “...jdk1.8_121.jdk/Contents/Home
+
+User name and password?
+
+
+============================================================================================================ Wildfly
+
+Wildfly
+
+Comunity version of JBoss 
+
+Download the zipped folder wildfly-10.1.0.Final
+// don’t download the “servlet” one...
+
+
+It uses shell scripts
+
+You need to add a user through a shell script
+
+It also has a web interface
+
+./standalone.sh # start wildfly
+Localhost:8080, deploy generated war file in the webapp
+localhost:8080/my-project-name-1.0 // my java app!
+
+
+============================================================================================================

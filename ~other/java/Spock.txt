@@ -1,0 +1,90 @@
+Spock
+
+
+// Specification.groovy
+class FirstSpecification extends Specification {
+ 
+def "one plus one should equal two"() {
+  expect:
+  1 + 1 == 2
+}
+
+
+
+def "two plus two should equal four"() {
+    given:
+        int left = 2
+        int right = 2
+ 
+    when:
+        int result = left + right
+ 
+    then:
+        result == 4
+}
+
+}
+
+
+
+//========================
+
+
+def list = [1, 2, 3, 4]
+
+
+// then exception
+thrown(IndexOutOfBoundsException)
+
+
+
+
+//===============================================================================
+
+ Spock (java test) 
+
+
+// Stub
+
+Foo f = Stub(Foo.class)
+f.bar(123) >> 456
+
+
+// MOCK (stub with assertion that it was called, and check its arguments)
+
+foo = Mock(Foo.class)
+
+then: "blah"
+1 * foo.bar(123) // foo.bar should be called once!
+
+
+// more mocking
+foo.bar( _ as Baz) >> { Baz b ->  b.setFizz(123)}
+
+
+
+def setup(){
+    //…
+}
+
+def cleanup(){
+    //…
+}
+
+// mocking methods
+def foo = Stub(Foo){
+    bar(1,2) >> 1000
+    bar(_,_) >> 500 // other arguments
+}
+
+
+// display multiple test results for just one test:
+@unroll
+def “expect #val1 == #val2 is #expected”(){
+    expect: “blah”
+    (val1 == val2) == expected
+    where:
+    val1 | val2 || expected
+    1      | 2      || false
+    2      | 2      || true
+}

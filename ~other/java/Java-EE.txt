@@ -1,0 +1,233 @@
+Java EE
+
+
+
+// reference card, many java ee apis!!!!
+https://dzone.com/refcardz/java-enterprise-edition-7?chapter=1
+
+https://dzone.com/refcardz/java-enterprise-edition-6-most?chapter=1
+
+
+
+
+
+// ejb javaEE 
+https://bitbucket.org/lassitercg/example/src/6320bfefe19368fdd58d52791111574bf463cd43
+
+
+_____________________________________________
+// process json
+http://www.baeldung.com/jee7-json
+
+_____________________________________________
+
+dependency injection:
+
+
+// CDI
+
+@Inject
+private Foo foo;
+
+@Named
+class Foo{}
+
+// needs beans.xml
+/src/main/webapp/WEB-INF/beans.xml
+
+- @Named for the injectable classes
+- @Inject to inject classes
+
+@RequestScoped
+
+@SessionScoped
+
+@ApplicationScoped
+
+
+
+_____________________________________________
+
+// very good! Java EE with eclipse/glassfish
+https://youtu.be/aBjlR9HoR50
+
+In eclipse: WebContent folder is public!
+
+EJB can be the backing beans of JSF!
+
+In eclipse , use GLASSFISH <=========<<<<
+_____________________________________________
+
+Java EE works with beans?
+
+Use JPA! And JPQL 
+
+
+Glassfish, payara, tomEE, JBoss, wildfly(community edition of JBoss)
+
+Wildfly.org // download it
+
+H2
+_____________________________________________
+
+// youtube, keep watching: simple Web Application using Java EE @ 16:14
+
+
+// cargo tracker app:
+https://github.com/javaee/cargotracker?files=1
+
+
+https://youtu.be/Qt-JiyrRH2g vídeo
+
+https://bitbucket.org/lassitercg/example/src/6320bfefe19368fdd58d52791111574bf463cd43 code
+
+https://bitbucket.org/lassitercg/example/src/6320bfefe19368fdd58d52791111574bf463cd43/javaee-intro.md code tutorial
+
+
+_____________________________________________
+
+@ResquestScoped
+@Named // give a name to the bean
+public class EmployeeController{
+    @Inject
+    EmployeeRepository employeeRepository;
+
+    //...
+
+}
+
+@Named(“foo”) // give another name to the bean
+
+_____________________________________________
+
+Stateless EJB:
+
+
+// DAO
+// this kind of works like a rails model class
+@Stateless // EJB
+public class EmployeeRepository{
+    @PersistenceContext
+    EntityManager entityManager;
+
+    //...
+}
+
+_____________________________________________
+entityManager.find(Employee.class, id); // like find
+
+entityManager.merge(employee); // like an upset
+
+entityManager.persist(employee); // like insert
+
+entityManager.remove(employee); // like delete
+
+
+
+
+_____________________________________________
+
+XHTML 
+
+JSF
+
+PrimeFaces
+
+
+
+_____________________________________________
+
+@Entity // JPA
+public class Employee{
+    //...
+}
+
+
+
+_____________________________________________
+Folder structure - maven
+
+
+src/test
+src/main
+    java
+        com
+            example
+                myapp
+                    model // class Book // @Entity POJOs // bean validation
+                    repository // class BookRepository // uses JTA // bean validation
+                    util // some utility classes
+                    rest // class BookEndpoint
+                        JAXRSConfiguration.java 
+
+    resources
+        META-INF
+            beans.xml
+            persistence.xml // deployment descriptor
+    webapp // HTML, css, js folders in this folder!
+        index.html
+        images
+        public
+        resources
+        WEB-INF
+            web.xml
+pom.xml
+target // compiled code goes here!
+
+
+_____________________________________________
+
+pom.xml
+Javax javaee-api 8.0
+
+_____________________________________________
+
+
+================================================================================================ PART II 
+
+Java EE PART II
+
+
+Watch Java EE interview videos:
+https://youtu.be/kxpGuw02TJU
+
+
+
+BEST JAVA EE 6 VIDEO EVER!!! :
+https://youtu.be/aBjlR9HoR50
+
+
+
+
+Java EE 6 example:
+https://bitbucket.org/lassitercg/example/src/6320bfefe19368fdd58d52791111574bf463cd43
+
+
+// these series are good!
+// eclipse and maven and glassfish!
+https://youtu.be/dmMdLW92hBA
+
+You can convert a dynamic web project to maven! But it’s not just 1 step, it involves manual work
+
+
+
+
+Questions:
+
+Can I do Java EE in IntelliJ and tomcat?
+
+From my list, what apis do you use in Java EE?
+
+Is ejb used a lot?
+
+Can I use Java EE 8 with ejb and cdi 
+
+Spring and spring boot, spring data, spring MVC 
+
+Difference between jee 6, 7, 8
+
+Pom.xml javaee-api and overriding libraries ???
+
+
+
+================================================================================================

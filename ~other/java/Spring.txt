@@ -1,0 +1,216 @@
+Spring
+
+
+Needs an AppConfig class
+
+Springboot has an embedded tomcat server
+
+
+
+
+https://www.tutorialspoint.com/spring/aop_with_spring.htm
+
+————————————————
+Dispatcher servlet - ( like rails routes?) receives requests from the web server and dispatch them according to configs , then when processing is done, it sends responses to the webserver, them to the client. 
+It maps URIs to controller methods
+
+
+View Resolver - sends controller response to thymeleaf?
+
+————————————————
+
+Guides
+https://spring.io/guides
+
+————————————————
+Jackson - POJO to JSON!
+————————————————
+
+Spring has database migrations with flyway? Library?
+
+————————————————
+Create a package for configuration:
+com.example.myapp.config
+To house the configuration classes with @configuration annotation!
+————————————————
+
+/resources/static/ - css and js  folders ?
+————————————————
+———————————————— configuration
+
+@Configuration
+
+———————————————— AOP
+verify that the user is logged in before performing certain tasks
+————————————————
+
+
+
+
+
+————————————————
+Webjars - css js libraries for java usage
+
+————————————————
+Interceptors: classes that implement ClientHttpRequestInterceptor ??? Or HandlerInterceptor 
+
+And you need to add the interceptors in a configuration class...
+
+————————————————
+Spring-boot-starter-security
+
+It already does everything? It creates a user and password??? Wow
+
+Go to /login
+
+You can also create a class to configure it
+————————————————
+static Logger logger = Logger.getLogger(MyClass.class);
+
+logger.info(“hello”);
+————————————————
+AOP
+
+Aspect: like concerns/services  in rails? Classes that work like libraries? Like logging, caching, cross-cutting concerns
+
+Create a package:
+com.example.myapp.aspect
+
+
+@Aspect ???
+————————————————
+
+src/main/resources/META-INF/
+src/main/resources/WEB-INF/
+————————————————
+
+1. Controller : @Autowired service 
+
+2. Dao/Repository (Interface)- getter of records... wrapper of the POJO collection, dão can be a @Component, but it’s too generic, so use @Repository, the package is usually com.example.myapp.repository
+
+3. Entity/Domain - model POJO @Entity
+
+4. Service - dao wrapper, @Service, @Autowired dao,
+
+
+———————————————— controllers
+@Controller
+public class GifController {}
+
+@AutoWired
+private GifRepository gifRepository;
+
+
+  @RequestMapping(value = { "/", "/test" })
+    @ResponseBody
+
+
+ModelMap modelMap
+
+@PathVariable
+
+
+
+———————————————— repositories
+
+@Component
+public class GifRepository {}
+
+public List<User> findSomeUsere(){}
+————————————————
+
+
+————————————————
+
+
+
+Interceptors (like middleware in node.js)
+https://o7planning.org/en/11689/spring-boot-interceptors-tutorial
+
+————————————————
+
+
+//testing
+https://spring.io/guides/gs/spring-boot/
+
+————————————————
+
+@Qualifier(“foo”) // a way to give another name to a class, acts more like a tag...
+
+$ java -jar app.jar // it runs the app!
+
+
+// from application.properties!
+@Value(“${foo.bar.baz}”) 
+private String baz;
+
+————————————————
+// for @Entity
+@Id
+@GeneratedValue
+@Column(name=“foo”)
+@Table(name=“users”)
+@JoinColumn
+@JoinTable
+@NotNull
+@Size(max=225)
+
+
+@ManyToMany(mappedBy = “cars”)
+private List<User> users
+
+
+
+
+————————————————
+// Category.java
+@OneToMany
+@JoinColumn(name=“category_id”)
+private List<Cheese> cheeses = New ArrayList<>();
+
+//Cheese.java
+@ManyToOne
+private Category category; // “category_id” column
+
+
+
+————————————————
+@GetMapping(value=“/foo”)
+
+@PostMapping(value=“/foo”)
+
+@RequestBody 
+
+————————————————
+// get data from POST:
+@PostMapping
+public void foo(@RequestBody Map<String, String> payload){
+    String bar = payload.get(“bar”);
+}
+
+————————————————
+
+// JPA/h2 code
+https://github.com/spring-guides/gs-accessing-data-jpa/tree/master/complete/src/main/java/hello
+
+
+// JPA/h2 code implementation
+https://spring.io/guides/gs/accessing-data-jpa/#initial
+
+————————————————
+
+@PostConstruct // @PreDestroy
+Public void init(){
+    // do some initialization work
+}
+
+
+/resources/application-config.xml // if you need xml config
+
+————————————————
+
+// resource interface, CrudRepository 
+findByPersonIdAndCar(Long id, Car car);
+//  findByPriceLessThan(Integer price);
+// many awesome and complex queries!!!!
+// also : @Query( some spring Sql code here) // JQL???

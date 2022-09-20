@@ -1,0 +1,25 @@
+JSF
+
+foo.xhtml
+
+You need to specify the FacesServlet in web.xml
+
+uses EL ?
+
+h:
+f:
+
+
+#{user.name} // user.getName()
+
+${…}
+#{…}
+
+// Backing beans
+@Named
+@RequestScoped // @SessionScoped
+@Transactional
+public class AccountBean{}
+
+
+

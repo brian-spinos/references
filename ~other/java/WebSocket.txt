@@ -1,0 +1,18 @@
+WebSocket
+
+Implementation: tyrus 
+
+
+
+@ServerEndpoint(“/chat”)
+public class ChatEndpoint{
+
+    // onOpen
+    // onMessage
+    // onClose
+
+}
+
+ws://www.myapp.com/chat
+
+

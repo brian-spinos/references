@@ -1,0 +1,149 @@
+Maven
+
+
+Archetype: a folder structure
+
+
+Maven has inherentence???
+
+mvn [plugin-name]:[goal-name]
+mvn compiler:compile
+
+Plugin: group of goals
+Goals: a goal is a task!!! Yup
+Phase: group of ordered goals
+
+
+
+
+
+“target” directory: where everything is compiled to.  (.class files)
+
+
+“profiles” like rails environments?
+
+What is Build Profile?
+A Build profile is a set of configuration values, which can be used to set or override default values of Maven build. Using a build profile, you can customize build for different environments such as Production v/s Development environments.
+
+
+
+
+
+
+
+
+
+————- creating a jar
+$ mvn clean package
+
+$ cd /target
+
+$ java -jar helloworld-1.0-SNAPSHOT-fat.jar
+
+
+———————————-
+
+$ mvn dependency:tree # see tree of deps
+——————-/—————
+
+
+
+Google search:  “maven junit dependency”
+
+
+Download maven zip file
+
+Unzip it
+
+###### ~/.bash_profile
+
+JAVA_HOME=path_to_java/jdk1.8.0_66.jdk/Contents/Home
+PATH=$PATH:$JAVA_HOME
+M2_HOME=path_to_maven/apache-maven-3.3.9/bin 
+PATH=$PATH:$M2_PATH
+
+- from Pluralsight:
+- Add stuff in ~/dev/tools/
+- JAVA_HOME=path_to_java/jdk1.8.0_66.jdk
+- MAVEN_HOME=path_to_maven/apache-maven-3.3.9
+- Then add them to the path with “/bin” for each of them! Java first, then maven! In that order!
+
+###### usage:
+$ mvn -v
+$ mvn # runs the pom.xml file in current directory
+
+# Maven Goals: like tasks!
+$ mvn install
+$ mvn package # creates jar?
+$ mvn test # runs tests?
+$ mvn clean # deletes the target folder
+$ mvn clean install # runs the “package” goal, then install it in my local repository, the jar in ~/.m2/repository/
+$ mvn clean compile # compiles classes, also downloads dependencies
+
+$ mvn clean test
+$ mvn clean package # creates fat jar in the “target” folder, compiles and runs tests also
+
+$ mvn deploy # runs install, then deploys to a remote repository 
+
+// maven can create java projects from the CLI
+
+###### local maven repository
+$ cd ~/.m2
+
+
+www.search.maven.org // search for “junit”
+
+
+
+Archetype webapp ????
+
+Archetypes are templates - to generate maven projects
+
+
+
+—————————————————-
+// pom.xml
+<properties>
+    <foo.bar>Hello</foo.bar>
+</properties>
+
+
+${foo.bar} // Hello
+
+—————————————————-
+
+// simple pom.xml file
+project
+    groupId com.example
+    artifactId HelloWorld
+    version 1.0-SNAPSHOT
+    modelVersion 4.0.0
+    Packaging jar
+
+    properties
+
+    dependencies
+        dependency
+            groupId
+            artifactId
+            version
+    build
+        plugins
+            plugin
+                groupId
+                artifactId
+                version
+    profiles
+        profile
+
+    repositories
+        repository
+
+
+
+
+
+
+
+
+

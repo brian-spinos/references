@@ -1,0 +1,42 @@
+Java collections
+
+￼<image>
+
+
+
+————-————-————-————-——
+
+Collections cannot hold basic data type elements (primitive types) such as int, long, or double; instead, they hold Wrapper Classes such as Integer, Long, or Double.
+
+
+————-————-————-————-——
+
+// this can be used as a stack also!
+Queue<User> queue = new ArrayDeque<>();
+queue.offer(user);
+Queue.peek();
+queue.isEmpty();
+User u = queue.poll();
+
+.add(user)
+.remove(user)
+.size()
+.pop()
+.push(user)
+
+
+————-————-————-————-——
+Queue<User> queue = 
+new PriorityQueue<>(someComparator);
+
+queue.offer(user);
+Queue.peek();
+queue.isEmpty();
+User u = queue.poll();
+
+
+————-————-————-————-——
+
+
+
+

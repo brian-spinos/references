@@ -1,0 +1,19 @@
+SOAP
+
+
+https://www.w3schools.com/xml/xml_soap.asp
+
+https://www.w3schools.com/xml/xml_wsdl.asp
+
+
+Envelop 
+    Header - optional
+    Body
+
+<?xml version=“1.0” encoding=“UTF-8”?>
+<soap:Envelop>
+    <soap:Body>
+        <...>
+    </soap:Body>
+</soap:Envelop>
+

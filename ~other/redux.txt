@@ -1,0 +1,27 @@
+Redux
+
+
+
+
+<Provider store={MyStore}>
+
+
+
+
+// =============== store:
+
+import { applyMiddleware, combineReducers, createStore } from 'redux'
+
+
+// How to combine all reducers:
+
+const reducers = 
+combineReducers({
+    users: userReducer, // Will make available `state.users`
+    posts: postReducer, // Will make available `state.posts`
+    // foo: 'bar' // This does NOT work, it needs to be an actual reducer!
+})
+
+
+const MyStore = createStore(reducers, middleware)
+

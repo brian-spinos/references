@@ -1,0 +1,25 @@
+Test
+
+Unit Test - testing an individual unit, such as a method (function) in a class, with all dependencies mocked up. 
+
+Functional Test - AKA Integration Test, testing a slice of functionality in a system. This will test many methods and may interact with dependencies like Databases or Web Services.
+
+
+Types of testing
+
+https://www.codeproject.com/Tips/351122/What-is-software-testing-What-are-the-different-ty
+
+
+There are many types of testing like
+* Unit Testing
+* Integration Testing
+* Functional Testing
+* System Testing
+* Stress Testing
+* Performance Testing
+* Usability Testing
+* Acceptance Testing
+* Regression Testing
+* Beta Testing  
+
+

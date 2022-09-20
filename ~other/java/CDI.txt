@@ -1,0 +1,24 @@
+CDI
+
+
+https://dzone.com/refcardz/java-enterprise-edition-7?chapter=9
+
+Weld - implementation of CDI !
+
+dependency injection for javaEE !
+
+@Inject
+private Foo foo;
+
+beans.xml // register beans
+
+@ApplicationScoped
+@ConversationScoped
+@SessionScoped
+
+@RequestScoped ??? // new instance per request
+
+@Named // makes bean available to EL
+
+/src/main/webapp/WEB-INF/beans.xml
+bean-discovery-mode=“all”

@@ -1,0 +1,8 @@
+EAR
+
+container for wars
+And ejb modules
+
+You can deploy EAR to websphere or weblogic 
+
+WARs are deployed into tomcat

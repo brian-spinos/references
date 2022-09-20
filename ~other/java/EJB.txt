@@ -1,0 +1,176 @@
+EJB
+
+
+Based on top of RMI - function call to another JVM, communication between two JVMs
+
+
+EJB is like a controller’s service object in RoR
+
+
+Good explanation ???
+https://youtu.be/M9NOc3PGEOs
+
+
+
+Separate EJB project/module ???
+
+
+Ejb can be the backing bean for JSF!
+
+// Ejb can be injected in jaxrs controller
+@EJB
+FriendEJB bean;
+
+
+In java EE 6 : ejb can be added to war file, and do dB transactions
+
+
+
+@Stateless
+@LocalBean
+@Named // make available to JSF 
+// also add WEB-INF/beans.xml (empty file)
+public class FriendEJB {
+
+    @PersistenceContext
+    EntityManager em;
+
+    // so ejb is kind of like rails models?
+
+    // methods...
+
+}
+
+
+
+
+
+// should be a good read:
+https://dzone.com/articles/introduction-to-ejb-part-1
+
+
+
+https://dzone.com/refcardz/java-enterprise-edition-6-most?chapter=9
+
+
+
+
+EJB  vs CDI ???
+
+// tutorials, good!
+https://youtu.be/n9AGQcG6lCc
+https://youtu.be/yytKJQAsMk8
+https://youtu.be/jhcoCVWyQDs
+
+
+Ejb is like a helper class for the servlet?
+
+
+It’s just a bean with an annotation?
+// @Stateless // import javax.ejb.Stateless;
+
+Java EE uses EJB and/or CDI
+
+
+Based on RMI
+
+You need to create an EJB project
+And you need to create a client java app that uses the EJB server // for old javaee?
+
+javax.ejb.*;
+
+
+EJB are POJOs for business logic! They are injectable
+
+They are thread-safe!
+
+1 to 1 relationship to client and bean, so if there are 100 client connections, there will be 100 instances of the @Stateful bean in memory.
+
+
+Use a compliant application server like: wildFly, JBoss, glassfish,...
+
+// in servlet
+@EJB
+MyCustomEjb obj; // dependency injection in servlet 
+
+// in ejb class
+@Stateless
+public class MyCustomEjb{
+    // pojo, bean class, with getters and setters,
+    // plus methods with logic
+} 
+
+
+
+
+
+EJB types:
+
+Session    // holds client related data
+    - @Stateful
+    - @Stateless  // container has a pool of instances
+    - @Singleton 
+Message driven 
+    - @MessageDriven
+
+
+
+
+————- stateful:
+https://youtu.be/uQ_UqM7h5o4
+
+@Remote
+public interface FooRemote{
+    // some custom methods
+}
+
+
+
+@Stateful
+public class Foo implements FooRemote{
+    //...
+}
+
+
+// index.jsp
+// jndi stuff, instantiate Foo object
+// request response objects
+// basically data is persisted, even if you refresh browser, or restart server, wow
+<%!
+
+public void jspInit(){
+    
+}
+
+%>
+
+
+
+
+
+———/—-
+https://www.tutorialspoint.com/ejb/ejb_stateful_beans.htm
+
+
+https://www.google.com/amp/s/www.javaworld.com/article/2071724/java-web-development/ejb-fundamentals-and-session-beans.amp.html
+
+basic parts of an EJB system: the EJB component, the EJB container, and the EJB object.
+
+
+
+
+@Scheduled —> ejbs:
+    - they just run a method based on CRONJOB times
+
+@Startup // ejb is eagerly initialized
+
+
+
+
+
+
+
+
+
+
+

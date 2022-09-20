@@ -1,0 +1,66 @@
+JNDI
+
+
+
+
+The /META-INF directory contains the Tomcat configuration file (context.xml) with sample Resource definitions for databases, email, and jms.
+
+
+
+
+
+
+
+Does it read any xxx.properties file???
+
+https://www.mkyong.com/java/java-properties-file-examples/
+
+A basic example of a naming service is DNS which maps machine names to IP addresses. 
+
+
+The association of a name with an object is called a binding.
+
+Java Naming and Directory Interface (JNDI)
+
+maps strings to reference of java Objects?
+
+javax.naming.*;
+
+Context  – A context is a set of name to object bindings. The context provides the lookup.  It also provides options to bind ,unbind and rebind objects .
+
+InitilalContext –It is the starting point of all naming and directory operations.
+
+
+Similar to naming service here also it is possible to access objects with its name. In addition to this , it is possible to get the attributes of objects.Also it is possible to search for objects with attributes.
+
+
+Properties props = new Properties(); //field Context.INITIAL_CONTEXT_FACTORY => property name java.naming.factory.initial //field Context.PROVIDER_URL => property name java.naming.provider.url props.load(new FileInputStream("*properties file*")); //prop file in this case Context ctx = new InitialContext(props); Object o = ctx.lookup("*name of resource*");
+ideally, a
+
+
+
+
+// they are set in the glassfish UI, or in bash
+
+
+@Resources(name=“properties/example”)
+private Properties properties;
+
+properties.getProperty(“prop1”);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

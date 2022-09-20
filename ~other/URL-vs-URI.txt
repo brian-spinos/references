@@ -1,0 +1,8 @@
+URL vs URI
+
+URL
+http://google.com
+
+URI
+/users
+

@@ -1,0 +1,152 @@
+JAX-RS
+
+_____________________________________________
+
+REST
+_____________________________________________
+
+Response object
+
+_____________________________________________
+Ejb can be used with glassfish in jaxrs controllers
+
+// package domain;
+import java.io.Serializable;
+@XmlRootElement
+public class Book implements Serializable {
+}
+
+//...
+
+@GET
+@Produces(MediaType.APPLICATION_XML)
+public Book getBook(){
+
+    return new Book();
+}
+_____________________________________________
+
+// see web.xml example:
+
+http://www.vogella.com/tutorials/REST/article.html
+
+_____________________________________________
+JAX-RS has a class for an HTTP client
+
+http://www.baeldung.com/jersey-jax-rs-client
+
+Response response = ClientBuilder.newClient();
+    .target("http://localhost:8082/spring-jersey");
+    .path("resources/employees");
+    .request(MediaType.APPLICATION.JSON);
+    .get(Employee.class);
+
+
+
+
+_____________________________________________
+
+Implementations: 
+- jersey for glassfish
+- resteasy for Jboss ?
+- Either one for tomcat
+
+
+_____________________________________________
+
+// configuration
+
+
+// .../…/com/example/brian/blog/rest/JAXRSConfiguration.java
+
+import javax.ws.rs.*;
+
+@ApplicationPath(“api”)
+class JAXRSConfiguration extends Application {
+    //…
+}
+
+
+_____________________________________________
+
+// documenting API:
+OAS: openAPI Specification in Jason
+
+ Swagger : implements OAS? It creates documentation from existing java code to a json format? Swagger is also a Library for java, it uses annotations, it also generates a UI accessible through /swagger-ui ?
+
+
+
+
+
+// basically all rest stuff from spring-boot?
+
+@Path(“/foo”)
+class FooEndpoit {}
+
+
+@GET
+@Produces(APPLICATION_JSON)
+public Response getFoos(){
+    List<Foo> foos = fooRepository.findAll();
+
+    //…
+
+    return Response.ok(foos).build();
+}
+
+
+
+
+@GET
+@Produces(MediaType.APPLICATION_JSON)
+@Path(“/{id : \\d+ }”)
+public Response getFoo(@PathParam(“id”) Long id){
+    Foo foo = fooRepository.find(id);
+
+    //…
+
+    return Response.ok(foo).build();
+}
+
+
+
+
+@DELETE
+@Path(“/{id : \\d+ }”)
+public Response deleteFoo(@PathParam(“id”) Long id){
+    fooRepository.delete(id);
+    return Response.noContent().build();
+}
+
+
+@POST
+@Consumes(MediaType.APPLICATION_JSON)
+public Response createFoo(Foo foo, /* … */){
+    foo = fooRepository.create(foo);
+
+    //…
+}
+
+@ParamVariable ?
+
+@PathParam(“id”) // not from query string?
+
+@QueryParam // from query string?
+
+@Consumes 
+
+@Produces
+
+_____________________________________________
+
+
+_____________________________________________
+
+
+_____________________________________________
+
+_____________________________________________
+
+
+_____________________________________________
+

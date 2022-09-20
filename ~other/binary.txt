@@ -1,0 +1,47 @@
+Binary negative
+
+
+
+Two’s compliment:
+
+00111 (positive number)
+
+Reverse the bits:
+
+11000
+
+And add 1:
+
+
+11001 (negative number)
+
+
+
+
+
+11 — -1
+00 — Zero
+00 — zero
+01 — 1
+
+11111110 — -2
+11111111 — -1
+00000000 — 0
+00000000 — 0
+00000001 — 1
+00000010 — 2
+
+
+
+// there is no negative zero!
+000.   Zero
+001.   One
+010.   Two
+011.   Three
+100 // if I subtract 1 and invert the bits, I get the same number... so this number does not exist...
+101 — -3
+110 —- -2
+111 — -1
+
+
+

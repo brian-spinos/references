@@ -1,0 +1,38 @@
+Vertx 
+
+Maven uses
+Maven plugins
+
+
+io.vertx
+vertx-web
+3.5.1
+
+
+No annotations 
+
+
+Native websocket ??? Wow 
+
+Vertx is a lightweight library! Not a framework
+
+.get(“/home”)
+.post
+.put
+
+
+
+Declare the main class in maven, so it knows where the entry point is...
+
+Class foo extends AbstractVerticle
+
+Void strat
+Void stop
+
+vertx.createHttpServer()
+
+
+
+$ java -jar foo-fat.jar // start vertx app!
+
+

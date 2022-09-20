@@ -1,0 +1,18 @@
+JTA
+
+
+javax.transaction jta 1.1
+session.beginTransaction();
+session.save(user);
+session.getTransaction().commit();
+session.close();
+
+Group queries together as a single unit! Rollback capability!
+
+Transactions between multiple hosts
+Could be DB transactions 
+
+EJBs can do this?
+
+@Transactional
+public class BookService{}

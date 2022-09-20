@@ -1,0 +1,6 @@
+Sockets
+
+We can build a chat app in java, but in reality, that is how http works! :)
+
+
+https://www.tutorialspoint.com/java/java_networking.htm

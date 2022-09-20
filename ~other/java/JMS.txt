@@ -1,0 +1,8 @@
+JMS
+
+send messages between apps, basic string messages
+
+https://www.javatpoint.com/jms-tutorial
+
+
+https://dzone.com/refcardz/java-enterprise-edition-7?chapter=8

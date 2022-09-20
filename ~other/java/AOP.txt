@@ -1,0 +1,35 @@
+AOP
+
+
+We need to enable interceptors in beans.xml for Interceptors in Java EE?
+
+
+
+Used for logging, authentication, authorization ???
+
+AspectJ library
+
+@Aspect
+public class FooAspect {
+    @Around(value=“....”)
+    public void doSomething(){}
+}
+
+http://www.baeldung.com/spring-aop-annotation
+
+https://github.com/eugenp/tutorials/tree/master/spring-aop
+
+aspect
+
+Cross cutting concerns
+
+Interceptors?
+
+We can trigger stuff before and after a function is called!
+
+
+
+Advice
+Pointcut 
+
+

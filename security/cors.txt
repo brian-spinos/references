@@ -1,1 +1,30 @@
-//...
+
+CORS
+Cross origin resource sharing
+
+The server is the one who decides which domains can access its data!
+
+There are browser plugins to enable CORS (chrome ‘CORS’ plugin), the plugin adds a “Access-Control-Allow-Origin”: “*”
+But this is a security issue, because any javascript is allowed 
+
+
+By default foo.com can only make ajax requests to foo.com and NOT bar.com
+
+// these are different domains:
+foo.com:3000
+foo.com:4000
+
+
+preflight check: browser checks if we can get data from the other server, in the form of an OPTIONS request
+
+
+========== Server side:
+Cors is disabled by default (will not share)
+
+// bar.com, the server, should send these to 
+// allow foo.com, the client, to consume it.
+
+Access-Control-Allow-Origin: ‘http://the-client.com’
+Access-Control-Allow-Methods : ‘GET, POST’
+Access-Control-Allow-Headers: ‘Content-Type’
+

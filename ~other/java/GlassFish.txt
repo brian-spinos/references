@@ -1,0 +1,17 @@
+GlassFish
+
+Localhost:4848 console
+
+Use version 4.1.0 or 3.1
+
+Java 8 + glassfish 5 works on eclipse!!! <——
+
+application server, supports Java EE
+
+Supports ejb
+
+Glassfish comes with jersey for jaxrs 
+
+javax javaee-api 7.0 provided 
+
+./bin/asadmin start-database // glassfish CLI

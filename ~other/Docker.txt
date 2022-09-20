@@ -1,0 +1,35 @@
+Docker
+
+
+Lynda.com
+
+Config file: Dockerfile
+
+
+
+Dockerfile -> image -> container -> image
+
+
+Add files to your image, code also
+
+Containers don’t persist data, nor new files
+The solution is: data volumes, it exposes files in your local machine to a container , the files could be code or database
+
+When writing code, have it in a folder in your local machine and expose it as a volume to your container, that way, you can edit your code in your local machine or in your container, and the new code will not be lost!!!
+
+-p hostPort:containerPort 
+
+
+-v hostFilder:containerFolder
+
+
+
+———- commands
+
+# run container
+$ docker container run -it —name foo ubuntu 
+
+
+$ docker network ls
+$ docker network create blog # ???
+

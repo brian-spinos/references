@@ -1,0 +1,18 @@
+Wiremock stub http service
+Slf4j logging
+Hamcrest test helper matchers
+Lombok code generator
+Jacoco code coverage
+
+
+
+Spies:
+https://stackoverflow.com/questions/45263492/how-to-mock-a-single-method-for-a-class-in-spock
+
+
+
+Intellij gradle proj start
+https://youtu.be/JwPYjnhah3g
+
+
+

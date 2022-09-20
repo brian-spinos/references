@@ -1,0 +1,20 @@
+Eclipse
+
+Java EE
+
+Dynamic web project  OR maven project
+
+Glassfish
+
+—————
+You can create a maven project and choose an archetype that handles Java EE...
+New > Other... > maven project > next > jersey ???
+
+—————-
+Add jar to dynamic web project:
+- right click project
+- Properties
+- Java build path
+- Add external jars...
+
+

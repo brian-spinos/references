@@ -1,0 +1,50 @@
+Hibernate
+
+Hibernate implements JPA
+Hibernate implements bean validation 
+
+//You can also use JTA:
+javax.transaction jta 1.1
+session.beginTransaction();
+session.save(user);
+session.getTransaction().commit();
+session.close();
+
+
+H2
+
+
+HQL, converted to SQL for portability
+SELECT u.firstName FROM User as u
+FROM User as u WHERE u.firstName LIKE ‘bri%’ AND salary > 100000
+
+src/main/resources/hibernate.cfg.xml
+
+jdbc:mysql://localhost:3306/mydatabase ?
+
+SessionFactory session
+ServiceRegistry registry
+
+session.save(userObj); // persist, save, get,  delete, update, create, read, openSession, etc...
+
+session.createQuery(hqlQuery);
+
+tx.commit();
+
+
+session.close();
+
+
+User.hbm.xml // relationships ? set, key, one-to-many
+
+
+Criteria criteria
+
+We can use annotations instead of XML...
+
+
+
+org.hibernate hibernate-core 5.1.0.Final
+com.h2database h2 1.4.191
+
+

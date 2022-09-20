@@ -1,0 +1,66 @@
+JPA
+
+https://dzone.com/refcardz/java-enterprise-edition-7?chapter=13
+
+
+JPQL // database independent!
+
+JPA uses JDBC under the hood!
+
+@Transactional // to add JTA capabilities to a method in the UserRepository
+
+
+
+/src/main/resources/META-INF/persistence.xml
+
+
+<persistence-unit name=“myPU” transaction-type=“JTA”>...<...>
+
+
+
+
+import javax.persistence.EntityManager;          
+import javax.persistence.EntityManagerFactory; 
+import javax.persistence.Persistence;
+
+
+@PersistenceContext(unitName=“myPU”)
+EntityManager em;
+
+
+em.find(User.class, id);
+
+em.persist(user);
+
+em.remove(em.merge(user))
+
+em.createQuery() // use JPQL
+
+//...
+
+
+———
+
+/src/main/resources/import.sql // like seed.rd, 
+but needs to be defined in persistence.xml
+
+
+@Entity
+public class Employee implements Serializable{}
+
+@Id
+@GeneratedValue
+@Column
+
+@Temporal
+@Transient // virtual field
+
+// hashCode
+//toString
+
+@PrePersist
+@PreUpdate
+
+
+// uses The entityManager to get stuff from db 
+public class UserRepository{}

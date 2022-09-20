@@ -1,0 +1,86 @@
+Scrum
+
+
+User story - has many tasks
+
+Roles:
+Product owner - adds to product backlog
+Scrum master - monitors work
+Developers
+Tester
+Customer
+Executives
+
+
+Features are “user stories”
+
+As a (role), I want (feature), so that (benefit)
+
+
+———————
+
+1. Product backlog (wish list):  collection of user stories, from here we can create multiple “release backlogs”
+
+2. Release backlog: (actual list) subset of user stories with time (hours) and prioritized 
+Maybe story points?
+From here we can plan many “sprints backlogs”
+
+(Sprint planning)
+
+3. Sprint backlog: user stories from release backlog
+Sprint lasts 1 to 4 weeks
+2-12 sprints in a release
+
+——————————————
+
+
+BurnDown chart: Daily measure in hours of a sprint or release
+
+BurnDown velocity: hipotenusa, amount of hours done in a day
+
+————— After each sprint:
+
+Sprint review meeting: team shows to product owner, potential shippable product
+
+
+Sprint retrospective meeting: what went wrong/right
+
+
+
+———————-
+3 roles
+Product owner
+Scrum master
+Team member 
+
+
+3 artifacts: 
+Product backlog
+Sprint backlog
+BurnDown chart
+
+
+3 ceremonies 
+Sprint planning
+Daily standup
+Sprint review & retrospective 
+
+
+3 reports
+Yesterday
+Today
+Road blocks
+
+3 task status
+Todo
+In progress
+Done
+
+
+———-
+
+PI > iteration/release > sprint > user story > tasks
+
+Spike
+
+

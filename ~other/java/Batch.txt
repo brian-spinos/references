@@ -1,0 +1,16 @@
+Batch
+
+A JOB has many STEPS
+
+Job is defined in XML
+
+Steps map to java classes
+
+/src/main/resources/META-INF/batch-jobs/InvoiceJob.xml
+
+InvoiceReader
+InvoiceProcessor
+InvoiceWriter
+
+
+

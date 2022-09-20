@@ -1,0 +1,24 @@
+Junit
+
+@RunWith(...)
+
+Junit.org // has documentation
+
+
+@Before
+// run before each method
+
+@After
+// run after each method
+// lets say you created a file, here you could delete it...
+
+@BeforeClass
+
+@AfterClass
+
+@Test
+
+
+assertEquals(“correct value is:”, expected, actual);
+
+

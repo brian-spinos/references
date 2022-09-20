@@ -1,0 +1,19 @@
+IntelliJ 
+
+
+
+Command + N // Generate code, constructor, getter and setter
+
+
+A plugin: is a bit of code that lets you support particular features.
+
+Template: a folder structure for java, groovy, kotlin, etc, a start of a project
+You need to choose a project SKD (java 1.8)
+
+
+Files:
+.idea - configuration, dont touch
+out - for compiled classes
+src
+External Libraries
+MyProject.iml - proj main config file

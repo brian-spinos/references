@@ -1,0 +1,47 @@
+JSP
+
+
+
+JSP started in 1999, and replaced by JSF in 2003, just saying...
+
+https://www.tutorialspoint.com/jsp/jsp_syntax.htm
+
+HTML with java code,
+
+Converted to servlet
+
+
+Use JSP for views, and Servlets for business logic
+
+
+
+
+<% java code %>
+
+<% out.println("Your IP address is " + request.getRemoteAddr()); %>
+
+
+
+<%! int x = 1; %> // java declarations, you can also add function declarations!
+
+
+<%! int i = 0; %> <%! int a, b, c; %> <%! Circle a = new Circle(2.0); %> 
+
+<p>Today's date: <%= (new java.util.Date()).toLocaleString()%></p> 
+
+<%-- This is JSP comment --%>
+
+<%
+request.getParameter(“id”);
+%>
+
+
+
+
+
+
+
+
+
+
+

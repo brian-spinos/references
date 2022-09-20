@@ -1,0 +1,20 @@
+Production
+
+Logging
+Load balancing
+Proxies
+Background jobs
+Services
+Messages
+DB servers
+Caching
+CI/CD
+Load testing
+Environment variables 
+Service discovery
+
+Stress testing
+Unit testing
+Integration testing
+Bdd testing
+

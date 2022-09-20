@@ -1,0 +1,6 @@
+Xpath 
+
+“/html/body/table/tbody/tr/td[2]”
+
+
+Treat html as xml and file paths!

@@ -1,0 +1,23 @@
+Browser
+
+Can embed resources from their domains:
+    - <script src=“http://other.com/foo.js”>
+
+Sends cookies to the same domain
+
+
+Dom can be manipulated
+
+Sometimes header with token for Auth?
+
+// cookie header:
+Cookie: JSESSIONID=ABC123;
+
+
+If you are logged in to a site, you can add script tags in ANY other website to get resources from the first domain and it will send the cookies!!!
+- basically if a hacker gets a chunk of html from your bank site, and you are logged in to your bank site, and you click the hackers html (even if the html is in evilsite.com, or in an email), it will be a valid request...
+- actually, you just need to visit the page, for the request to be sent
+- the hacker can also add that chunk of html to a forum site and it will affect anyone that visits it...
+- <img src=“http://foo.com/some-action?confirm=true” /> —> img tags can send http requests!!!!
+- POST requests and done my a form snippet + js snippet to submit the form
+

@@ -1,0 +1,61 @@
+Swagger
+
+
+swagger.io
+
+
+swagger has several tools
+
+you can generate Java, and Typescript from swagger ??? the APIS ??? wow ???
+I have seen it generate JSON swagger code from Java and annotations…
+and it generates the HTML views for swagger inside your java app
+at http://localhost:8080/blog/swagger-ui/
+
+
+
+swagger has annotations for Java rest classes, like BookEndpoint:
+@SwaggerDefinition(…)
+
+@ApiOperation(…)
+@ApiResponses(…)
+@ApiResponse(…)
+@ApiModel(…)
+
+
+
+
+io.swagger
+swagger-annotations
+1.5.13
+
+
+
+Swagger is the old name
+It is now called OpenAPI
+
+contract: a REST API documentation - JSON document
+
+
+OAS: OpenAPI specification - JSON document
+
+It generates a dashboard with REST capability ?
+
+
+editor.swagger.io
+
+The swagger spec file can be generated from annotations in your source code
+
+ You need swaggerUI (or APIgee?) to parse the swagger spec file and generate a dashboard
+swagger.io/swagger-ui/
+
+
+petstore.swagger.io
+
+You can download the swagger dashboard app source code at GitHub, it’s basically html css and js ?
+
+
+
+
+
+
+

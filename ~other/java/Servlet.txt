@@ -1,0 +1,53 @@
+Servlet
+
+
+You can use Servlets to forward to jsp
+
+
+
+https://www.tutorialspoint.com/servlets/servlets-first-example.htm
+
+
+
+
+Web containers
+
+web.xml // deployment descriptor
+
+
+// If you use annotation, then the deployment 
+// descriptor (web.xml) is not required
+@WebServlet(urlPatterns={“/MyServletEndPoint”})
+public class MyServletEndPoint extends HttpServlet{
+    // public void doPost
+    // doGet
+
+    // request.getParameter(“id”);
+
+    // request.getRequestDispatcher
+
+    // request.setAttribute(“name”, “Brian”);
+
+}
+// <form action=“MyServletEndPoint” 
+// method=“post”>
+
+
+
+public class FooServlet extends HttpServlet{}
+
+ Tomcat // web container, servlet container
+
+
+Glassfish // app container?
+
+JBoss
+
+
+———————————- MVC
+Model: POJO
+View: JSP
+Controller: Servlet 
+    - service class
+    - DAO class
+    - DB

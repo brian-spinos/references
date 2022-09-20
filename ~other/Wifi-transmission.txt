@@ -1,0 +1,25 @@
+Wifi-transmission
+
+Very good!!!
+https://youtu.be/Ax7dYaRiY6o
+
+
+
+Wifi, cellphones use FM, so it transmits binary as:
+Zeros: high frequencies
+Ones: low frequencies
+The amplitude stays the same.
+
+
+
+AM - amplitude modulation
+FM - frequency modulation
+
+
+Big waves can go through walls
+
+
+Amplitude - height of a wave, volume, loudness
+
+
+Wavelength - length of wave, pitch, color, speed, frquency

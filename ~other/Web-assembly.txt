@@ -1,0 +1,22 @@
+Web assembly
+
+It is an assembler that generates binary code for firefox?
+
+You can compile stuff from UNITY games and compile it to the web... woooooow
+
+Javascript can access wasm functions, and use them... wooooow
+
+
+
+
+https://mbebenita.github.io/WasmExplorer/
+
+https://wasdk.github.io/wasmcodeexplorer/
+
+Runs on firefox
+
+A foo.wasm file is generated from C, C++,
+
+And foo.html, foo.js, foo.wasm
+
+Foo.html renders the foo.wasm code!

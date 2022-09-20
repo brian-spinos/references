@@ -1,0 +1,75 @@
+JSON-P
+
+
+Json processing
+
+For java EE 7:
+https://dzone.com/refcardz/java-enterprise-edition-7?chapter=5
+
+
+——————————————————-
+
+Jackson: converts objects to json???
+http://www.mkyong.com/java/jackson-2-convert-java-object-to-from-json/
+——————————————————-
+Json-simple library:
+https://www.mkyong.com/java/json-simple-example-read-and-write-json/
+
+https://www.tutorialspoint.com/json/json_java_example.htm
+
+JSONObject x = new JSONObject();
+x.put(“foo”,”bar”);
+x.toString();
+——————————————————-
+
+https://javaee.github.io/jsonp/
+
+JsonObject json = Json.createObjectBuilder()
+     .add("name", "Falco")
+     .add("age", BigDecimal.valueOf(3))
+     .add("biteable", Boolean.FALSE).build();
+   String result = json.toString();
+     
+   System.out.println(result);
+
+
+https://javaee.github.io/jsonp/getting-started.html
+——————————————————-
+
+import javax.json.*;
+
+JsonArray
+JsonObject
+
+import javax.json.Json;
+
+Json.createObjectBuilder()
+    .add(“name”,”Brian”).build();
+
+Json.createArrayBuilder()
+    .add(“item1”).build();
+
+JsonArrayBuilder
+JsonObjectBuilder
+
+
+
+
+
+
+
+
+<dependency>
+    <groupId>javax.json</groupId>
+    <artifactId>javax.json-api</artifactId>
+    <version>1.1</version>
+</dependency>
+
+<dependency>
+    <groupId>org.glassfish</groupId>
+    <artifactId>javax.json</artifactId>
+    <version>1.1</version>
+</dependency>
+
+
+

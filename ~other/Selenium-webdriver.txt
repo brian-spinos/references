@@ -1,0 +1,5 @@
+Selenium webdriver
+
+Webdriver is implemented in many many languages, so you can use this library to control your browser by writing scripts! (Javascript, Ruby, java, etc)
+
+WebDriver directly talks to the browser 

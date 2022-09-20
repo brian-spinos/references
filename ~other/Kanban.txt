@@ -1,0 +1,13 @@
+Kanban
+
+Board:
+
+Backlog
+New [4 items max]
+In progress [4 items max]
+Testing [4 items max]
+Complete
+
+
+- move user stories through the board!
+

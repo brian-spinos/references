@@ -1,0 +1,10 @@
+DDL
+data definition language
+
+
+https://www.google.com/amp/s/www.geeksforgeeks.org/sql-ddl-dml-dcl-tcl-commands/amp/
+
+
+These SQL commands are mainly categorized into four categories as discussed below:
+
+<image>

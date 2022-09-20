@@ -1,0 +1,13 @@
+Windows
+
+
+// see ports and services, there is a PID column, but to see the service name, you need to see the task manager, make PID display and see the name of the service
+$ netstat -ano | findstr :8080
+
+
+$ netstat -anob # b shows executable
+
+
+# kill pid 123456
+$ taskkill /PID 123456 /F
+

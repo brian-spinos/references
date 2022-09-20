@@ -1,0 +1,12 @@
+Firewall
+
+It serves as a protection,
+And checks:
+- If source IP allowed
+- If Destination IP allowed
+- If Protocol is allowed
+- If correct port for protocol is used
+
+The above are firewall rules!
+
+If rules are broken, the access will be blocked

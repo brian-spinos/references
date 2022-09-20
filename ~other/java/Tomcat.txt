@@ -1,0 +1,16 @@
+Tomcat
+
+
+Eclipse helps you create a tomcat server and deploy your app into it
+
+Tomcat is a web container
+
+Consumes WAR files?
+
+Servlets and JSP 
+
+For Jax-Rs: jersey or resteasy 
+
+For CDI: weld
+
+

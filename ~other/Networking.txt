@@ -1,0 +1,28 @@
+Networking
+
+
+
+0.0.0.0 is *NOT* an IP address you can actually access using a client. It's simply a shortcut for the system binding call to use all available IP addresses.
+
+0.0.0.0 -> is a short cut that means: listen to all my available IP addresses, private and public
+
+
+Default gateway is the IP of a router, it should have an IP within the current network
+
+Router: to communicate between networks
+
+Switch: communicate between computers in the same network
+
+Subnet mask : used to split the IP address into two: network id and host id.
+
+
+In your computer, you can LITERALLY choose an IP (or click a button to choose an IP), the IP of the router/gateway and the subnet mask, remember that computers can only communicate with other computers in the current network, to communicate with a computer in another network, you need the router/gateway
+
+
+you can also choose the IP for: DNS server
+
+
+$ ifconfig # to see network settings
+
+Bridge: it is similar to a router of a subnetwork
+

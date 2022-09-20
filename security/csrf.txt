@@ -1,1 +1,7 @@
-//...
+XSRF
+
+CRoss site request forgery
+
+Hacker can create a website with javascript that only needs your cookies to send a request on tour behalf to steal money from your account...
+
+How to prevent this?  The server needs to generate a random token and attach to the form, the server should only accept the request with that token. The hacker could not possibly know the token, because it is random, per user, per request!

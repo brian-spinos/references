@@ -1,0 +1,88 @@
+————-————-————-————-
+Int type is an instance of the Eq typeclass
+————-————-————-————-
+Typeclasses : like java interfaces
+We can create our own typeclasses!!!
+We can create our own types!!!
+
+Ex: Eq, Ord, Show, Read, Enum, Bounded, Num, Integral, Floating, Functor, Applicative, Monad, Monoid
+
+
+————-————-————-————-
+
+(==) :: (Eq a) => a -> a-> Bool
+— equal takes two Eq a, and returns Bool
+— the stuff before the => denotes the typeclass
+
+
+Functions and types can belong to a typeclass
+
+
+Members of Show can be represented as strings
+
+show True == “True”
+
+
+Pattern matching: like function overloading in java
+
+Guards check the value of a variable in a function
+
+
+————-————-————-————-
+Define a new type:
+data Bool = True | False
+
+
+The “True | False” part are called value constructors, they act like functions!
+
+— is this right?
+data Person = Brian String String | Erich String String deviring (Show)
+
+— you need to tell haskell how to display your new type as a string, by using: deviring (Show)
+
+
+— you can nest types!!!
+
+— record syntax: just another way to create types:
+data Person = Person { name :: String
+                                       , age :: Int
+                                       } deriving (Show)
+— creating a person:
+let b = Person {name=“Brian”, age=29}
+
+————-————-————-————-
+Define a new type, with parameters:
+data Maybe a = Nothing | Just a
+
+— Maybe: is a type constructor
+— a: is a type parameter
+
+Another example:
+data Car a b c = Car { company :: a  
+                     , model :: b  
+                     , year :: c   
+                     } deriving (Show)  
+
+————-————-————-————-
+show myPerson — string representation
+
+read <the output of show myPerson>
+— returns it!
+
+Bounded typeclass: we can get the first and last like in an Enum, there are boundaries!
+————-————-————-————-
+Type synonyms:
+type String = [Char]
+
+Type synonyms can also be parametized
+
+
+
+
+
+————-————-————-————-
+
+
+
+DoSum 10 20
+print $ show brian

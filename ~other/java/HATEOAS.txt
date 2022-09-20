@@ -1,0 +1,10 @@
+HATEOAS
+
+Pronounced: Hay-tos
+
+Hypermedia as the engine of application state
+
+
+Built on top of REST
+
+It gives more info about a restful resource
