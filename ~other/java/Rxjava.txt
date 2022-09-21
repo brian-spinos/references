@@ -1,0 +1,7 @@
+Rxjava, reactor-core
+
+Rxjava: observable,
+single
+Subjects: you can emit data and subscribe to it
+
+Reactor: flux, mono

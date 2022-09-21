@@ -167,10 +167,58 @@ basic parts of an EJB system: the EJB component, the EJB container, and the EJB 
 
 
 
+//==============================================================================================================
+
+
+EJB barldung
+
+//==============================================================================================================
+U have your server on a machine 
+
+And u have your beans on different machine
+
+
+Hmmm
+
+Like an API? 
+
+
+@EJB
+Foo foo; // inject ejb into your servlet
+//==============================================================================================================
+
+A servlet that uses an EJB is like:
+A controller that uses a service!
+
+
+UsersController
+    UsersService.getAll();
+
+
+EJBs can also connect to the DB and work as a Modal like rails too :)
+
+
+So like a controller/model/service in rails???
 
 
 
+//==============================================================================================================
+
+Good website:
+Tutorial:
+
+https://www.javacodegeeks.com/2013/08/java-ee-stateful-session-bean-ejb-example.html
 
 
+...
+
+From my understanding:
+ 
+Servlets (like RoR controllers) use EJBs (like RoR service classes)
+
+Ejbs can have logic and connect to DB
+
+
+//==============================================================================================================
 
 

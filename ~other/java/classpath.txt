@@ -1,0 +1,22 @@
+It is an env var:
+CLASSPATH 
+
+export CLASSPATH=/foo/aaa.jar:/bbb/ccc/:. # not tested
+
+that contains a list of folders where my code is and jars that I want to access
+  
+
+
+A classpath is also the directories where you put 
+your java classes and jar files, it is also an 
+environment variable
+
+
+$ javac MyMainClass.java
+$ java -cp foo.jar:. MyMainClass 
+# jar file is in the same directory as my class
+
+
+/src/main/resources - is included in the classpath by default
+
+

@@ -1,0 +1,16 @@
+JRE - JVM + libraries(jars), you need JRE just for running code, not developing code (JRE is the implementation of the JVM) (JRE physically exists)
+
+
+
+JRE : it is used to run the bytecode produced by the jdk (using the JVM?),
+It contains the libraries that come with java
+
+
+Inside it: it contains the JVM
+
+
+Interesting: you cant do any java development with the JRE alone, you would need the JDK
+
+
+
+

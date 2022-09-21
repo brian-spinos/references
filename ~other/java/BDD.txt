@@ -1,0 +1,20 @@
+Add new 
+Create with details
+Validation input
+Validation expected results 
+
+
+Go to steps tab
+
+Go to bottom
+
+
+Now go to “ test run” tab 
+
+Click the far right button
+
+In details add sprint id
+
+Attach screenshots 
+
+

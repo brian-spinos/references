@@ -1,0 +1,20 @@
+_____________________________________________
+****THIS IS CORRECT****
+
+export JAVA_HOME=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+
+// of course the jdk version can be different 
+
+$JAVA_HOME/bin/java -version
+# the above needs to work!
+
+
+
+_____________________________________________
+
+// important!!! (JAVA_HOME should point
+// to the parent folder of bin/java
+
+$JAVA_HOME/bin/java
+$JAVA_HOME/bin/java
+$JAVA_HOME/bin/java

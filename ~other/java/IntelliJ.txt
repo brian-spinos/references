@@ -17,3 +17,27 @@ out - for compiled classes
 src
 External Libraries
 MyProject.iml - proj main config file
+
+
+//==============================================================================================================
+
+Chose SDK: select jdk folder
+
+Consolas menlo fonts
+
+$ java com.example.App
+
+// intellij files:
+.idea folder  workspace.xml, tasks.xml are by user
+src folder
+Foo.iml file
+
+
+Classpath: you can add .jar files
+
+
+Out folder, same level as src folder
+
+
+
+//==============================================================================================================

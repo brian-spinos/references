@@ -1,0 +1,7 @@
+JDK - JRE + development tools (debugger, compiler, executor, javadoc) (you need JDK to develop java)
+
+
+It converts your code into bytecode! 
+JDK Has the debugger and the compiler 
+
+Inside it: it contains the JRE

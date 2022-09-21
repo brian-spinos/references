@@ -1,0 +1,16 @@
+Java virtual machine
+
+Called by $ java ? YES
+
+
+The java command invokes the Java Virtual Machine (will be written JVM hereafter). 
+JVM then loads the specified class mentioned at command line and invokes the method main 
+of this class and start executing it, passing it a single argument that is an array of strings. 
+The array of strings passed to main is to receive command line arguments. The JVM generally takes 
+the following steps in order to run a Java program.
+
+
+JVM - environment in which java bytecode is executed  (does not physically exist) - it is called by the “java” command
+
+
+It is an “abstract computer machine” it knows nothing about the java programming language , it only knows bytecode , it can execute bytecode

@@ -1,0 +1,168 @@
+
+
+// many many cool stuff!
+https://www.baeldung.com/tag/mockito/
+
+//——————————-
+
+
+No need for a “when” when the method returns void,
+
+
+You can just verify it!
+
+
+
+
+//——————
+Mock private methods
+
+https://www.baeldung.com/powermock-private-method
+
+
+// code examples
+https://github.com/eugenp/tutorials/blob/master/testing-modules/mockito/src/test/java/com/baeldung/powermockito/introduction/LuckyNumberGeneratorIntegrationTest.java
+
+// private, no args
+when(mock, "getDefaultLuckyNumber").thenReturn(300);
+
+// private with args
+doReturn(1).when(mock, "getComputedLuckyNumber", ArgumentMatchers.anyInt());
+
+// private with void return
+// no need!!! Just verify!!!
+
+// verification 
+verifyPrivate(mock).invoke("saveIntoDatabase", ArgumentMatchers.anyString());
+
+
+
+//==============================================================================================================
+
+
+
+verify(mock).addAll(argThat(list -> list.size() == 2));
+
+
+https://github.com/powermock/powermock/wiki/mockito#a-full-example-of-partial-mocking-of-a-private-method
+
+org.mockito.ArgumentMatchers.isA // use this!!!
+
+
+Could be that Mockito.mock should have used powermockito
+
+
+Or
+
+import static org.mockito.Matchers.anyObject;
+
+.whenPrivate()
+
+.whenStatic()
+
+
+
+// multiple returns
+Mockito.when(template.sendAndReceive(Matchers.any(MessageChannel.class), Matchers.any(GenericMessage.class)))
+    .thenReturn(instance1, null);
+
+
+// Matchers.same(obj)
+Mockito.when(template.sendAndReceive(Matchers.same(channel1), Matchers.any(GenericMessage.class)))
+    .thenReturn(instance1);
+Mockito.when(template.sendAndReceive(Matchers.same(channel2), Matchers.any(GenericMessage.class)))
+    .thenReturn(null);
+
+
+
+
+// create a custom matcher to display what was passed in!!!
+https://www.baeldung.com/mockito-argument-matchers
+
+
+
+
+
+
+Warning:
+If you are using argument matchers, all arguments have to be provided by matchers. E.g: (example shows verification but the same applies to stubbing):
+ArgumentMatchers.eq(“foo”) is a matcher! (aequals(b))
+ArgumentMatchers.isA(String.class) typeof
+ArgumentMatchers.same(obj) ==
+ArgumentMatchers.any()
+
+https://static.javadoc.io/org.mockito/mockito-core/2.7.0/org/mockito/ArgumentMatchers.html#ArgumentMatchers()
+
+
+
+//============================================================================================================== Matchers
+
+
+Mockito
+
+
+
+
+Mockito knows if a method can or cannot throw a specific error!!!
+
+
+——-
+
+
+when(mock.isTrue()).thenCallRealMethod()
+
+——-
+
+when(a.method(Mockito
+    .ArgumentMatchers.<Class<A>>any()))
+    .thenReturn(b);
+
+
+
+import static org.mockito.Matchers.any;
+any(SomeClass.class)
+OR
+
+import org.mockito.Matchers;
+Matchers.any(SomeClass.class)
+
+
+Now it has changed to org.mockito.ArgumentMatchers.any
+
+
+
+
+———
+
+
+when(passwordEncoder.encode("1")).thenAnswer(
+       invocation -> invocation.getArgument(0) + "!");
+
+
+doAnswer(invocation -> invocation.getArgument(0) + "!")
+       .when(passwordEncoder).encode("1");
+
+
+
+———
+
+Date mock = mock(Date.class);
+when(mock.getTime()).thenCallRealMethod();
+doCallRealMethod().when(mock).setTime(42);
+mock.setTime(42);
+assertEquals(42, mock.getTime());
+
+
+————
+
+// dont use this, because mockito cannot check of the method can or cannot throw this exception, use the exception instance!
+doThrow(IllegalArgumentException.class).when(passwordEncoder).encode("1");
+
+
+
+
+————-
+
+
+//==============================================================================================================
+

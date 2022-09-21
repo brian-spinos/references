@@ -1,0 +1,14 @@
+If there is a method with no if statement, only calling the method covers all the lines
+
+
+If a method has one if/else statement:
+Just exercising the two branches : will cover all lines!
+
+
+See mutation testing!!!
+https://www.baeldung.com/java-mutation-testing-with-pitest
+
+
+
+
+
