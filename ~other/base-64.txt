@@ -1,0 +1,17 @@
+Why base64 encoding
+
+
+
+-> To transform binary data to text data
+
+Example: u want to store binary data in XML, what if the binary has caracters like ></ ??? It will break the XML, so we need to encode in base64 - only letters and numbers :)
+
+
+Because networks only send in 7 bits ???
+
+Since data is encoded in 8 bits,
+Base64 converts data to 6 bits
+
+The way it does it is: 
+Takes 3 bytes, and turns it into 4 pieces of 6 bit information.
+

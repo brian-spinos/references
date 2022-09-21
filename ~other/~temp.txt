@@ -655,4 +655,17 @@ $ df -ah
 $ ip addr show eth0
 
 
+---------------------------------------------------------------------------------------------------- Terminal vs shell vs bash
+
+The terminal is the GUI window that you see on the screen. It takes commands and shows output. 
+
+The shell is the software that interprets and executes the various commands that we type in the terminal. 
+
+Bash is a particular shell.
+
+
+======
+
+Terminal is a program that run a shell , in the past it was a physical device (Before terminals were monitors with keyboards, they were teletypes) and then its concept was transferred into software , like Gnome-Terminal .
+
 ----------------------------------------------------------------------------------------------------

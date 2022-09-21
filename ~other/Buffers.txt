@@ -1,0 +1,12 @@
+Buffers
+
+
+An array of binary data!?
+
+// VERY GOOD! But long
+https://medium.freecodecamp.org/do-you-want-a-better-understanding-of-buffer-in-node-js-check-this-out-2e29de2968e8
+
+https://www.w3schools.com/nodejs/ref_buffer.asp
+
+
+mechanism for reading or manipulating streams of binary data. The Buffer class was introduced as part of the Node.js API to make it possible to interact with octet streams in the context of things like TCP streams and file system operations.
