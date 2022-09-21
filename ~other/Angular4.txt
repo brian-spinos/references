@@ -1,0 +1,43 @@
+Build an angular 4 app from what i know of react
+@ViewChild    #foo
+Ab testing
+Angular modules
+Angular-4-data-tables
+Api versioning  localhost/api/v1/foo
+Associations
+Attack prevention
+aws
+crud
+ec2
+font awesome
+Forget password email
+Github api
+Google maps
+Graphs
+Guards
+Heroku
+Infinite scrolling
+Jsonp
+Jwt
+Memory leak prevention
+Models
+Mongodb
+Mysql
+Nodemailer
+Pagination
+Postgres
+Print
+process.env.SECRET
+roles
+routes
+s3
+services
+shopping cart
+sidebar
+Socket.io
+ssl
+Stripe payments
+Test xss attacks
+Top navbar
+Twilio messaging
+Weather api

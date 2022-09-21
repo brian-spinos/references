@@ -1,0 +1,178 @@
+----------------------------------------------------------------------------------------------------
+Selection sort
+
+
+----------------------------------------------------------------------------------------------------
+Merge sort
+
+Be careful with mid index, keep it in right partition
+
+----------------------------------------------------------------------------------------------------
+Red black tree
+
+Update root on rotation methods
+
+----------------------------------------------------------------------------------------------------
+AVL tree
+Based on heights
+
+----------------------------------------------------------------------------------------------------
+
+Dijkstra
+
+Go to a node and update your children:
+
+If distance is  less
+If c was not visited
+If there is a conection between parent and child 
+And parent if not infinity far from src
+
+----------------------------------------------------------------------------------------------------
+
+Insertion sort
+
+Needs a flag:
+ To check if there were no insertions
+  In that case, we insert value to index 0
+ - if there are insertions: BREAK!!!
+
+i goes from index 1 to N
+J goes from i-1 to 0
+----------------------------------------------------------------------------------------------------
+
+Quick sort
+
+Get the last index as a pivot - u can swap before that
+
+Partition the array in two parts
+Less than pivot
+Grater or equal pivot
+
+Then swap the pivot with the first of the second partition :)
+
+
+ATTENTION: for partition it is easier to do so:
+Scan for smallest then pivot from left to right, keep swapping with left elements, then return the partition point (of course the pivot needs to be in that partition index)
+
+The above is: 
+1 loop
+And have an index  wall = begining index
+
+if arr[i] is less than pivot, swap with wall and w++
+
+
+
+----------------------------------------------------------------------------------------------------
+
+Buble sort
+
+If there is no swaps in one iteration, it is sorted
+
+i loop: size-1
+j loop: size-1-i
+
+
+----------------------------------------------------------------------------------------------------
+Linked list
+
+Think of a real world object for a linked list :)
+
+With arrows for head and tail
+
+----------------------------------------------------------------------------------------------------
+Queue
+
+Be careful with head and tail - they could be null
+Update correctly
+
+----------------------------------------------------------------------------------------------------
+
+Stack
+
+Add remove from head, not tail
+
+----------------------------------------------------------------------------------------------------
+
+Heap
+
+2 * pi +1
+2 * pi + 2
+
+(ci - 1) / 2 — handle index zero differently
+Because getP(0) == 0
+
+When bubbleup or down — remember to break!!!
+
+No swap on “remove” method, just copy last item to top, then bubble down until item before last
+
+----------------------------------------------------------------------------------------------------
+
+Hash
+
+Hash *= 31
+Hash += key.charAt(i)
+
+
+Array of Entry nodes
+
+- chaining: on put,
+    - check if key is present  (could be an update)
+    - use two pointers to traverse
+----------------------------------------------------------------------------------------------------
+Graph
+
+BFS:
+Get a node, add to queue, add to visited
+
+From the queue get the node, and add its neighbors to the queue, if they are not visited
+
+DFS: same as above but use stack :)
+----------------------------------------------------------------------------------------------------
+Disjointed set
+
+
+
+Union method: 
+    - find roots first 
+    - Union by rank (one root gets all rank, the other points to it
+
+Find method: path compression
+    - 3 pointers: node, root, curr
+    - first find root, then go again to update the descendants to point to root
+    - dont loose parent pointer
+
+----------------------------------------------------------------------------------------------------
+
+Tree
+
+For insertion:
+- use two pointers traversing down
+
+----------------------------------------------------------------------------------------------------
+
+Trie
+
+First node is ROOT, that has keys and values:
+Keys are the letters, values are the Nodes that represents the same letters as the keys
+
+Ex:
+Nodes: ROOT - B - R - I - A - N -
+
+Insertion:
+  Think of what u will do to each letter of the word
+  
+hasWord:
+    Think of what u want to do to each letter
+    At the end check if node.isWord
+
+int index = MyChar - ‘a’
+- initialize the array of the trie to NULLs
+
+----------------------------------------------------------------------------------------------------
+
+
+
+----------------------------------------------------------------------------------------------------
+
+
+
