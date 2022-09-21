@@ -1,0 +1,5 @@
+Php session - saved on a file in a specified folder in the server
+
+
+
+Php session ids are random and stored on the cookie... so a user could guess a session ID... session data is stored as a file with the name of the file being the session ID

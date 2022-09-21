@@ -214,3 +214,10 @@ findByPersonIdAndCar(Long id, Car car);
 //  findByPriceLessThan(Integer price);
 // many awesome and complex queries!!!!
 // also : @Query( some spring Sql code here) // JQL???
+
+
+//==============================================================================================================
+
+
+Spring boot migrations
+//==============================================================================================================

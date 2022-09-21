@@ -631,6 +631,16 @@ Graphql
 How okta works
 Fibonacci heap // https://youtu.be/fRpsjKCfQjE
 Jmusic
+gRPC
+    Like a rest call?
+    Communication between two servers?
+Graphana - Analytics, monitoring for DB
+Consul baeldung
+    Service discovery
+    Health checking
+    Configuration
+Open shift - build, run, scale apps -- https://www.openshift.com
+
 
 
 

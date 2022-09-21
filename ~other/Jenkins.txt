@@ -1,5 +1,11 @@
 Jenkins
 
+
+Jenkins pipeline 
+
+
+
+
 Lynda.com
 
 Jenkins in docker: pull the Jenkins image, create a container , and have it point to a port, which you can access from your browser, dummy!!!

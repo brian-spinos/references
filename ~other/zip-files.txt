@@ -1,0 +1,8 @@
+Zip files - what about big files?
+
+Windows: right click file or folder; send to...; compressed (zipped) folder; zip file will appear in current folder; 
+To unzip: right click zip file; Extract All...; select destination folder; click extract.
+
+
+Mac: right click file or folder; compress n items; zip file will appear in current folder; 
+To unzip: just double click the zip file; it will appear in the current folder
