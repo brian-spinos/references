@@ -1,5 +1,7 @@
 //-------------------------------------------------------------------------------- TODO?
 
+binding.pry
+
 Ruby websocket server
 Build a ruby socket server
 Event machine on mac
