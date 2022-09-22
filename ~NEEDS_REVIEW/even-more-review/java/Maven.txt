@@ -148,6 +148,20 @@ Mvn dependency:tree    :analyze
 //==============================================================================================================
 
 
+Phases are bound to plugins ?
 
+
+Default - the default lifecycle 
+
+Clean - is a different lifecycle 
+
+Site - a different lifecycle 
+
+// Gradle multi app
+https://youtu.be/Ae4liqjPJNc
+include “foo-bar”
+
+
+//==============================================================================================================
 
 

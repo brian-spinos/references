@@ -29,3 +29,17 @@ Total happiness!
 1. Left identity: id . f = f
 2. Right identity: f . id = f
 3. Associativity: f . (g . h) = (f . g) . h
+
+================================================================================ 
+
+Monads are used for composition!!!
+
+
+Like vertx compose chain
+
+
+.compose is the >>= operator!!!
+
+Future<String> fs is the monad!!!!
+
+================================================================================

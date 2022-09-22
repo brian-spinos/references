@@ -50,10 +50,70 @@ Child: flex: 2;
 
 //--------------------------------------------------------------------------------
 
+div {
+    overflow: scroll; 
+    /* overflow: auto;  -- same as scroll, but adds scrollbar only when necessary */
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+//-------------------------------------------------------------------------------- CSS GRID
+
+Div mt-8 grid lg:grid-cols-3 gap-10
+   Div col-span-2 // item will span 2 columns
+
+
+lg:
+md:
+sm:
+
+
+gap-10 // space all around item
+gap-x-8
+gap-y-12
+
+grid-rows-4
+
+grid-flow-col // instes of left to right, columns will go top to bottom
+
+grid-flow-row // default ???
+
+
+
+////// classes on the cchild
+
+justify-self: start | end // content inside item goes left| right
+
+col-start-4 // item isbplaces on the 4th place
+col-end-7 // item is placed at the end of the row ??
+
+row-span-2
+col-span-2
+
+
+////// parent
+align-items: start | end // items start on the top | bottom
+
+justify-items: start | end // items start left | right
+
+//-------------------------------------------------------------------------------- CSS Tailwind
+
+Parent div: grid lg:grid-cols-3 gap-10
+// grid with 3 cols on large screens, and gap of 10 between items
+
+Child div: col-span-2
+// span 2 cols instead of 1
 
 //--------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------
+
 //--------------------------------------------------------------------------------

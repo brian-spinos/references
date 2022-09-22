@@ -78,3 +78,20 @@ Tasks can depend on other tasks: which means the other task needs to run first! 
 
 
 
+---------------------------------------------------------------------------------------------------- 
+What is a configuration?
+
+
+Tasks > build > clean
+
+Source sets:
+Src/main/java
+Src/test/java
+Src/main/gradle
+Src/test/gradle
+
+
+Build - folder for java compiled code!
+
+
+Build/reports/tests/test/index.html // test results!!!

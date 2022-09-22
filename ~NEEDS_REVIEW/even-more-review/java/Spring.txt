@@ -221,3 +221,81 @@ findByPersonIdAndCar(Long id, Car car);
 
 Spring boot migrations
 //==============================================================================================================
+
+
+
+Lynda.com
+
+
+https://youtu.be/CtD9B9TU_cY
+
+
+
+Groovy other half
+Derek bannas - youtube
+
+
+https://www.tutorialspoint.com/gradle/gradle_overview.htm
+
+
+Java generic classes
+Peggy fisher
+
+
+Java data structures
+Peggy Fisher 
+
+
+
+
+Java 8 File io
+
+
+Websocket
+SSL
+TCP/IP
+
+
+Excel 2019 Essential training
+Chapter 6, video 1
+
+
+Pluralsight: programming with dates and time in java 8
+Chapter 4, video 5
+
+
+Gradle - I need to know build script
+
+
+————————————————— DONE:
+
+Java 8 essential training
+David gassner
+
+Spring mvc
+
+Spring: framework in depth
+
+Learning Spring with spring boot
+
+Springboot essential training
+
+Spring 5 frank moley
+
+———————
+// reads foo.bar from the application.properties file!!!
+// there is still more work to be done for this to work
+@Value(“${foo.bar}”)
+private String fooBar;
+
+
+
+Session bean - like rails session
+Request bean - 1 instance per request
+
+//============================================================================================================== Spring security
+https://youtu.be/her_7pa0vrg
+
+https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/
+
+//==============================================================================================================

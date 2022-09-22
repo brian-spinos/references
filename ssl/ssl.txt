@@ -12,3 +12,14 @@ Green padlock: It only indicates that the communication is encrypted, hackers ca
 Symetric key: shared keys, same two keys 
 Asymetric key: there are two keys, public key and private key. private key encrypts data, and public key decrypts data
     - It can work the other way arround also.
+
+----------------------------------------------------------------------------------------------------
+Why SSL handshake?
+
+Ssl was introduced for transport level security.. to protect data in transit.. 
+
+There are 2 types : 1 way and 2 way. 
+
+1 way is client verifies server .. 
+
+2 way is both verify each other. This is done by exchanging public certs and matching them with the private key that is not shared 

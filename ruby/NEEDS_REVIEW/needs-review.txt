@@ -142,16 +142,132 @@ Person.fire
 # (class method called) firing
 #
 
+//--------------------------------------------------------------------------------
+
+=============================================================================================
+======================================= RAILS (START) =======================================
+=============================================================================================
+
+//-------------------------------------------------------------------------------- rails tasks
+
+$ rails --tasks
+
+rails assets:clean[keep]                 # Remove old compiled assets
+rails assets:precompile                  # Compile all the assets named in config.assets.precompile
+
+
+ $ rails --tasks
+ $ rails db:reset
+
+ $ rails stats 
+
+ //-------------------------------------------------------------------------------- Rails assets precompile
+
+ Rails assets precompile
+ 
+ https://youtu.be/3hS-bC3KsoE
+ 
+ Seems it compiles the assets in production
+ Into the public/assets/ folder
+ 
+ 
+   *   minifies/uglyfies/concatenates ?
+ 
+ 
+   $ rails assets --help
+   rails assets:clean[keep]
+       Remove old compiled assets
+   
+   rails assets:clobber
+       Remove compiled assets
+   
+   rails assets:environment
+       Load asset compile environment
+   
+   rails assets:precompile
+       Compile all the assets named in config.assets.precompile
+ 
+
+ //-------------------------------------------------------------------------------- rails new
+
+ // consider esbuild ? does it make ./bin/dev available? and can we avoid : rails assets:precompile  ???
+ $ rails new blog -j esbuild --css bootstrap 
+
+ //-------------------------------------------------------------------------------- Rails hotwire
+ 
+
+// Rails hotwire !!!!
+https://youtu.be/0CSGsHnci2I
+
+
+//-------------------------------------------------------------------------------- Capybara is integrated with rails 7 ???
+// https://www.hotrails.dev/turbo-rails/crud-controller-ruby-on-rails
+
+
+bin/rails g system_test quotes
+
+
+//-------------------------------------------------------------------------------- rails server
+
+// rails server:
+./bin/dev // rails 7.0.2.2 - uses forman
+
+
+//-------------------------------------------------------------------------------- rails model 
+
+scope :ordered, -> { order(id: :desc) }
 
 
 
 
-//--------------------------------------------------------------------------------
+migration:
+
+bin/rails generate model LineItemDate quote:references date:date
+
+
+Before run
+
+
+
+class LineItemDate < ApplicationRecord
+  belongs_to :quote
+
+  validates :date, presence: true, uniqueness: { scope: :quote_id }
+
+  scope :ordered, -> { order(date: :asc) }
+end
+
+//-------------------------------------------------------------------------------- view 
+
+# <%= link_to "destroy", product, method: :delete, data: {confirm: 'Are you sure?'} %>
+
+//-------------------------------------------------------------------------------- controller
+
+//-------------------------------------------------------------------------------- sidekiq
+
+Rails: $ bundle exec sidekiq -c 1
+
+https://youtu.be/aaGSh38nzq8
 
 
 //--------------------------------------------------------------------------------
+Ruby code blocks
+
 //--------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------
+
+Rails migration data types
+
+//-------------------------------------------------------------------------------- RAILS APP 
+Oauth eith doorkeeper gem
+Ec2 nohup
+Email devise
+Env variables
+Action cable
+Scale to mobile
+Add forms
+View details of test
+Ab test, add visitor counter
+
+=============================================================================================
+=========================================== RAIL (END) ======================================
+=============================================================================================

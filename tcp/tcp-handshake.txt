@@ -25,4 +25,31 @@ Gotcha: TLS handshake happens AFTER TCP handshake
 
 The three way handshake is needed because both parties need to sync their segment sequence numbers (used during their transmission)
 
+
+
+
+
+
+==================================================================================================== (need review)
+
+https://www.quora.com/What-is-the-difference-between-an-HTTP-server-and-a-TCP-server-in-NodeJS
+
+
+In TCP (sockets), it is a different paradigm. The client opens a longer-lived channel between it and the server, where both can send each other anything (data) anytime. Any one can terminate at any time.
+
+
+TLS handshake happens after the TCP handshake
+
+
+.
+SSL is the old version of TLS
+
+.
+
+https://www.cloudflare.com/learning/ssl/what-is-ssl/
+
+.
+
+HTTP messages are, ultimately, delivered through TCP/IP connections.
+
 ====================================================================================================

@@ -115,10 +115,63 @@ function postRequest(url, data) {
   .then(response => response.json())
 }
 
-
-
-
-
 //--------------------------------------------------------------------------------
+
+// Learn JavaScript Generators In 12 Minutes
+https://www.youtube.com/watch?v=IJ6EgdiI_wU
+
+//-------------------------------------------------------------------------------- express.js
+const x = require(“x”)
+
+module.exports = fn
+
+//post
+app.use(express.json())
+app.use(express.urlencoded({extended: false}))
+app.post(“/users”, fn) // req.body.username
+
+
+Middleware:
+app.use(fn) // (req, res, next)
+
+“/users/:id” // parseInt(req.params.id)
+
+res.status(500).json(data)
+
+ Router:
+const router = express.Router()
+router.get(…)
+app.use(“/users”, router)
+
+//-------------------------------------------------------------------------------- axios (mock)
+
+jest.mock("axios");
+
+axios.get.mockResolvedValueOnce(users);
+
+      // when
+      const result = await fetchUsers();
+
+      // then
+      expect(axios.get).toHaveBeenCalledWith(`${BASE_URL}/users`);
+//-------------------------------------------------------------------------------- react.js
+
+Data-testid in browser?
+
+
+- reducer is a function to update the state 
+
+
+//UseCallback
+Wrap parent func a n useCallback with a deps
+Wrap child component with React.memo()
 //--------------------------------------------------------------------------------
+
+Console.table(obj)
+
+More js array funcs
+
+Neural network from scratch js
+
+Mockapi.io
 //--------------------------------------------------------------------------------

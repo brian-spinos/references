@@ -1,1 +1,8 @@
-//...
+
+---------------------------------------------------------------------------------------------------- Good jdbc
+https://youtu.be/0uLqdBpYAVA
+
+
+GitHub:
+
+https://github.com/danvega/hello-jdbc

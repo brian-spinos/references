@@ -1,3 +1,5 @@
+----------------------------------------------------------------------------------------------------
+
 Java
 
  Arrays are not print friendly, collections are!
@@ -382,3 +384,96 @@ _____________________________________________
 _____________________________________________
 
 
+
+---------------------------------------------------------------------------------------------------- 
+
+“The build” == the deliverable
+Class loader
+
+Server (like tomcat)
+    What is it?
+    Can we just drop our code there?
+
+Bean scope: session, Singleton, request,prototype,...
+entityManager - instance to do CRUD, from JPA
+Intellij > sertings > sustem settings > http proxy
+Mven profile , like rails env: test, development, production
+Java.nio.file.* package!
+Optional.of(xxx);
+Test that whitbox can set fields in mock
+@InjectMocks
+Java jdk 1.1 had RMI, for distributes systems!
+Intelisense for mock object
+@Mock
+JavaEE is just a web framework
+Reactor jar
+Deadlock - all threads are waiting, nothing is done
+Glassfish4 to use EJB
+Nexus - stores jars ???
+Webserver and containers are programs
+Drools baeldung ???
+Java http calls
+Jetty baeldung
+Private final dep
+Wiremock
+Print java exceptions collections tree diagram
+Java analysis on threads and memory dumps
+Jmusic
+Test new File and new FileInputStream
+    Test multiple system classes
+Jmeter
+
+
+
+
+http://javapapers.com
+
+http://yfain.github.io/Java4Kids/
+
+
+
+Class loader
+Time package
+Nio package
+Deadlock
+Reactor
+Java files stuff
+Logger
+Tomcat
+Thymeleaf
+J2EE
+Jar
+EAR
+System design
+Rmi
+War
+
+
+----------------------
+
+
+Java reflection api
+https://www.baeldung.com/java-reflection
+
+
+
+Jvm on paper
+JVM calls the main method
+https://media-geeksforgeeks-org.cdn.ampproject.org/ii/w820/s/media.geeksforgeeks.org/wp-content/uploads/jvm-3.jpg
+https://www.google.com/amp/s/www.geeksforgeeks.org/jvm-works-jvm-architecture/amp/
+
+
+// Java hash
+Map<String,String> map = new HashMap<>();
+
+Set<String> s1 = map.keyset();
+Set<Map.Entry<String,String>> es = map.entrySet();
+map.valueSet();
+
+for( String key : map.keySet()){
+  // map.get(key);
+}
+
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------

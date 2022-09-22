@@ -1,0 +1,21 @@
+
+---------------------------------------------------------------------------------------------------- SMTP server 
+
+email client sends data to SMTP server !
+
+Gmail has an SMTP server, yahoo has one
+Hotmail has one…
+
+SMTP servers communicate among them selves too
+
+
+
+// prorocols: 
+IMAP
+POP
+
+
+SMTP Username, password, host - to connect!
+
+
+smtp.gmail.com:587

@@ -1,0 +1,19 @@
+
+
+---------------------------------------------------------------------------------------------------- K8s
+
+Kubernetes deploys and manages/Orchestrates the many containers/pods in a node
+ 
+And scales pods up and down
+
+K8s Cluster: a set of nodes/VMs
+Master node
+Worker node
+
+
+Pods: the smallest deployable unit in k8s, it has:
+- main container
+-init container
+- side car containers (support the main container)
+- volumes (to share data between containers)
+- a unique IP address for the pod

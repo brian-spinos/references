@@ -23,19 +23,19 @@ https://github.com/powermock/powermock/wiki/Mock-System
 
 
 
-//================================
+//===========================================================================================================
 // verify instance method called
 
 verify(bar, times(1))
 .someMethod();
 
-//================================
+//===========================================================================================================
 // mock instance method
 
 BarFactory myFactory = mock(BarFactory.class); Mockito.when(myFactory.createBar())
 .thenReturn(bar);
 
-//================================
+//===========================================================================================================
 
 // mock instantiation
 // remember to prepare the class being tested here! Just like the static methods
@@ -45,7 +45,7 @@ Point mockPoint = mock(Point.class);
 			.withAnyArguments()
 .thenReturn(mockPoint);
 
-//================================
+//===========================================================================================================
 
 // mock instantiation with parameters
 // remember to prepare the class being tested here! Just like the static methods
@@ -55,7 +55,7 @@ whenNew(LoginContext.class)
 .withArguments(anyString(), anyString())
 .thenReturn(lcMock);
 
-//================================
+//===========================================================================================================
  // mock static method and verify it was called
 
         //given
@@ -71,7 +71,7 @@ Mockito.when(DriverManager.getConnection(...)).thenReturn(...);
         PowerMockito.verifyStatic();
         DriverManager.getConnection(...);
 
-//================================
+//===========================================================================================================
 
 
 
@@ -113,3 +113,50 @@ PowerMockito.mockStatic(A.class);
 
 
 
+
+//=========================================================================================================== 
+
+Org.mockito.ArgumentMatchers.any()
+
+.any(Foo.class)
+.anyBoolean()
+
+Foo spy = PowerMockito.spy(foo);
+
+Mockito.any(Foo.class)
+
+
+Arg captor, injectMocks, mock void methods to do stuff, partial mocking using spies
+https://dzone.com/articles/unit-testing-using-mockito-and-powermock
+
+
+
+.
+
+
+@PowerMockIgnore("javax.management.*")
+
+
+
+
+@RunWith(PowerMockRunner.class)
+@PowerMockIgnore("javax.management.*")
+@PrepareForTest({SomeClass.class, Thread.class})
+public class SomeClassTestCase {
+
+@Test(expected=Test.None.class)
+public void testRun() throws Exception {
+PowerMockito.mockStatic(Thread.class);
+PowerMockito.doThrow(new RuntimeException("mock error")).when(Thread.class);
+Thread.sleep(Matchers.anyLong());
+
+SomeClass someClass = new SomeClass();
+
+// test
+someClass.run();
+}
+}
+
+//===========================================================================================================
+
+//===========================================================================================================
