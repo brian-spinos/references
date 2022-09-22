@@ -268,4 +268,27 @@ The branch name point to the latest commit in that branch ??? Not sure
 
 //--------------------------------------------------------------------------------
 
+# create a branch based on an existing branch:
+$ git checkout -b my-feature master
+
+# checkout remote branch
+$ ...
+
+
+# Find lost commits
+$ ...
+
+
+# undo a commit reset?
+
+
+
+git diff —staged # diff of added files compared to HEAD
+
+git reset HEAD foo.txt # remove file from index/staging 
+
+git checkout — foo.txt # blow away changes, make it like the file in HEAD
+
+git reset —soft HEAD^ # if you regret a commit, it undoes the commit, brings back files to staging! Nice
+
 //--------------------------------------------------------------------------------

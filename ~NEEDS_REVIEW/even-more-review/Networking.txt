@@ -1,5 +1,6 @@
-Networking
 
+----------------------------------------------------------------------------------------------------
+Networking
 
 
 0.0.0.0 is *NOT* an IP address you can actually access using a client. It's simply a shortcut for the system binding call to use all available IP addresses.
@@ -26,3 +27,11 @@ $ ifconfig # to see network settings
 
 Bridge: it is similar to a router of a subnetwork
 
+---------------------------------------------------------------------------------------------------- 
+Wild card mask: reverse of subnet mask
+
+IP: x.x.x.0 is network address, x.x.x.255 is broadcast address, x.x.x.1 is router address
+
+MakeOSI/ tcp/ip paper 
+
+----------------------------------------------------------------------------------------------------

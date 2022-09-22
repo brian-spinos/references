@@ -132,16 +132,12 @@ Build server - https://youtu.be/QdHvS0D1zAI
 Upd drawing app - https://youtu.be/i6eP1Lw4gZk
 Shell ctrl C handler - https://stackpointer.io/script/how-to-catch-ctrl-c-in-shell-script/248/
 SpringBoot turorial with jdbc and auth - https://youtu.be/5VUjP1wMqoE
+Http://devhints.io - Site for cheat sheets!!!
+OSI - https://youtu.be/vv4y_uOneC0
+Websockets - https://medium.com/@martin.sikora/node-js-websocket-simple-chat-tutorial-2def3a841b61
 
 ---------------------------------------------------------------------------------------------------- mac
 Shift command 5 - record screen
-
----------------------------------------------------------------------------------------------------- network
-Wild card mask: reverse of subnet mask
-
-IP: x.x.x.0 is network address, x.x.x.255 is broadcast address, x.x.x.1 is router address
-
-MakeOSI/ tcp/ip paper 
 
 ---------------------------------------------------------------------------------------------------- Nasm
  https://youtu.be/5eWiz3soaEM

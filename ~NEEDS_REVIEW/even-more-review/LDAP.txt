@@ -1,29 +1,22 @@
 
+----------------------------------------------------------------------------------------------------
+Ldap is like a Enterprise address book!
+
+----------------------------------------------------------------------------------------------------
 https://yellowred.github.io/2016/06/29/NodeJS-OpenLDAP-4-steps/
 
-
 Cn - common name
-
 O - organization
-
 Sn - surname
-
 Dn - distinguished name
-
 Mail - email
-
 Dc - domain content
 
 $ ldapsearch -w mypassword ...
 
 ----------------------------------------------------------------------------------------------------
-Ldap is like a Enterprise address book!
-
-
 - Ldap server
-
 
 Used to store data about employees of a big company ?? 
 
-Eduardo souza:
 Normalmente para ser usado como um central repository para username e passwords
