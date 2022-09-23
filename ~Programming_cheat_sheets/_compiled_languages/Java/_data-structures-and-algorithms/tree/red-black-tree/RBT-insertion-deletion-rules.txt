@@ -1,0 +1,74 @@
+================================================================ Insertion
+
+-> When inserting a node, it will create a red/red violation that needs to be fixed:
+
+1. If root is RED:
+    - color it BLACK
+
+2. I Uncle is RED:
+    - recolor P,U,G
+    - getCaseAndFix(G)
+
+3. If uncle is BLACK (triangle case) (N as left-child, do reverse for mirror case):
+    - rightRotate(p) // to make case #4
+    - getCaseAndFix(p)
+
+4. If uncle is BLACK (line case) (N as right-child, do reverse for mirror case):
+    - recolor(p)
+    - recolor(g)
+    - leftRotate(g)
+
+
+================================================================ Deletion (N as left-child, do reverse for mirror case):
+
+
+-> When deleting a node, first this we need to verify is the number of non-nil nodes:
+
+1. if N has 2 non-nil children:
+    1.1. get the successor of N
+    1.2. copy successor payload to N
+    1.3. mark successor as N and proceed to delete it (it will not have 0 or 1 non-nil children)
+2. if N has 1 non-nil children:
+    2.1. replace N with its non-nil-child
+    2.2. if N and its non-nil-child were BLACK:
+        2.2.1. mark the non-nil child as N and proceed to fix DOUBLE_BLACK violation of N
+    2.3. if N was BLACK and its non-nil-child were RED:
+        2.3.1. color the non-nil-child BLACK
+3. if N has 0 non-nil children:
+    3.1. replace N with its right nil-child
+    3.2. if N and its right nil-child were BLACK:
+        3.2.1. mark the right nil-child as N and proceed to fix DOUBLE_BLACK violation of N
+
+
+
+================ DOUBLE_BLACK violation cases:  (N as left-child, do reverse for mirror case)
+
+0. node is RED (it could happen when the node has 1 non-nil-child, and it is RED)
+    - paint node BLACK
+
+1. SR
+    - swapColor(p, s)
+    - leftRotate(p)
+    - getCaseAndFix(node)
+
+2A. PR, SB, INB, ONB (only parent is black)
+    -  swapColor(p, s)
+
+2B. PB, SB, INB, ONB (all black)
+    - s.setColor(RED)
+    - getCaseAndFix(p)
+
+3. SB, INR, ONB
+    - swapColor(innerNephew, s)
+    - rightRotate(s)
+    - getCaseAndFix(innerNephew)
+
+4A. PR, SB, ONR
+    - swapColor(p, s)
+    - outerNephew.setColor(BLACK)
+    - leftRotate(p)
+
+4B. PB, SB, ONR
+    - outerNephew.setColor(BLACK)
+    - leftRotate(p)
+

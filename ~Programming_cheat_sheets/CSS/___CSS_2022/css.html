@@ -1,0 +1,176 @@
+<!-- 
+    file:///Users/brianspinos777/Desktop/CODE/react-march-2022/marchapp/src/simplecss.html
+ -->
+
+<html>
+    <head>
+        <style>
+            /* --------------------------------------- */
+            .colors {
+                background-color: grey;
+                color: black;
+            }
+            .block {
+                padding: 10px;
+                margin: 10px;
+                width: 100px;
+                height: 100px;
+                display: block;
+            }
+            .inline {
+                padding: 10px;
+                margin: 10px;
+                /* width: 100px; DOES NOT WORK */
+                /* height: 100px; DOES NOT WORK */
+                display: inline;
+            }
+            .inline-block {
+                padding: 10px;
+                margin: 10px;
+                width: 100px;
+                height: 100px;
+                display: inline-block;
+            }
+            .none {
+                padding: 10px;
+                margin: 10px;
+                width: 100px;
+                height: 100px;
+                display: none;
+            }
+            .visibility-hidden {
+                padding: 10px;
+                margin: 10px;
+                width: 100px;
+                height: 100px;
+                visibility: hidden;
+            }
+            /* --------------------------------------- */
+            .flex-container {
+                height: 300px;
+                border: black 1px solid;
+
+                display: flex; /* for container */
+                
+                /* IF items have a width somehow, or flex:1, or flex-basis: 30% */
+                justify-content: center; /* X axis, flex-start|center|flex-end|space-between|space-around*/
+                
+                align-items: center; /* Y axis, flex-start|center|flex-end|stretch */
+                
+                flex-direction: row; /* row|column, items will either be in a row or column */
+                flex-wrap: wrap; /* items get pushed to a new line if window shrinks */
+            }
+            .flex-child {
+                border: black 1px solid;
+                height: 200px;
+                width: 200px;
+                /* flex-basis: 25%; for widths */
+                /* flex: 1; for widths */
+                /* order: 2; TO RE-ARRANGE ITEM ORDERING */
+            }
+        </style>
+
+    </head>
+    <body>
+        <!-- --------------------------------------- -->
+        <hr />
+        <h1>Display: block</h1>
+        <div class="block colors">
+            block
+        </div>
+        <div class="block colors">
+            block
+        </div>
+        <div class="block colors">
+            block
+        </div>
+
+        <!-- --------------------------------------- -->
+        <hr />
+        <h1>Display: inline</h1>
+        <div class="inline colors">
+            inline
+        </div>
+        <div class="inline colors">
+            inline
+        </div>
+        <div class="inline colors">
+            inline
+        </div>
+
+        <!-- --------------------------------------- -->
+        <hr />
+        <h1>Display: inline-block</h1>
+        <div class="inline-block colors">
+            inline-block
+        </div>
+        <div class="inline-block colors">
+            inline-block
+        </div>
+        <div class="inline-block colors">
+            inline-block
+        </div>
+
+        <!-- --------------------------------------- -->
+        <hr />
+        <h1>Display: none</h1>
+        <div class="none colors">
+            none
+        </div>
+        <div class="none colors">
+            none
+        </div>
+        <div class="none colors">
+            none
+        </div>
+
+        <!-- --------------------------------------- -->
+        <hr />
+        <h1>Visibility: hidden</h1>
+        <div class="visibility-hidden colors">
+            visibility-hidden
+        </div>
+        <div class="visibility-hidden colors">
+            visibility-hidden
+        </div>
+        <div class="visibility-hidden colors">
+            visibility-hidden
+        </div>
+
+        <!-- --------------------------------------- -->
+        <hr />
+        <h1>Display: flex</h1>
+        <div class="flex-container colors">
+            <div class="flex-child colors">ITEM-1</div>
+            <div class="flex-child colors">ITEM-2</div>
+            <div class="flex-child colors">ITEM-3</div>
+        </div>
+    </body>
+</html>
+
+
+<!-- 
+
+Display: block. 
+- takes max width, even if you set height/width, 
+it will force a new line before and after it, so it stays in its own line
+
+Display: inline 
+- takes min width, cannot set height and width
+
+Display: inline-block 
+- like inline, but we can set width and height
+
+Display: none 
+- deletes the element from the dom, 
+it does not take its original space
+
+visibility: hidden ??? - still takes space, but it is invisible
+
+Display: flex - complex
+
+Display: grid - complex
+
+
+
+ -->

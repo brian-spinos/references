@@ -1,0 +1,24 @@
+- review all classes (BSTree is recent addition)
+
+
+
+- add prettyPrint method:
+
+public void print() {
+        printRecursive(root, "", true);
+    }
+
+    private void printRecursive(Node node, String indent, boolean isLeft) {
+        if (node == null) return;
+        System.out.print(indent);
+        if (isLeft) {
+            System.out.print("|--");
+            indent += "   ";
+        } else {
+            System.out.print("|--");
+            indent += "|  ";
+        }
+        System.out.println(node.getKey());
+        printRecursive(node.getRight(), indent, false);
+        printRecursive(node.getLeft(), indent, true);
+    }

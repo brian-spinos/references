@@ -1,0 +1,10 @@
+Kruskal - minimum spanning tree (uses disjoint-set)
+Dijkstra - distance from all nodes to 1 node
+Floyd-warshall - shortest path between all, positive/nevative
+Bellman-Ford - shortest path from src
+Johnson - shortest path between all nodes
+
+
+Adjacency list: use Map<Integer, List<Node>>
+
+Adjacency matrix

@@ -1,0 +1,2 @@
+Union method is incorrect, we need to compare the rank, not index
+And if/else can be simplified 

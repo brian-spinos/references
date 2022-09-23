@@ -1,0 +1,198 @@
+
+SSL 
+
+
+- server keystore 
+- server truststore 
+
+- client keystore 
+- client truststore 
+
+- question: is a keystore and truststore created the same way?
+
+//============================================ create my-certificate.pem my-private-key.pem
+
+
+// The private - key is a separate file that's used in the encryption/decryption of data 
+//               sent between your server and the connecting clients
+
+
+$ openssl req -x509 \
+              -newkey rsa:4096 \
+              -days 365 \
+              -out my-certificate.pem \
+              -keyout my-private-key.pem
+// Enter PEM pass phrase: password123
+// Verifying - Enter PEM pass phrase: password123
+// Country Name (2 letter code) []:US
+// State or Province Name (full name) []:Arizona 
+// Locality Name (eg, city) []:Phoenix
+// Organization Name (eg, company) []:foo-org
+// Organizational Unit Name (eg, section) []:foo-unit
+// Common Name (eg, fully qualified host name) []:foo.com
+// Email Address []:foo@gmail.com
+
+
+
+// my-certificate.pem content example
+-----BEGIN CERTIFICATE-----
+MIIFijCCA3ICCQC9wHK1bLz3mzANBgkqhkiG9w0BAQsFADCBhjELMAkGA1UEBhMC
+VVMxEDAOBgNVBAgMB0FyaXpvbmExEDAOBgNVBAcMB1Bob2VuaXgxEDAOBgNVBAoM
+B2Zvby1vcmcxETAPBgNVBAsMCGZvby11bml0MRAwDgYDVQQDDAdmb28uY29tMRww
+...
+
+
+
+// my-private-key.pem content example
+-----BEGIN ENCRYPTED PRIVATE KEY-----
+MIIJnzBJBgkqhkiG9w0BBQ0wPDAbBgkqhkiG9w0BBQwwDgQIITfDH8Iwl0wCAggA
+MB0GCWCGSAFlAwQBKgQQAkVuggw8vf+REZOqlZCLDgSCCVAtcCR2nl6HQkuXpj3e
+3hSkUnxQmdUXmVRKbrU68UtY87T9rlkrcSYrxxQCOBFP7MPCiE2g+QnzzDdbqi2l
+...
+
+
+
+
+//============================================ Create .p12 keystore file
+
+// pkcs12 (.p12) files: a file format for storing crypto objects as a single file
+//     - it holds the private key 
+//     - and certificate 
+//     - and is the format most modern signing utilities use.
+//     - It is used as a portable format for transferring personal private keys and other sensitive information
+
+
+// https://www.baeldung.com/java-keystore-truststore-difference
+
+
+// keystore - typically holds onto certificates that identify us
+// A Java keystore stores private key entries, certificates with public keys or just secret keys that we may use for various cryptographic purposes. It stores each by an alias for ease of lookup.
+//  keystores hold keys that our application owns that we can use to prove the integrity of a message and the authenticity of the sender, say by signing payloads.
+
+
+// we use it to trust the third party we're about to communicate with.
+// We, the client, then look up the associated certificate in our truststore
+// truststore holds onto certificates that identify others.
+
+
+
+$ openssl pkcs12 -export \
+                 -name server-cert \   # this is the alias
+                 -inkey my-private-key.pem \
+                 -in my-certificate.pem \
+                 -out keyStore.p12 
+// Enter pass phrase for my-private-key.pem:
+// Enter Export Password:
+// Verifying - Enter Export Password:
+
+
+
+
+// keyStore.p12 content example
+3082 1049 0201 0330 8210 0f06 092a 8648
+86f7 0d01 0701 a082 1000 0482 0ffc 3082
+0ff8 3082 062f 0609 2a86 4886 f70d 0107
+06a0 8206 2030 8206 1c02 0100 3082 0615
+0609 2a86 4886 f70d 0107 0130 1c06 0a2a
+8648 86f7 0d01 0c01 0630 0e04 08ce b907
+6d2b 2621 ca02 0208 0080 8205 e8f3 4154
+9df1 eaa5 d01f 0a9a 0b18 faf0 89b9 9dae
+ba19 2915 c5d5 9770 65e5 f363 a3ba 3e0d
+...
+
+
+
+
+// open pkcs12 file
+// open the file, it prints the certificate and private key
+// you can also double click the file to open it
+$ openssl pkcs12 -info -nodes -in yourfilename.p12 
+
+
+
+
+
+//============================================
+//============================================
+//============================================
+
+
+
+//============================================ create .jks keystore file
+// It is recomended to use .p12 file instead of .jks file
+$ keytool -keystore clientkeystore.jks -genkey -alias client
+$ keytool -keystore clientkeystore.jks -genkey -alias client -keyalg RSA -validity 365 -keysize 2048
+
+// Enter keystore password:  
+// Re-enter new password: 
+// What is your first and last name?
+//   [Unknown]:  Brian Spinos
+// What is the name of your organizational unit?
+//   [Unknown]:  foo-unit
+// What is the name of your organization?
+//   [Unknown]:  foo-org
+// What is the name of your City or Locality?
+//   [Unknown]:  phoenix
+// What is the name of your State or Province?
+//   [Unknown]:  arizona
+// What is the two-letter country code for this unit?
+//   [Unknown]:  US
+// Is CN=Brian Spinos, OU=foo-unit, O=foo-org, L=phoenix, ST=arizona, C=US correct?
+//   [no]:  yes
+
+// Enter key password for <client>
+//   (RETURN if same as keystore password):  
+// Re-enter new password: 
+
+// Warning:
+// The JKS keystore uses a proprietary format. It is recommended to migrate to PKCS12 which is an industry 
+// standard format using 
+// $ keytool -importkeystore -srckeystore clientkeystore -destkeystore clientkeystore -deststoretype pkcs12
+
+
+
+
+
+// file content example:
+feed feed 0000 0002 0000 0001 0000 0001
+0006 636c 6965 6e74 0000 017e f0d3 7f1f
+0000 02a0 3082 029c 300e 060a 2b06 0104
+012a 0211 0101 0500 0482 0288 60c3 47a8
+deec d86e f689 39de 6c76 619a f439 fa16
+8b2f b06a 9cb6 10e5 3e41 a3ca 3de8 adc5
+
+
+//============================================ convert .jks to .p12
+$ keytool -importkeystore \
+          -srckeystore clientkeystore.jks \
+          -destkeystore clientkeystore.jks \
+          -deststoretype pkcs12
+
+
+
+//============================================ Convert .p12 keystore into a .jks keystore
+$ keytool -importkeystore \
+          -srcstoretype pkcs12 \
+          -srckeystore serverkeystore.p12 \
+          -alias server-cert \  # this did not work, try now, I added the alias in .p12 command
+          -destkeystore server.keystore
+
+
+
+
+//============================================ Import a client's certificate to the server's trust store.
+// truststore and keystore are both .p12 or .jks files?
+$ keytool -import -alias client-cert \
+        -file diagclientCA.pem -keystore server.truststore 
+
+
+
+//============================================ create private key
+// https://unix.stackexchange.com/questions/347116/how-to-create-keystore-and-truststore-using-self-signed-certificate
+$ openssl genrsa -out my-private-key-123.key 2048
+
+
+
+
+
+

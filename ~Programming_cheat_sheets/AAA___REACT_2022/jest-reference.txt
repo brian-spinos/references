@@ -1,0 +1,206 @@
+https://jestjs.io/docs/getting-started
+    - matchers
+    - async code
+    - mocks
+    - guides/Snapshot Testing
+
+
+expect(2 + 2).toBe(4);
+expect(data).toEqual({one: 1, two: 2});
+expect(a + b).not.toBe(0);
+
+
+expect(n).toBeNull();
+expect(n).toBeDefined();
+expect(n).not.toBeUndefined();
+expect(n).not.toBeTruthy();
+expect(n).toBeFalsy();
+
+
+
+expect(value).toBeGreaterThan(3);
+expect(value).toBeGreaterThanOrEqual(3.5);
+expect(value).toBeLessThan(5);
+expect(value).toBeLessThanOrEqual(4.5);
+
+// toBe and toEqual are equivalent for numbers
+expect(value).toBe(4);
+expect(value).toEqual(4);
+
+
+
+const value = 0.1 + 0.2;
+//expect(value).toBe(0.3);           This won't work because of rounding error
+expect(value).toBeCloseTo(0.3); // This works.
+
+
+
+expect('team').not.toMatch(/I/);
+expect('Christoph').toMatch(/stop/);
+
+expect(shoppingList).toContain('milk');
+  expect(new Set(shoppingList)).toContain('milk');
+
+
+
+
+  expect(() => compileAndroidCode()).toThrow();
+  expect(() => compileAndroidCode()).toThrow(Error);
+
+  // You can also use the exact error message or a regexp
+  expect(() => compileAndroidCode()).toThrow('you are using the wrong JDK');
+  expect(() => compileAndroidCode()).toThrow(/JDK/);
+
+
+//==================================================== Mocks
+
+ jest.fn(x => 42 + x);
+
+// same
+jest.fn(() => 'something')
+jest.fn().mockImplementation(() => 'something')
+
+
+// The mock function is called twice
+expect(mockCallback.mock.calls.length).toBe(2);
+
+// The first argument of the first call to the function was 0
+expect(mockCallback.mock.calls[0][0]).toBe(0);
+
+// The first argument of the second call to the function was 1
+expect(mockCallback.mock.calls[1][0]).toBe(1);
+
+// The return value of the first call to the function was 42
+expect(mockCallback.mock.results[0].value).toBe(42);
+
+
+=========================
+
+jest.fn(() => 123)
+jest.mockImplementationOnce(() => 123)
+
+
+
+
+const myMock = jest.fn();
+console.log(myMock());
+// > undefined
+
+myMock.mockReturnValueOnce(10).mockReturnValueOnce('x').mockReturnValue(true);
+
+console.log(myMock(), myMock(), myMock(), myMock());
+// > 10, 'x', true, true
+
+=========================
+
+import axios from 'axios';
+
+
+jest.mock('axios');
+
+axios.get.mockResolvedValue(resp);
+// axios.get.mockImplementation(() => Promise.resolve(resp));
+
+
+=========================
+expect(mock).toHaveBeenCalled();
+
+
+
+
+
+
+
+========================= mock module partially
+// foo-bar-baz.js
+export const foo = 'foo';
+export const bar = () => 'bar';
+export default () => 'baz';
+
+
+
+/test.js
+import defaultExport, {bar, foo} from '../foo-bar-baz';
+
+jest.mock('../foo-bar-baz', () => {
+  const originalModule = jest.requireActual('../foo-bar-baz');
+
+  //Mock the default export and named export 'foo'
+  return {
+    __esModule: true,
+    ...originalModule,
+    default: jest.fn(() => 'mocked baz'),
+    foo: 'mocked foo',
+  };
+});
+
+test('should do a partial mock', () => {
+  const defaultExportResult = defaultExport();
+  expect(defaultExportResult).toBe('mocked baz');
+  expect(defaultExport).toHaveBeenCalled();
+
+  expect(foo).toBe('mocked foo');
+  expect(bar()).toBe('bar');
+});
+
+
+========================= mock modules
+
+// foo.js
+module.exports = function () {
+  // some implementation;
+};
+
+
+//test.js
+jest.mock('../foo'); // this happens automatically with automocking
+const foo = require('../foo');
+
+// foo is a mock function
+foo.mockImplementation(() => 42);
+foo();
+// > 42
+
+========================= Mock name (for error log displays ???)
+
+const myMockFn = jest
+  .fn()
+  .mockReturnValue('default')
+  .mockImplementation(scalar => 42 + scalar)
+  .mockName('add42');
+
+
+
+========================= Custom Matchers
+
+// The mock function was called at least once
+expect(mockFunc).toHaveBeenCalled();
+
+// The mock function was called at least once with the specified args
+expect(mockFunc).toHaveBeenCalledWith(arg1, arg2);
+
+// The last call to the mock function was called with the specified args
+expect(mockFunc).toHaveBeenLastCalledWith(arg1, arg2);
+
+// All calls and the name of the mock is written as a snapshot
+expect(mockFunc).toMatchSnapshot();
+
+
+========================= Spies ???
+
+// const spy = jest.spyOn(Foo, "meth").mockImplementation(() => 1)
+//  jest.restoreAllMocks(); // cleanup
+// spy.mockRestore();
+// https://jestjs.io/docs/jest-object#jestspyonobject-methodname
+
+//  jest.spyOn(global, "fetch").mockImplementation(() =>
+//     Promise.resolve({
+//       json: () => Promise.resolve(fakeUser)
+//     })
+//   );
+
+
+
+
+
+

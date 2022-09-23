@@ -1,0 +1,190 @@
+$ brew install mysql
+# it downloads to: /usr/local/bin/mysql
+
+$ mysql.server start # start the server
+$ mysql.server stop # stop the server
+$ quit # to quit the mysql console
+
+$ mysql -u root -p # this is an empty password
+# press enter, seems that this is the initial credentials for mysql
+
+$ show databases;
+$ create database myDatabase;
+$ drop database myDatabase;
+$ use myDatabase;
+$ show tables;
+$ drop table myTable;
+$ describe myTable;
+
+create database BrianTestDeleteMe;
+use BrianTestDeleteMe;
+
+====================================================
+
+create table users(
+    id int(11) unsigned auto_increment primary key not null,
+    username varchar(25) not null,
+    password varchar(25) not null,
+    email varchar(40) not null
+);
+
+create table houses(
+    id int(11) unsigned auto_increment primary key not null,
+    name varchar(25) not null,
+    color varchar(25) not null,
+    user_id int(11) unsigned
+);
+
+create table rooms(
+    id int(11) unsigned auto_increment primary key not null,
+    name varchar(25) not null,
+    house_id int(11) unsigned
+);
+
+====================================================
+
+SELECT users.id as UID, users.username, houses.name, houses.id as HID, houses.user_id
+FROM users
+INNER JOIN houses
+ON users.id=houses.user_id;
+
+
+-- SQL does not use FULL JOIN
+select users.*, houses.*
+from users
+full join houses
+on users.id=houses.user_id; -- ERROR 1051 (42S02): Unknown table 'users'
+
+
+-- If your Database does not support FULL JOIN (MySQL does not support FULL JOIN),
+-- then you can use UNION ALL clause to combine these two JOINS as shown below.
+SELECT
+   users.id as UID,
+   users.username,
+   users.password,
+   users.email,
+   houses.id as HID,
+   houses.name,
+   houses.color
+   FROM users
+   LEFT JOIN houses
+   ON users.id = houses.user_id
+UNION ALL
+   SELECT
+   users.id as UID,
+   users.username,
+   users.password,
+   users.email,
+   houses.id as HID,
+   houses.name,
+   houses.color
+   FROM users
+   RIGHT JOIN houses
+   ON users.id = houses.user_id;
+
++------+--------------+----------+-------------------+------+-------------+--------+
+| UID  | username     | password | email             | HID  | name        | color  |
++------+--------------+----------+-------------------+------+-------------+--------+
+|    1 | brian spinos | 123      | brian@hotmail.com |    2 | city house  | yellow |
+|    2 | erich        | 123456   | erich@hotmail.com |    3 | farm house  | blue   |
+|    3 | rick         | 123456   | rick@hotmail.com  |    1 | beach house | white  |
+|    4 | sandra       | 123456   | sandy@hotmail.com | NULL | NULL        | NULL   |
+|    3 | rick         | 123456   | rick@hotmail.com  |    1 | beach house | white  |
+|    1 | brian spinos | 123      | brian@hotmail.com |    2 | city house  | yellow |
+|    2 | erich        | 123456   | erich@hotmail.com |    3 | farm house  | blue   |
+| NULL | NULL         | NULL     | NULL              |    4 | old house   | brown  |
++------+--------------+----------+-------------------+------+-------------+--------+
+
+
+==================================================== SELF JOIN
+SELECT t1.username, t2.username
+FROM users t1, users t2
+WHERE t1.username=t2.username;
+
+==================================================== UNION ALL
+UNION ALL Syntax
+The UNION operator selects only distinct values by default. To allow duplicate values, use UNION ALL:
+
+==================================================== GROUP BY
+The GROUP BY statement groups rows that have the same values into summary rows, like "find the number of customers in each country".
+
+The GROUP BY statement is often used with aggregate functions (COUNT(), MAX(), MIN(), SUM(), AVG()) to group the result-set by one or more columns.
+
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country;
+// Imagine having separate groups of user records, by country, then you can do some operation on the group, 
+// like: sum of a field, min/max of a field, count of any field. Seems count works on any field???
+
+==================================================== GROUP BY, HAVING
+// We cant use WHERE with aggregate functions, so use HAVING
+SELECT COUNT(CustomerID) AS c, Country
+FROM Customers
+GROUP BY Country
+HAVING c < 3;
+
+
+==================================================== CASE
+SELECT OrderID, Quantity,
+CASE
+    WHEN Quantity > 30 THEN 'The quantity is greater than 30'
+    WHEN Quantity = 30 THEN 'The quantity is 30'
+    ELSE 'The quantity is under 30'
+END AS QuantityText
+FROM OrderDetails;
+
+
+==================================================== IFNULL
+SELECT ProductName, UnitPrice * (UnitsInStock + IFNULL(UnitsOnOrder, 0))
+FROM Products;
+
+====================================================
+// Mysql can do math on columns!
+
+
+==================================================== foreign key constraint
+CREATE TABLE Orders (
+    OrderID int NOT NULL,
+    OrderNumber int NOT NULL,
+    PersonID int,
+    PRIMARY KEY (OrderID),
+    FOREIGN KEY (PersonID) REFERENCES Persons(PersonID)
+);
+
+
+==================================================== PROCEDURE
+// https://www.javatpoint.com/mysql-procedure
+DROP PROCEDURE IF EXISTS get_user_name;
+DELIMITER $$
+CREATE PROCEDURE get_user_name(IN user_id INT)
+BEGIN
+    SELECT username FROM users WHERE id = user_id;
+END $$
+DELIMITER ; -- space needed
+
+// calling a procedure
+CALL get_user_name(1);
+
+==================================================== PROCEDURE
+// https://www.javatpoint.com/mysql-procedure
+DROP PROCEDURE IF EXISTS get_user_name;
+DELIMITER $$
+CREATE PROCEDURE get_user_name(IN user_id INT, OUT user_name VARCHAR(255))
+BEGIN
+    SELECT username INTO user_name
+    FROM users WHERE id = user_id;
+END $$
+DELIMITER ; -- space needed
+
+-- calling a stored procedure
+set @user_id=1;
+CALL myDatabase.get_user_name(@user_id, @user_name);
+select @user_name;
+
++--------------+
+| @user_name   |
++--------------+
+| brian spinos |
++--------------+
+
+====================================================

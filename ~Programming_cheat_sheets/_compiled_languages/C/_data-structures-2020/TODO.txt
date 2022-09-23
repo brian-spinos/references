@@ -1,0 +1,7 @@
+- finish graphs
+
+- update data
+- delete data
+- resize
+- traverse
+- search

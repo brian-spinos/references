@@ -1,0 +1,19 @@
+https://dev.to/ajones_codes/til-how-to-pause-an-infinite-javascript-loop-in-chrome-53gm
+
+Today I hit an infinite loop in a React component 😅
+
+You can stop infinite loops in chrome without force-closing the program in two ways:
+
+One: Dev Tools
+
+Dev tools (if not already open, go View -> Developer -> Developer Tools)
+Sources tab
+Press the Pause icon ⏸ near the top right of the Sources panel
+Use method two if you can’t open dev tools.
+
+Press the three vertical dots in the top right corner of Chrome
+Hover over “More tools...” near the mid-bottom
+Press “Task Manager”
+Select the tab you are experiencing the loop in
+Hit “End Process”
+Hopefully this can help someone!

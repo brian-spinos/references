@@ -1,0 +1,13 @@
+- recursion
+- use nullptr instead of NULL ?
+
+- update data
+- delete data
+- resize
+- traverse
+- search
+
+C++ classes fields default to private
+
+Why Do We Need Nullptr?
+To distinguish between an integer, 0 (zero), i.e. NULL, and an actual null of type pointer.

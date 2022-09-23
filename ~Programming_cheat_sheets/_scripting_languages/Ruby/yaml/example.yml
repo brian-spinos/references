@@ -1,0 +1,32 @@
+# comments
+# nesting is achieved by indentation
+# arrays are achieved by the "-" character
+
+field-1: this is a string, no need for quotes
+field-2: "value"
+field-3: 1
+field-with-nested:
+  foo: "aaa"
+  bar: "aaa"
+
+# Arrays 
+foo:
+  - bar: "aaa"
+  - bar: "aaa"
+  - bar: "aaa"
+  - bar: "aaa"
+
+#==================== using a default object to be injected elsewhere
+default-key: &default
+  foo: 1
+  bar: 2
+  baz: 3
+
+field-10:
+  <<: *default # will receive the default object
+  other: aaa
+
+field-20:
+  <<: *default # will receive the default object
+  other: bbb
+#====================

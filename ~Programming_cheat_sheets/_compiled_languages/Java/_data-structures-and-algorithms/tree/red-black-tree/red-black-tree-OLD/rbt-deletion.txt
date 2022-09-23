@@ -1,0 +1,57 @@
+//
+// WARNING: THIS IS NOT FINISHED, AND MAYBE NOT CORRECT...
+//
+
+
+
+
+
+
+
+
+RBT: find node to delete 
+
+then swap value with successor (which will have 0 or 1 child)
+
+
+now go to that successor:
+    - will have no LEFT child!
+
+    --> NOW we have the case where the node has o or 1 child, now we proceed to delete it!
+    --> if node has one valid child, sub it, then proceed with cases
+        - if node is red and 1 right null node, just delete it (sub by right child)
+        - if node is BLACK and has 1 right child, just delete it (sub by right child)
+
+
+cases should be evaluated in order:
+case1,2,3,4,5,6
+
+
+case 1 (Node to delete is ROOT)
+    - (???)
+
+
+case 2 (Sibling is RED)
+    - rotate Sibling the other way 
+
+
+case 3 (All BLACK)
+    - set Sibling to RED
+    - Go to the Parent and start from case 1
+
+
+case 4 (Parent is RED)
+    - set Sibling to RED
+    - set Parent to BLACK
+
+
+case 5 (Inner Nephew is RED)
+    - rotate the Nephew the other way 
+
+
+case 6 (Outter Nephew is RED)
+    - S=P.color
+    - P=B
+    - ON=B
+    - Rotate other way the S
+

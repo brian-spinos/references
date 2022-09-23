@@ -1,0 +1,9 @@
+- add output color red:
+
+String ANSI_RESET = "\u001B[0m";
+String ANSI_RED = "\u001B[31m";
+if (node.getColor().equals(RED)){
+    System.out.println(ANSI_RED+ node.getKey() + ANSI_RESET);
+}else{
+    System.out.println(node.getKey());
+}

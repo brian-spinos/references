@@ -1,0 +1,12 @@
+# Prim's algorithm
+
+- Prim's algorithm results in a minimum-spanning-tree
+
+- pick a node, and add it to the visited set
+    - choose the closest node, add it to the visited set
+- pick another node
+    - choose the closest node from the visited set of nodes, add it to the visited set
+- pick another node...
+    - ...
+    
+    

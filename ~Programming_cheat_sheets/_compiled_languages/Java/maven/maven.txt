@@ -1,0 +1,189 @@
+Maven
+
+
+============================== Install maven
+$ brew update
+$ brew install maven
+$ mvn -v # 3.8.3
+$ which mvn
+#=> /usr/local/bin/mvn
+# ~/.m2/repository # maven folder
+
+
+
+============================== Wrapper
+$ mvn -N io.takari:maven:wrapper
+    We can also specify the version of Maven:
+    $ mvn -N io.takari:maven:wrapper -Dmaven=3.5.2
+Afterwards, we need to specify the version of Maven to use in the wrapper properties file
+located in .mvn/wrapper/maven-wrapper.properties file.
+
+files created:
+.mvn/
+mvnw
+mvnw.cmd
+
+$ ./mvnw clean install
+
+
+============================== Create maven project in intellij
+intellij > new project > maven > next >
+name: mygradle > finish
+
+
+
+
+============================== pom.xml (example)
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>mygradle</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>
+
+
+==============================
+folders:
+mygradle/src
+    main
+      java
+      resources
+    test
+      java
+
+./target - folder where the compiled java code goes!
+
+============================== Commands
+
+# besides the "$ mvn clean", seems that if I run the last command, the previous commands also run!
+
+$ mvn clean - deletes the ./target folder
+
+$ mvn validate - checks if java code is correct? it does not compile the code, validate pom file?
+
+$ mvn build - does NOT exist!  use $ mvn compile
+
+$ mvn compile - compiles the java code and puts it in the ./target folder
+
+$ mvn test - runs junit?
+
+$ mvn package - compiles code, and creates the JAR file in ./target folder: /mygradle/target/mygradle-1.0-SNAPSHOT.jar
+
+$ mvn verify - verifies that the JAR file is correct ???
+
+$ mvn install - installs your jar, in the maven repository directory locally:
+                #=> ~/.m2/repository/org/example/mygradle/1.0-SNAPSHOT
+==============================
+
+mygradle
+    > Lifecycle -- This is a list of phases
+        > clean
+        > validate
+        > compile
+        > test
+        > package
+        > verify
+        > install
+        > site
+        > deploy
+    > Plugins - This is a list of plugins (a plugin is a collection of one or more goals)
+        > clean
+        > compiler
+        > deploy
+        > install
+        > jar
+        > resources
+        > site
+        > surefire
+
+============================== Maven plugins
+- A Maven plugin is a collection of one or more goals
+
+============================== Maven goals
+- Like a task?
+
+==============================
+==============================
+==============================
+==============================
+
+
+
+====================================================================================
+====================================================================================
+====================================================================================
+====================================================================================
+
+
+
+
+========================================== Links
+
+https://youtu.be/p0LPfK_oNCM
+
+https://www.baeldung.com/maven
+
+Maven usage
+https://youtu.be/sNEcpw8LPpo
+
+maven, eclipse, java ee
+https://www.google.com/amp/s/mobiarch.wordpress.com/2014/08/20/with-maven-eclipse-and-java-ee/amp/
+
+
+==========================================
+
+Maven build lifecycle:
+Clean -  // not a part of lifecycle??
+
+Validate - validate pom file?
+Initialize
+Generate sources
+Compile - compile aource code to byte-code, add to target folder
+TestCompile - compiles test classes
+Test - runs tests
+Package - generate jar or war
+Verify - verifies if jar is good
+Install - moves jar to local repository so other local projects can use it
+Deploy - copies the jar from local to remote repository
+
+
+
+
+==================================================================
+
+Create a Java EE 7 app
+$ mvn -DarchetypeGroupId=org.codehaus.mojo.archetypes \
+      -DarchetypeArtifactId=webapp-javaee7 \
+      -DarchetypeVersion=1.1 \
+      -DgroupId=com.example.myapp \
+      -DartifactId=my-blog \
+      -Dversion=1.0 \
+      -Darchetype.interactive=false \
+      --batch-mode \
+      -Dpackage=com.example.my-blog \
+      archetype:generate
+
+
+==================================================================
+
+
+.

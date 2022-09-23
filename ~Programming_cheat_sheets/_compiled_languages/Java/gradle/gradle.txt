@@ -1,0 +1,100 @@
+Gradle
+
+=============================================
+~/.gradle/caches # can be deleted
+
+Gradle ant task
+Gradle exclude dependencies
+
+============================================= Commands
+
+# The dependencies task will only execute on a single project.
+# If you run the task on the root project,
+# it will show dependencies of the root project and not of any subproject.
+# Be sure to always target the right project when running dependencies.
+$ gradle dependencyInsight --dependency logback --configuration compile.
+
+$ gradle build # runs also compile java, jars, tests :)
+$ gradle wrapper —gradle-version 3.5
+$ gradle -q projects # shows hierarchy of modules!
+$ gradle build --scan # creates UI for dependency tree?
+$ gradle build --refresh-dependencies # download dependencies
+
+============================================= Create a new gradle project:
+$ touch build.gradle
+# mkdir src # create the src folder and everything in it
+
+# add java plugin in gradle
+apply plugin: 'java'
+
+$ gradle build # runs also compile java, jars, tests :)
+
+============================================= gradle wrapper
+
+# how to generate the gradle wrapper
+$ gradle wrapper —gradle-version 3.5
+
+
+./gradlew # this is what its called, it is a script in the root folder!
+    -> this script uses the ./gradle folder, in that folder, there is a
+      .properties file, where it points to where to download gradle
+      (URL to a .zip file)!
+      there is also a .jar file, which is a small java application
+      to take care of downloading the right version
+
+============================================= Creating Multi-project Builds
+https://guides.gradle.org/creating-multi-project-builds/
+
+=============================================
+=============================================
+=============================================
+================================================================================
+================================================================================
+================================================================================
+
+
+// gradle configuration: scm
+
+}
+
+dependencies {
+    scm 'org.eclipse.jgit:org.eclipse.jgit:4.9.2.201712150930-r'
+}
+
+$ gradle -q dependencies --configuration scm
+$ gradle -q dependencyInsight --dependency commons-codec --configuration scm
+
+
+================================================================================
+
+// source sets ???
+src/main/java
+src/test/java
+
+
+// import existing projects ???
+- import
+- select build.gradle file
+- use only the option: use gradle wrapper
+
+
+// reference project
+https://github.com/brianspinos777/brian-test-feb-15-delete-me
+
+
+// settings.gradle
+rootProject.name = 'brian-test-feb-15-delete-me'
+include 'module-a'
+include 'module-b'
+
+
+// build.gradle
+dependencies {
+    compile project(':module-a') // <— make sure we add this so we can use the classes
+    compile project(':module-b') // <— " "
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+
+
+.
