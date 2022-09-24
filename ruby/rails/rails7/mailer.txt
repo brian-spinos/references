@@ -1,0 +1,30 @@
+
+
+
+//docs
+https://guides.rubyonrails.org/action_mailer_basics.html
+
+
+
+
+
+$ rails g mailer comments submitted
+
+// comments_mailer.rb
+def submit(comment)
+  @comment = comment 
+  mail to: "foo@foo.com", subject: "Hello"
+
+
+
+// mailer view:
+// ... ERB with @comment
+// you can use `render @comment` method !!!
+
+
+// CommentsMailerPreview 
+CommentsMailer.submitted(Comment.first)
+// has link to preview in the browser !!!
+// `CommentsMailer` is available in the controller !!!
+
+// you can see the email send in the rails logs !!!

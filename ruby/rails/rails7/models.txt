@@ -1,0 +1,54 @@
+class Article < ApplicationRecord
+  validates :title, presence: true
+  validates :body, presence: true, length: { minimum: 10 }
+
+
+  scope :active_articles -> { where(active: true)}
+end
+
+
+
+class Comment < ApplicationRecord
+  belongs_to :article
+end
+
+
+class Article < ApplicationRecord
+  has_many :comments
+  has_many :comments, dependent: :destroy
+
+  validates :title, presence: true
+  validates :body, presence: true, length: { minimum: 10 }
+
+
+  validates_presence_of :some_field
+end
+
+
+
+// https://blog.appsignal.com/2021/12/15/whats-new-in-rails7.html
+class Message < ApplicationRecord
+  encrypts :text
+end
+
+
+
+
+@tweet.increment! :likes_count
+
+Post.where(created_at: Time.now.all_day)
+Post.where(created_at: Time.now.all_day).to_sql
+
+article = Article.new(title: "Hello Rails", body: "I am on Rails!")
+article.save
+
+Article.find(1)
+Article.all
+
+
+
+
+
+class Ticket < ApplicationRecord
+  has_rich_text :content # $ rails action_text:install  # ???  # form.rich_text_area :content
+end

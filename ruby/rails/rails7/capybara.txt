@@ -1,0 +1,86 @@
+
+
+Capybara   (rails 7.0.4)
+
+- system test / end-to-end test
+
+- Rails comes with capibara by default !!!
+
+
+group :test do
+  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem "capybara"
+  gem "selenium-webdriver"
+  gem "webdrivers"
+end
+
+====================================================================================
+
+
+//  --css bootstrap brings in esbuild, but we want importmaps ... 
+$ rails new myCapybaraApp  # --css bootstrap -j importmap
+$ rails g scaffold user firstname:string lastname:string
+$ rails db:migrate
+
+// running the system test:
+// it will open the browser! (Chrome)
+// uses the fixture folder to create a model instance (record)
+$ ./bin/rails test:system
+$ ./bin/rails test test/system/users_test.rb
+
+// uses this file, for configuration:
+test/application_system_test_case.rb
+
+// generate the test:
+// create file: test/system/items_test.rb
+// you can reference the system tests that were generated with a scaffold!
+$ rails g system_test items
+
+
+
+// Some examples:
+
+visit users_url
+visit user_url(@user)
+assert_selector "h1", text: "Users"
+click_on "New user"
+click_on "Edit this user", match: :first
+fill_in "Firstname", with: @user.firstname
+assert_text "User was successfully created"
+ScreenshotHelper  # find screenshots in folder: ./tmp/screenshots/
+page.execute_script("alert(123)")  # not sure if it is something depricated...
+print page.html
+save_and_open_page  # create an HTML file: ./capybara-202209152215185014516713.html
+page.save_screenshot('screenshot.png') # creates a file: ./screenshot.png
+
+// DOCS
+https://guides.rubyonrails.org/testing.html#system-testing
+
+
+
+// If you want a headless option (a test that uses the terminal, and not the browser)
+- take a look into "capybara cuprite" 
+    -> in rails docs: https://guides.rubyonrails.org/testing.html#system-testing
+- OR: change the configs like this:
+// ./test/application_system_test_case.rb
+require "test_helper"
+class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
+  # driven_by :selenium, using: :chrome, screen_size: [1400, 1400]
+  driven_by :selenium, using: :headless_chrome
+end
+
+====================================================================================
+
+
+// capybara docs
+https://rubydoc.info/github/teamcapybara/capybara
+https://rubydoc.info/github/teamcapybara/capybara#the-dsl <<<<<<<<<<<<<<<<<<<<<<
+https://github.com/teamcapybara/capybara#setup <<<<< Capybara with Rspec integration ???
+https://github.com/teamcapybara/capybara#the-dsl <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+====================================================================================
+
+https://www.youtube.com/watch?v=1kwCymmoLaY # check this out, not sure
+
+====================================================================================

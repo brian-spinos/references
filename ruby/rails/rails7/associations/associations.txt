@@ -1,0 +1,154 @@
+
+
+// Has Many Through, Models and Queries
+https://github.com/brianspinos777/Programming_cheat_sheets/blob/master/_scripting_languages/Ruby/_rails/__associations.md
+
+
+
+
+===================================================================================================
+
+
+
+$ rails g scaffold Post title:string content:text
+$ rails g scaffold Comment content:text
+
+
+$ rails g migration AddPostIdToComments post:references
+
+
+$ bin/rails db:migrate
+
+
+===================================================================================================
+
+class Post < ApplicationRecord
+	has_many :comments, dependent: :destroy
+end
+
+class Comment < ApplicationRecord
+	belongs_to :post
+end
+
+
+===================================================================================================
+
+post1 = Post.create({title: "first post!", content: "this is the content of the first post"})
+post2 = Post.create({title: "second post!", content: "this is the content of the second post"})
+post3 = Post.create({title: "third post!!! :)", content: "this is the content of the third post"})
+
+comment1 = Comment.create({content: "I like the content of this post"})
+comment2 = Comment.create({content: "Well, its ok, I guess..."})
+comment3 = Comment.create({content: "Nice, 2nd"})
+comment4 = Comment.create({content: "2nd, YUP..."})
+comment5 = Comment.create({content: "Nice, 3nd"})
+comment6 = Comment.create({content: "3nd, YUP..."})
+
+post1.comments << comment1
+post1.comments << comment2
+post2.comments << comment3
+post2.comments << comment4
+post3.comments << comment5
+post3.comments << comment6
+
+
+Comment.find(1)
+Comment.find(1).post
+post1.comment_ids # [9,10]
+
+
+
+
+
+
+
+
+=================================================================================================== views - index  (post)
+
+- TODO: "add comment" button to post
+
+// just put the POST title and a link to show it 
+
+<p style="color: green"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<div id="posts">
+  <% @posts.each do |post| %>
+    <%#= render post %>
+    <hr />
+    <%= post.title %>
+    <p>
+      <%= link_to "Show this post", post %>
+    </p>
+  <% end %>
+</div>
+
+<hr />
+<%= link_to "New post", new_post_path %>
+
+
+
+=================================================================================================== views - show (post)
+
+- TODO: "add comment" button to post
+
+
+// - todo: edit comments 
+// - todo: add new comments ???
+
+// - link to specific comment
+
+
+  <!-- BRIAN START -->
+  <hr />
+  <h1>Comments</h1>
+  <ul>
+    <% post.comments.each do |comment| %>
+    <li><%= comment.content %></li>
+  <% end %>
+  </ul>
+  
+  <hr />
+  <!-- BRIAN END -->
+
+
+
+=================================================================================================== views - edit (post)
+
+- nothing to add here ???
+
+=================================================================================================== views - new (post)
+
+- nothing to add ???
+
+
+===================================================================================================
+===================================================================================================
+===================================================================================================  
+
+
+
+=================================================================================================== views - index  (comment)
+
+
+- display post id 
+
+
+=================================================================================================== views - show (comment)
+
+
+- display post id 
+
+- link back to post
+
+
+=================================================================================================== views - edit (comment)
+
+- nothing to add
+
+=================================================================================================== views - new (comment)
+
+??? how to attach the Post???
+
+===================================================================================================  

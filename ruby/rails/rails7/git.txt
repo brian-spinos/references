@@ -1,0 +1,90 @@
+
+
+// add existing project to git and to github
+
+==================================================================================================== HTTPS  <<<<<
+
+…or create a new repository on the command line
+echo "# rails-july-2022" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/brianspinos/rails-july-2022.git
+git push -u origin main
+
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/brianspinos/rails-july-2022.git
+git branch -M main
+git push -u origin main
+
+
+
+
+==================================================================================================== SSH
+
+…or create a new repository on the command line
+echo "# rails-july-2022" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:brianspinos/rails-july-2022.git
+git push -u origin main
+
+
+…or push an existing repository from the command line
+git remote add origin git@github.com:brianspinos/rails-july-2022.git
+git branch -M main
+git push -u origin main
+
+====================================================================================================
+
+$ git remote show #=> origin
+
+$ git remote rm origin
+
+
+
+==================================================================================================== setup github token
+
+// github token docs:
+// https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+
+
+
+git remote remove origin
+# $ git clone https://github.com/username/repo.git
+# git remote add origin https://[TOKEN]@github.com/[USER]/[REPO]
+git remote add origin https://ghp_ZQwwMybYQ7GteZAjVjwc8rrtZrFZja3ImtVU@github.com/brianspinos/rails-july-2022.git # token is modified :)
+git push
+git push --set-upstream origin main
+
+# Username: your_username
+# Password: ghp_ZQwwMybYQ7GteZAjVjwc8rrtZrFZja3ImtVU (token)
+
+
+$ git remote show origin  # will show the token... be careful
+
+====================================================================================================
+
+
+
+// remove git from project !!!
+rm -rf .git
+
+
+====================================================================================================
+
+
+git config --list 
+
+ git config --global user.name "brianspinos777"
+ git config --global user.email "brianspinos777@hotmail.com"
+
+
+
+
+
+

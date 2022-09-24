@@ -1,0 +1,98 @@
+rails 2022
+
+
+
+======================================================================== youtube
+
+https://www.youtube.com/watch?v=fmyvWz5TUWg
+
+https://www.youtube.com/watch?v=B3Fbujmgo60
+
+
+======================================================================== Homebrew
+
+https://brew.sh/
+
+// install:
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+$ brew install wget
+
+$ brew update
+
+======================================================================== rails  6.1.4.1 -- no, we are using rails 7.0.3, ruby-3.0.0
+
+
+- we are using rails 7.0.3, ruby-3.0.0
+
+///// IGNORE
+$ rails -v
+Rails 6.1.4.1
+
+///// IGNORE
+$ ruby -v
+ruby 2.6.3p62 (2019-04-16 revision 67580) [universal.x86_64-darwin19]
+
+
+
+======================================================================== rbenv - use ruby 3.1.2 --> USE RVM...
+
+- remove RVM now! -- ACTUALLY, use it !!! so we can use rails 7
+
+
+
+
+https://github.com/brianspinos777/Programming_cheat_sheets/blob/f1858fddad6891960afa2703412a643d7853c7ce/_scripting_languages/Ruby/rbenv_tutorial.md
+
+
+https://github.com/rbenv/rbenv (github)
+
+
+$ brew update && brew upgrade ruby-build
+
+$ brew install rbenv ruby-build
+
+$ rbenv init # will print some stuff, to be added to ~/.bash_profile
+
+--> Close your Terminal window and open a new one so your changes take effect.
+
+$ curl -fsSL https://github.com/rbenv/rbenv-installer/raw/main/bin/rbenv-doctor | bash  # verify it works
+
+
+# list latest stable versions:
+rbenv install -l
+
+# list all local versions:
+rbenv install -L
+
+# install a Ruby version:
+$ rbenv install 2.0.0-p247
+$ rbenv install 3.1.2   # <-----------------
+$ rbenv install 2.6.3
+
+
+
+rbenv global 2.0.0-p247 or rbenv local 2.0.0-p247
+
+rbenv local 1.9.3-p327
+rbenv local --unset
+rbenv global 1.8.7-p352
+
+$ rbenv versions  # list my installed versions
+$ rbenv version  # my current ruby version, to be used
+
+
+
+#
+# Run this command after you install a new version of Ruby, 
+# or install a gem that provides commands.
+#
+$ rbenv rehash
+
+
+$ rbenv which irb
+
+// UNINSTALL
+$ brew remove rbenv
+
+========================================================================

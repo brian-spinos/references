@@ -1,0 +1,103 @@
+
+
+// DOCS
+https://github.com/heartcombo/devise
+
+
+// youtube 
+https://www.youtube.com/watch?v=XJ27X06GVrI
+
+
+$ rails g controller static_pages landing_page dashboard
+
+/landing_page
+/dashboard
+
+
+// Gemfile 
+gem 'devise', github: 'heartcombo/devise', branch: 'main'
+
+$ bundle install
+
+
+
+#
+# Read the output !!!
+#
+$ rails g devise:install
+
+
+// development.rb -- line 5 ???
+config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+
+
+// routes.rb 
+root "static_pages#landing_page"
+
+
+// application.html.erb
+- add inside body tag, top:
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <% if current_user  %>
+      <%= current_user.email %>
+      <%= link_to "dashboard", static_pages_dashboard_path %>
+      <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete } %>  # 'data-turbo-method': :delete -- should work also
+      <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: false } %>  # 'data-turbo-method': :delete -- should work also
+    <% else  %>
+      <%= link_to "register", new_user_registration_path %>
+      <%= link_to "login", new_user_session_path %>
+    <% end  %>
+    <%= link_to "Home", root_path %>
+
+
+- http://localhost:3000/routes -- to see the routes
+
+
+
+$ rails generate devise <MODEL>
+$ rails generate devise User
+
+
+
+
+$ rails db:migrate
+
+
+
+// application_controller.rb
+before_action :authenticate_user!
+
+
+
+
+
+$ rails generate devise:views
+
+
+
+
+// views/devise/registrations/new.html.erb
+// views/devise/registrations/edit.html.erb
+// views/devise/passwords/new.html.erb
+// views/devise/passwords/edit.html.erb
+- in the form_for - add      ...  data: { turbo: false }) do |f|
+
+
+
+
+// static_pages_controller.rb 
+skip_before_action :authenticate_user!, only: [:landing_page]
+
+
+$ rails s
+
+
+test@test.com
+password123
+
+
+
+.

@@ -1,0 +1,195 @@
+
+
+// rails hotwire turbo:   use rails 7.0.4
+
+============================================================================== TODO:
+
+- can we run turbo with esbuild? --> $ rails new -c bootstrap # need to test...
+// https://stackoverflow.com/questions/72531796/why-do-new-rails-7-0-2-4-apps-come-with-bin-dev-but-rails-7-0-3-apps-do-not
+
+
+- get notes from this vieo:
+https://www.youtube.com/watch?v=0CSGsHnci2I
+
+==============================================================================
+
+// Docs (I did not go through this yet)
+https://www.hotrails.dev/turbo-rails
+
+
+============================================================================== OBSERVATIONS
+
+- these notes are not complete yet...
+
+// some videos
+https://www.youtube.com/watch?v=Qp6sxgjA-xY
+https://www.hotrails.dev/turbo-rails/turbo-frames-and-turbo-streams
+
+
+
+==============================================================================
+
+Rails version: 7.0.4
+Ruby version: ruby 3.0.0p0 (2020-12-25 revision 95aff21468) [x86_64-darwin19]
+
+//----------------- for reference:
+$ npm -v # 6.13.4
+$ yarn -v # 1.22.19
+$ node -v # v12.16.1
+
+
+==============================================================================
+
+- redis server needs to be running
+// start Redis server:
+$ brew services start redis
+# redis notes: https://github.com/rafaellevis07/my-notes/blob/main/Redis/redis.txt
+
+
+$ rails new hotwire-app-3
+$ cd hotwire-app-3/
+$ rails g scaffold item name:string description:string
+$ rails db:migrate
+$ rails s
+
+==============================================================================
+
+// these gems are already available:
+
+
+# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
+gem "importmap-rails"
+
+# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+gem "turbo-rails"
+
+# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+gem "stimulus-rails"
+
+============================================================================== model:
+
+class Item < ApplicationRecord
+	validates :name, presence: true
+	
+    # broadcasts     # `broadcasts` is the  same as below:
+	after_create_commit -> { broadcast_append_to "items" }
+	after_destroy_commit -> { broadcast_remove_to "items" }
+	after_update_commit -> { broadcast_replace_to "items" }
+end
+
+============================================================================== ItemsController
+
+# ...
+
+def index
+    @items = Item.all
+    @item = Item.new  # for the form that will be displayed in index.html  # <-----------------
+end
+
+# ...
+
+def create
+    @item = Item.new(item_params)
+
+    respond_to do |format|
+      if @item.save
+        format.turbo_stream {}  # views/items/create.turbo_stream.erb  # <-----------------
+        format.html { redirect_to item_url(@item), notice: "Item was successfully created." }
+        format.json { render :show, status: :created, location: @item }
+      else
+        format.turbo_stream { render turbo_stream: turbo_stream.replace(@item, partial: "items/form", locals: { item: @item }) }  # replace the form with the updated form HTML  # <-----------------
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+# ...
+
+
+============================================================================== app/views/items/create.turbo_stream.erb.rb
+
+<%= turbo_stream.append "items" do %>
+    <%= turbo_frame_tag dom_id(@item) do %>
+        <%= render "items/item", item: @item %>
+    <% end %>
+<% end %>
+
+// ... https://www.youtube.com/watch?v=0CSGsHnci2I @22:10 -- we need to render a form with a new record !!!
+
+
+============================================================================== app/views/items/edit.html.erb
+<h1>Editing item</h1>
+<%= turbo_frame_tag dom_id(@item) do %>
+<%= render "form", item: @item %>
+
+<br>
+
+<div>
+  <%= link_to "Show this item", @item %> |
+  <%= link_to "Back to items", items_path %>
+</div>
+<% end %>
+
+============================================================================== app/views/items/index.html.erb
+<p style="color: green"><%= notice %></p>
+
+<h1>Items</h1>
+
+<%= turbo_frame_tag "item_form" do %> <%# brian added this %>
+  <%= render "items/form", item: @item %> <%# brian added this %>
+<% end %> <%# brian added this %>
+
+<%= turbo_stream_from "items" %> <%# brian added this -- asks JS to create a stream %>
+<%= turbo_frame_tag "items" do %> <%# brian added this %>
+    <%= render @items %>
+<% end %> <%# brian added this %>
+
+<!-- <div id="items">
+  <%# @items.each do |item| %>
+    <%#= render item %>
+    <p>
+      <%#= link_to "Show this item", item %>
+    </p>
+  <%# end %>
+</div> -->
+
+<%= link_to "New item", new_item_path %>
+
+
+============================================================================== app/views/items/show.html.erb
+
+<p style="color: green"><%= notice %></p>
+
+<%= turbo_frame_tag dom_id(@item) do %>
+<%= render @item %>
+<% end %>
+
+<div>
+  <%= link_to "Edit this item", edit_item_path(@item) %> |
+  <%= link_to "Back to items", items_path %>
+
+  <%= button_to "Destroy this item", @item, method: :delete %>
+</div>
+
+
+============================================================================== app/views/items/_form.html.erb
+
+<%= form_with(model: item, id: dom_id(item)) do |form| %>
+// ...
+
+
+
+============================================================================== app/views/items/_item.html.erb
+
+<%= turbo_frame_tag dom_id(item) do %> <%# brian added this %>
+//...
+<% end %> <%# brian added this %>
+
+==============================================================================
+
+// we can see that the browser is updated with the creation of new records !
+$ rails c 
+$ Item.create({name: "aaa", description: "bbb"})
+$ Item.last.update(name: "aaa-UPDATE")
+$ Item.last.destroy

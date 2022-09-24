@@ -1,0 +1,8 @@
+
+https://www.youtube.com/watch?v=1BfCnjr_Vjg
+
+- a full duplex TCP/IP connection
+
+
+// websocket handshake:
+//...

@@ -1,0 +1,90 @@
+
+
+
+has_many through
+
+
+// DOCS
+https://guides.rubyonrails.org/association_basics.html#the-has-many-through-association
+
+===================================================================================================
+
+
+
+$ rails g scaffold Patient name:string address:text
+$ rails g scaffold Doctor name:text title:text
+$ rails g scaffold Appointment time:text notes:text patient:references doctor:references  # this needs to be last
+
+
+
+$ bin/rails db:migrate
+
+
+
+===================================================================================================
+
+
+class Doctor < ApplicationRecord
+	has_many :appointments
+  	has_many :patients, through: :appointments
+end
+
+
+
+
+class Appointment < ApplicationRecord
+  belongs_to :patient
+  belongs_to :doctor
+end
+
+
+
+class Patient < ApplicationRecord
+	has_many :appointments
+  	has_many :doctors, through: :appointments
+end
+
+
+
+
+
+===================================================================================================
+
+// reload console
+
+
+patient1 = Patient.create({name: "brian", address: "123 foobar st"})
+patient2 = Patient.create({name: "erich", address: "456 foobar st"})
+patient3 = Patient.create({name: "ana", address: "999 foobar st"})
+
+
+doctor1 = Doctor.create({name: "Dr. Phil", title: "PHD 1"})
+doctor2 = Doctor.create({name: "Dr. Strange", title: "PHD 2"})
+doctor3 = Doctor.create({name: "Dr. Schmidt", title: "PHD 3"})
+
+
+doctor1.patients = [patient1, patient2]
+doctor2.patients = [patient3]
+
+
+Appointment.delete_all
+Patient.delete_all
+Doctor.delete_all
+
+Patient.count
+Doctor.count
+Appointment.count
+
+===================================================================================================
+
+-- how do we want the views ???
+
+
+===================================================================================================
+
+
+
+
+===================================================================================================
+
+

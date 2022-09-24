@@ -1,0 +1,9 @@
+
+Turbo links  --> Turbolinks and UJS Replaced by Turbo and Stimulus --  Turbo and Stimulus (from Hotwire)
+
+
+// github:
+https://github.com/turbolinks/turbolinks
+
+
+- replace only the <body> and does not need to parse CSS and JS

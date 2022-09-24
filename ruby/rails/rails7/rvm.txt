@@ -1,0 +1,16 @@
+rvm.io
+
+// to bypass SSL issue on next command
+$ echo 'insecure' > ~/.curlrc
+
+// install + rails
+\curl -sSL https://get.rvm.io | bash -s stable --rails
+
+
+- close terminal 
+
+- check ruby rails versions 
+
+
+
+$ rvm list 

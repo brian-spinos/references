@@ -1,0 +1,84 @@
+
+
+
+<!-- https://guides.rubyonrails.org/action_view_helpers.html -->
+
+
+<%# this is a comment %>
+
+
+ dom_id(tweet)
+
+
+<%= content_tag :div, id: dom_id(@ticket) do %>
+  <p><%= @ticket.title %></p>
+  <p><%= @ticket.content %></p>
+<% end %>
+
+
+<%= render @post.comments %>
+
+
+<%= render "tweets/form", tweet: @tweet %>
+
+
+
+
+
+ distance_of_time_in_words(Time.now, Time.now + 15.seconds)
+# => less than a minute
+distance_of_time_in_words(Time.now, Time.now + 15.seconds, include_seconds: true)
+# => less than 20 seconds
+
+
+time_ago_in_words(3.minutes.from_now) # => 3 minutes
+
+
+
+
+
+my_hash = { 'first' => 1, 'second' => 'two', 'third' => [1,2,3] }
+debug(my_hash)
+
+--> <pre class='debug_dump'>---
+first: 1
+second: two
+third:
+- 1
+- 2
+- 3
+</pre>
+
+
+
+
+number_to_currency(1234567890.50) # => $1,234,567,890.50
+
+
+
+
+
+
+number_to_human(1234)    # => 1.23 Thousand
+number_to_human(1234567) # => 1.23 Million
+
+
+
+
+==================================================================================== link_to
+
+<!-- https://apidock.com/rails/ActionView/Helpers/UrlHelper/link_to -->
+<!--                  method: :put, -->
+<%= link_to "Foo",  { remote: true,  controller: "items", action: "show", id: @items[0], query: "ruby on rails" }, {class: 'foo-class', id: 'foo-id', data: { blah: 'foo-blah', confirm: 'are u sure?'}} %>
+
+<!-- 
+<a class="foo-class" id="foo-id" data-blah="foo-blah" data-confirm="are u sure?" data-remote="true" href="/items/1?query=ruby+on+rails">Foo</a>
+ -->
+
+
+
+<%= link_to @profile do %>
+  <strong><%= @profile.name %></strong> -- <span>Check it out!</span>
+<% end %>
+
+====================================================================================

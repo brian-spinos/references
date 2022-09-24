@@ -1,0 +1,11 @@
+
+
+//docs
+https://guides.rubyonrails.org/command_line.html#bin-rails-console
+
+
+
+
+$ rails c 
+
+#  reload!

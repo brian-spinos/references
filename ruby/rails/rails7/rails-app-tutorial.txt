@@ -1,0 +1,82 @@
+
+https://rubyonrails.org/
+
+
+https://guides.rubyonrails.org/ -- DOCS
+
+
+https://guides.rubyonrails.org/getting_started.html -- GETTING STARTED DOCS
+
+
+
+======================================================================== new app:
+
+$ gem install rails -v 6.1.4
+
+$ rails new blog
+$ cd blog
+$ bundle install
+$ bin/rails server
+
+
+======================================================================== $ bundle commands:
+
+$ bundle
+$ bundle install
+$ bundle add <gem>
+
+$ bundle info <gem>
+
+======================================================================== rails commands 
+
+
+//docs
+https://guides.rubyonrails.org/command_line.html
+
+
+
+$ rails new --help
+$ rails new blog
+$ rails new blog -T skip rails testing framework # because rspec is better  # THIS IS NOT TESTED YET
+$ rails new blog -d postgresql
+$ rails new blog  --css bootstrap -d postgresql   # I am 90% sure it is tested !!!
+$ rails new myapp --css tailwind
+$ rails new blog3 --css bootstrap
+
+
+$ rails s
+$ bin/rails server
+
+#
+# runs forman and css stuff 
+# what does this do? compile the CSS? watch for changes? - SEEMS NOT, need to refresh page    # creates some files ?  Procfile.dev 
+#
+$ ./bin/dev   
+
+
+$ bin/rails console
+
+
+$ rails test
+
+$ rails db:system:change --to=postgresql  # I think this changes to postgres ???
+
+$ rails g --help
+$ rails g model --help
+$ rails g controller --help
+
+$ bin/rails db:create  # not tested
+$ bin/rails db:migrate
+$ bin/rails db:rollback # undoes 1 migration
+
+
+========================================================================
+
+$ rails action_text:install  # ???
+
+
+
+
+
+
+.

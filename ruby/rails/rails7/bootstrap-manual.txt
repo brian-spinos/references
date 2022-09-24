@@ -1,0 +1,98 @@
+
+// docs
+https://github.com/twbs/bootstrap-rubygem
+
+gem 'bootstrap', '~> 5.1.3'
+$ bundle install
+
+app/assets/stylesheets/application.css  --> rename to: application.scss
+@import "bootstrap";
+
+$ rails g scaffold user firstname:string lastname:string
+
+$ rails db:migrate
+
+// routes
+root 'users#index'
+
+// users index view -- add your bootstrap code here
+
+
+$ rails s
+// refresh browser
+http://localhost:3000/
+
+======================================================================================= bootstrap WITH JAVASCRIPT (lazy approach)
+
+// gem file:
+gem 'bootstrap', '~> 5.1.3'
+
+// app/views/layouts/application.html.erb -- first thing inside <body>  tag:
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <h5 class="text-white h4">Collapsed content</h5>
+      <span class="text-muted">Toggleable via the navbar brand.</span>
+    </div>
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+
+======================================================================================= OR...   bootstrap WITH JAVASCRIPT (non-lazy approach)
+
+https://blog.eq8.eu/til/how-to-use-bootstrap-5-in-rails-7.html
+
+
+
+# Gemfile
+gem 'bootstrap', '~> 5.1.3'
+
+$ bundle install 
+
+
+$ bin/importmap pin bootstrap
+$ bin/importmap json # list the dependencies 
+
+
+// Make sure your layout (app/views/application.html.erb) contains:
+<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>  <%# this loads Sprockets/Rails asset pipeline %>
+<%= javascript_importmap_tags %> <%#  this loads JS from importmaps %>
+
+
+// stylesheets/application.scss    // <------ rename the file
+@import "bootstrap";
+
+
+// javascript/application.js
+import 'bootstrap'
+
+
+// app/views/layouts/application.html.erb -- first thing inside <body>  tag:
+<div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <h5 class="text-white h4">Collapsed content</h5>
+      <span class="text-muted">Toggleable via the navbar brand.</span>
+    </div>
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+
+
+$ rails assets:precompile  # so we can see the js css in the browser ???
+
+$ rails s
+
+# close the browser tab, and open it again !!!!
+
+================================================================================

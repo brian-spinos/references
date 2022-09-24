@@ -1,0 +1,71 @@
+
+
+Importmaps - handling js assets 
+
+rails 7 - has importmaps by default !
+
+
+- so we can do: 
+    import foo from "foo"
+    
+=====================================================================================================================
+
+- no package.json ??? seems not !!!
+
+=====================================================================================================================
+
+$ bin/importmap pin jquery   # add dependency
+$ bin/importmap unpin jquery   # delete dependency
+$ bin/importmap json # list the dependencies ???
+
+
+// see ./config/importmap.rb
+for the dependencies manifest !
+
+
+$ rails assets:precompile  # so we can see the js css in the browser ???
+    Seems if we just refresh the browser, the newly added JS dependencies are there !
+
+
+=====================================================================================================================
+
+// ./app/views/layouts/application.html.erb
+//...
+<%= javascript_importmap_tags %>
+//... 
+ 
+===================================================================================================================== 
+
+// what is in yout HTML:
+
+<script type="importmap" data-turbo-track="reload">
+{
+  "imports": {
+    "application": "/assets/application-7aec8ce6289f5f8090039d7028070a96485f5b81ae78ccac3b926d4d5f115224.js",
+    "@hotwired/turbo-rails": "/assets/turbo.min-e5023178542f05fc063cd1dc5865457259cc01f3fba76a28454060d33de6f429.js",
+    "@hotwired/stimulus": "/assets/stimulus.min-b8a9738499c7a8362910cd545375417370d72a9776fb4e766df7671484e2beb7.js",
+    "@hotwired/stimulus-loading": "/assets/stimulus-loading-1fc59770fb1654500044afd3f5f6d7d00800e5be36746d55b94a2963a7a228aa.js",
+    "jquery": "https://ga.jspm.io/npm:jquery@3.6.1/dist/jquery.js",
+    "controllers/application": "/assets/controllers/application-368d98631bccbf2349e0d4f8269afb3fe9625118341966de054759d96ea86c7e.js",
+    "controllers/hello_controller": "/assets/controllers/hello_controller-549135e8e7c683a538c3d6d517339ba470fcfb79d62f738a0a089ba41851a554.js",
+    "controllers": "/assets/controllers/index-2db729dddcc5b979110e98de4b6720f83f91a123172e87281d5a58410fc43806.js"
+  }
+}
+</script>
+
+=====================================================================================================================
+
+// Custom javascript:
+
+// wirte custom JS in the file:
+./app/javascript/application.js
+
+// you can import JS in the file above:
+import foo from "./foo"
+import bar from "./bar"
+
+-- seems the JS functions/variables are NOT available in the browser's javascript console :(
+
+
+=====================================================================================================================
+

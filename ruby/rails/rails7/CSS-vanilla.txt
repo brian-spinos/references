@@ -1,0 +1,196 @@
+
+
+======================================================================================================== tutorial/references
+
+https://www.w3schools.com/css/
+
+========================================================================================================
+
+- css height and width do not include: margin, border, padding
+auto - This is default. The browser calculates the height and width
+
+========================================================================================================
+
+body {
+    margin:0;
+}
+
+======================================================================================================== Footer
+
+.footer {
+    padding: 50px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+========================================================================================================
+
+!important
+
+-- it can be overriden by more specificity, example:
+  p  p.foo   p#bar  
+
+========================================================================================================
+
+width: calc(100% - 100px);
+
+width: max(50%, 300px);
+
+width: min(50%, 300px);
+
+======================================================================================================== transition
+
+.trans {
+    width: 100px;
+    height: 100px;
+    background: red;
+    transition: width 0.1s, height 0.2s;
+}
+
+.trans:hover {
+    width: 150px;
+    height: 150px;
+}
+
+======================================================================================================== css variables
+
+
+:root {
+  --blue: #1e90ff;
+  --white: #ffffff;
+}
+
+background-color: var(--blue);
+background-color: var(--white);
+
+
+-------------------------------
+
+button {
+  --blue: #0000ff; /* local variable will override global */
+  background-color: var(--white);
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  padding: 5px;
+}
+
+========================================================================================================
+
+box-sizing: border-box;
+
+
+* {
+  box-sizing: border-box;
+}
+
+allows us to include the padding and border in an element's total width and height.
+
+Without the CSS box-sizing Property
+By default, the width and height of an element is calculated like this:
+
+width + padding + border = actual width of an element
+height + padding + border = actual height of an element
+
+========================================================================================================
+
+SASS:
+https://www.w3schools.com/sass/default.php
+
+========================================================================================================
+
+css templates
+
+https://www.w3schools.com/css/css_templates.asp
+
+css snippets
+
+https://www.w3schools.com/css/css_snippets.asp
+
+
+css how tos 
+https://www.w3schools.com/howto/default.asp
+
+========================================================================================================
+
+favicon:
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+    https://perishablepress.com/wp/wp-content/images/2021/favicon-standard.png
+
+========================================================================================================
+
+FLEXBOX:
+
+parent:
+    - display: flex;
+    - flex-direction: row | row-reverse | column | column-reverse
+
+    // move items to left, center, right, spacing...
+    - justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly
+
+    // move items to top, bottom, center, ...
+    - align-items: flex-start | flex-end | center | baseline | stretch
+
+child:
+    // move single item to top, bottom, center, ...
+    - align-self: auto | flex-start | flex-end | center | baseline | stretch
+
+------------------------------------
+
+.parent {
+    width: 100vw;
+    height: 300px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly */
+    /* align-items: flex-start | flex-end | center | baseline | stretch */
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(214, 124, 22);
+    border: 1px solid black;
+    /* align-self: auto | flex-start | flex-end | center | baseline | stretch */
+}
+
+<div class="parent">
+    <div class="item">AAA</div>
+    <div class="item">AAA</div>
+    <div class="item">AAA</div>
+</div>
+
+========================================================================================================
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+        <link rel="stylesheet" href="./styles.css">
+        <link rel="icon" type="image/x-icon" href="https://perishablepress.com/wp/wp-content/images/2021/favicon-standard.png">
+    </head>
+    <body>
+        <div class="view">
+            <h1>Hello</h1>
+            <p style="color:red;">A red paragraph.</p>
+        </div>
+    </body>
+</html>
+
+========================================================================================================
+
+========================================================================================================
+
+========================================================================================================
+
+========================================================================================================
+

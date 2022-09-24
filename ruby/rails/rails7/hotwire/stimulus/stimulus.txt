@@ -1,0 +1,141 @@
+
+
+//
+// THIS IS JUST NOTES, NOTHING WAS TESTED, YET... FYI
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Hotwire - Stimulus  (version 3.1.0 ???)
+
+=========================================================================================================
+
+// comes by default in rails 7 ?
+
+=========================================================================================================
+
+// videos (OLD)
+https://www.youtube.com/watch?v=kCMB3-NHip0
+https://www.youtube.com/watch?v=85bQbmzlckc (better, stimulus 2.0)
+
+=========================================================================================================
+
+https://github.com/hotwired/stimulus // github
+
+https://stimulus.hotwired.dev/
+
+https://stimulus.hotwired.dev/reference/controllers
+
+https://stimulus.hotwired.dev/reference/targets // something in your HTML that you want access in the controller
+
+
+https://stimulus.hotwired.dev/reference/actions
+
+https://stimulus.hotwired.dev/reference/lifecycle-callbacks
+
+========================================================================================================= actions
+
+<div data-controller="gallery">
+  <button data-action="click->gallery#next">…</button> // click, focus, blur, etc...
+</div>
+
+
+// controllers/gallery_controller.js
+import { Controller } from "@hotwired/stimulus"
+
+export default class extends Controller {
+  next(event) {
+    // …
+  }
+}
+
+========================================================================================================= view/controller example #1
+
+// controllers/hello_controller.js
+import { Controller } from "stimulus"
+export default class extends Controller {
+    static targets = ['output'];
+
+    connect(){
+        console.log('connected');
+        console.log(this);
+        console.log(this.element); // the HTML element that has the `data-controller="hello"`
+        this.outputTarget.textContent = 'Hello';
+    }
+
+    doStuff(event){
+        event.preventDefault()
+        console.log('doStuff !!!);
+        this.outputTarget.classList.toggle('hidden')
+    }
+}
+
+
+
+// any rails view file:
+<div data-controller="hello">
+  <h1 data-target="hello.output"></h1>
+  <button data-action="click->hello#doStuff">click me</button>
+</div>
+
+========================================================================================================= view/controller example #2
+
+<!--HTML from anywhere-->
+<div data-controller="hello">
+  <input data-hello-target="name" type="text">
+
+  <button data-action="click->hello#greet">
+    Greet
+  </button>
+
+  <span data-hello-target="output">
+  </span>
+</div>
+
+// hello_controller.js
+import { Controller } from "stimulus"
+
+export default class extends Controller {
+  static targets = [ "name", "output" ]
+
+  greet() {
+    this.outputTarget.textContent =
+      `Hello, ${this.nameTarget.value}!`
+  }
+}
+
+=========================================================================================================
+
+<div data-controller="search">
+  <input type="text" data-search-target="query">
+  <div data-search-target="errorMessage"></div>
+  <div data-search-target="results"></div>
+</div>
+
+// controllers/search_controller.js
+import { Controller } from "@hotwired/stimulus"
+
+export default class extends Controller {
+  static targets = [ "query", "errorMessage", "results" ]
+  // …
+}
+
+
+Singular	this.[name]Target	The first matching target in scope
+Plural	this.[name]Targets	An array of all matching targets in scope
+Existential	this.has[Name]Target	A boolean indicating whether there is a matching target in scope

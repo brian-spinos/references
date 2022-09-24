@@ -1,0 +1,296 @@
+
+
+
+======================================================================================================================== 
+
+
+
+// youtube
+https://www.youtube.com/watch?v=77GvSdc2Pf8
+
+
+
+
+
+
+<!-- _ticket.html.erb -->
+<%= content_tag :div, id: dom_id(ticket) do %>
+  <p><%= ticket.title %></p>
+  <p><%= ticket.content %></p>
+<% end %>
+
+
+
+
+
+
+
+
+<!-- _comment.html.erb -->
+<%= content_tag :div, id: dom_id(comment) do %>
+  <p><%= comment.content %></p>
+  <hr />
+<% end %>
+
+
+
+
+
+
+
+
+<!--  show.html.erb -->
+<%= turbo_stream_from @ticket %>
+<%= turbo_frame_tag 'ticket' do  %>
+	<%= render @ticket %>
+	<!-- link to edit -->
+	<!-- link to back ... ***  -->
+<%= end %>
+<div id="comments"> <!-- <<<<<<<<<<<<<<<<<<<<<<< seems this pluralized ID is important -->
+	<h1>Comments</h1>
+	<%= render @ticket.comments %>
+</div>
+
+
+
+
+
+
+
+
+<!-- new.html.erb -->
+<%= turbo_frame_tag 'ticket' do  %>
+	<!-- new.html.erb normal content -->
+<% end %>
+
+
+
+
+
+
+
+
+<!-- edit.html.erb -->
+
+
+
+
+
+
+
+
+<!-- index.html.erb -->
+
+
+
+
+
+
+
+
+<!-- Model -->
+class Ticket < ApplicationModel
+	#...
+
+	# broadcasts     # `broadcasts` is the  same as below:
+	after_create_commit -> { broadcast_append_to self }
+	after_destroy_commit -> { broadcast_remove_to self }
+	after_update_commit -> { broadcast_replace_to self }
+end
+
+
+
+
+
+
+
+
+<!-- Model -->
+class Comment < ApplicationModel
+	#...
+
+	# broadcasts_to :ticket     # `broadcasts` is the  same as below:
+	after_create_commit -> { broadcast_append_to ticket }
+	after_destroy_commit -> { broadcast_remove_to ticket }
+	after_update_commit -> { broadcast_replace_to ticket }
+end
+
+
+
+
+
+
+
+
+<!-- Controller -->
+// CommentsController#create
+   format.turbo_stream   # comments/create.turbo_stream.erb
+
+
+
+
+
+
+
+<!-- Controller -->
+
+
+
+
+
+
+
+
+========================================================================================================================
+// youtube:
+https://www.youtube.com/watch?v=Qp6sxgjA-xY
+
+
+// tutorials
+https://www.hotrails.dev/
+
+
+// docs
+https://turbo.hotwired.dev/  
+https://turbo.hotwired.dev/reference/drive  <---- ??? docs ???
+https://turbo.hotwired.dev/handbook/introduction
+https://hotwired.dev/
+
+
+
+
+========================================================================================================================
+========================================================================================================================
+========================================================================================================================
+========================================================================================================================
+========================================================================================================================
+
+
+// I think rails already has it...
+- hotwire-rails GEM 
+        - has turbo-rails ???  -- new version of turbo-links !!! supports forms, links, hrefs 
+        - has stimulus-rails ??? - installs stimulus.js in asset pipeline, so I can write JS controllers ???
+$ rails hotwire:install - configs, redis config for action cable websockets
+
+
+
+
+
+
+// MODEL 
+// when CRUD on a record: send changes to the browser, from backend
+class Tweet < ApplicationRecord
+	validates :body, presence: true
+
+	after_create_commit { broadcast_append_to "tweets" } // tweets - is a stream/channel --- in the view: turbo_frame_tag "tweets"
+	after_create_commit { broadcast_prepend_to "tweets" } // tweets - is a stream/channel --- in the view: turbo_frame_tag "tweets"
+	after_update_commit { broadcast_replace_to "tweets" }
+	after_destroy_commit { broadcast_remove_to "tweets" }
+end
+
+
+
+
+
+<!-- index.html.erb -->
+<%= turbo_stream_from "tweets" %>  // makes JS create a stream !!! cool // stream is automatically opened/closed when we move away from the page
+<%= turbo_frame_tag "tweet_form" do %>
+	<%= render "tweets/form", tweet: @tweet %>
+<% end %>
+<%= turbo_frame_tag "tweets" do %>
+    <%= render @tweets %>
+<% end %>
+
+
+
+
+
+
+<!-- _tweet.html.erb -->
+<%= turbo_frame_tag dom_id(tweet) do %>
+    <!-- ... -->
+    <%= tweet.body %>
+    <%= link_to "Edit", edit_tweet_path(tweet) %>
+    <!-- ... -->
+<% end %>
+
+
+
+
+
+
+<!-- _form.html.erb -->
+<%= form_with(model: tweet, id: dom_id(tweet)) do |form| %>
+...
+...
+
+
+
+
+
+
+<!-- edit.html.erb -->
+<%= turbo_frame_tag dom_id(@tweet) do %>
+	<!-- ... -->
+    <%= render 'form', tweet: @tweet  %>
+    <%= link_to "Cancel", @tweet %>
+	<!-- link to show -->
+	<!-- link to back -->
+<% end %>
+
+
+
+
+
+
+<!-- show.html.erb -->
+<%= turbo_frame_tag dom_id(@tweet) do %>
+    <%= render @tweet  %>
+<% end %>
+<!-- link to edit -->
+<!-- link to back -->
+
+
+
+
+
+
+// rails console
+irb(main):001:0> Tweet.create(body: "Hello World")  # rails view is updated !!!
+irb(main):001:0> Tweet.last.destroy
+
+
+
+
+
+
+
+
+// Controller
+def create
+...
+else
+  format.turbo_stream { render turbo_stream: turbo_stream.replace(@tweet, partial: "tweets/form", locals: { tweet: @tweet }) }
+...
+
+
+// likes controller
+
+// retweet controller
+
+
+
+========================================================================================================================
+
+
+
+========================================================================================================================
+
+
+
+========================================================================================================================
+
+
+========================================================================================================================
+
+

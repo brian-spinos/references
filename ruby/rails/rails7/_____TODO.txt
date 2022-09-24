@@ -1,0 +1,36 @@
+
+
+- bootstrap container, rows
+- Rails hotwire-TURBO - replacing html
+- add header from bootstrap
+- bootstrap modals
+- add real model for our form example - with generators
+- capybara -- EDUARDO: not sure  -- https://www.youtube.com/watch?v=1kwCymmoLaY
+- mailer
+- cancan
+- sidekiq <<
+- background jobs (rails jobs) -- https://guides.rubyonrails.org/active_job_basics.html  ???
+- file storage
+
+
+
+- Rails hotwire-stimulus - like react.js - js controllers and html views
+- Rails hotwire-strada - for mobile??
+- associations - has_one
+- turbo links # is it deprecated ???
+- action cable: is now application cable?  -- https://guides.rubyonrails.org/action_cable_overview.html
+- chat ? hotwire ?  or action cable ?
+- gem stripe - for payment
+- redis
+- debugging:   just type: `debugger` in rails !!!
+    - https://edgeguides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+
+- heroku
+- amazon s3
+- amazon ec2 ?
+- esbuild
+
+
+============================================================================= DONE
+- Importmaps
+

@@ -1,0 +1,37 @@
+esbuild   
+
+
+(compiles javascript to 1 file?)
+
+- comes with rails 7 by default ? 
+    NO, the default is importmaps
+
+
+- An extremely fast javascript bundler  -- faster than rollup? webpack?   (100x times faster)
+
+- (a bundle is a big JS file that was the result of compiling many JS files together) 
+
+// docs
+esbuild.github.io
+
+
+$ rails new blog -j esbuild --css bootstrap 
+
+========================================================================================================================
+
+// need to check this video:
+https://www.youtube.com/watch?v=qht_vqnYeEM
+
+
+importmap vs esbuild ??? (is this an apple to apple comparison? YES)
+
+========================================================================================================================
+
+$ yarn add bootstrap # to add js dependency ???
+
+======================================================================================================================== ???
+# Procfile.dev
+
+web: bin/rails server -p 3000
+js: yarn build --watch
+css: yarn build:css --watch

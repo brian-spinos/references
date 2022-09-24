@@ -1,0 +1,35 @@
+
+
+
+ @article = Article.find(params[:id])
+
+
+
+def fake_models_path(foo) # just for the fake model
+    "/fake_messages"
+end
+helper_method :fake_models_path
+
+
+
+
+
+
+
+#================= controller with nested resources:
+
+# /tickets/1/comments/2
+
+def new
+  @comment = @ticket.comments.new
+end 
+
+#...
+
+def set_ticket
+    @ticket = Ticket.find(params[:ticket_id])
+end
+
+#...
+
+#=================

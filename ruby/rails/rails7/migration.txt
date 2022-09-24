@@ -1,0 +1,59 @@
+
+//docs
+https://api.rubyonrails.org/v7.0.3.1/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html#method-i-add_column
+
+
+https://github.com/brianspinos777/Programming_cheat_sheets/blob/master/_scripting_languages/Ruby/_rails/__rails_cheat_sheat.md#generators
+
+
+
+$ bin/rails generate migration AddStatusToArticles status:string
+$ bin/rails generate migration AddStatusToComments status:string
+
+$ bin/rails db:migrate
+$ bin/rails db:migrate RAILS_ENV=development
+
+
+
+$ rake db:setup
+$ rake db:create
+
+
+
+:primary_key, :string, :text, :integer, :bigint, :float, :decimal, :numeric, :datetime, :time, :date, :binary, :blob, :boolean.
+
+:index  ????
+
+========================================================================================================================
+
+
+// docs
+https://guides.rubyonrails.org/active_record_migrations.html
+
+
+class CreateProducts < ActiveRecord::Migration[7.0]
+  def change
+    create_table :products do |t|
+      t.string :name
+      t.text :description
+
+      t.timestamps
+    end
+  end
+end
+
+========================================================================================================================
+
+class CreateProducts < ActiveRecord::Migration[7.0]
+  def change
+    create_table :products do |t|
+      t.string :name
+      t.numeric :rate_per_hour
+      t.datetime :started_at, null: false
+      t.text :description
+
+      t.timestamps
+    end
+  end
+end
+========================================================================================================================

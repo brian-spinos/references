@@ -1,0 +1,11 @@
+
+
+
+
+https://rubyonrails.org/
+
+
+https://guides.rubyonrails.org/ -- DOCS
+
+
+https://guides.rubyonrails.org/getting_started.html -- GETTING STARTED DOCS

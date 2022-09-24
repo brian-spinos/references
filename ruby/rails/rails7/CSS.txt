@@ -1,0 +1,52 @@
+============================================================================================================== This needs work
+
+// /blog/app/assets/stylesheets/brian.css
+
+
+
+// /blog/app/views/layouts/application.html.erb
+    ->  <%= stylesheet_link_tag 'brian.css' %>
+
+
+
+// /blog/app/assets/config/manifest.js  <----  
+    -> //= link brian.css
+    -> restart server
+
+
+// /blog/app/assets/builds/application.css
+
+
+
+#
+# The Rails asset pipeline provides an assets:precompile rake task to allow assets 
+# to be compiled and cached up front rather than compiled every time the app boots
+#
+$ RAILS_ENV=production rails assets:precompile
+$ RAILS_ENV=development rails assets:precompile
+
+#
+# css is compiled and added to these folders:
+#
+/blog/public/assets/application-21904115cce58159345f79b69e273cc423bd1aa90cea6a097ac50c0f9d970cdb.css 
+/blog/app/assets/builds/application.css 
+
+
+ #================== not sure which one to use...
+ $ yarn run build:css   
+ $ ./bin/dev   
+ $ rake assets:precompile
+
+============================================================================================================== this works  
+
+/blog/app/assets/stylesheets/my-custom-css.css // create your file
+
+
+/blog/app/assets/stylesheets/application.bootstrap.scss // import your file
+    -> @import './my-custom-css.css';
+
+$ rails assets:precompile 
+
+$ rails s
+
+# refresh page! 

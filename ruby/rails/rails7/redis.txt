@@ -1,0 +1,31 @@
+
+// Redis
+Sidekiq works closely with Redis 4.0+ to organize job queues and store statistics. Redis (stands for Remote Dictionary Server) 
+is a fast open source in-memory key-value data store (Database). 
+It provides sub-millisecond response times and allows real-time applications to run millions of requests per second. 
+In other words Redis is a database, a key-value store.
+
+
+// To install redis:
+$brew install redis
+
+
+//To run redis:
+$redis-server. #Once running, you don't need to start again.
+or
+
+// start Redis server:
+$ brew services start redis
+
+// stop Redis server:
+$ brew services stop redis
+
+// restart Redis server:
+$ brew services restart redis
+
+
+// Command line-interface (repl into the redis queue 
+$redis-cli
+	#In the repl
+	 KEYS *  #It gets every object that is on the queue
+

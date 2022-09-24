@@ -1,0 +1,71 @@
+
+================================================================================================== Install Package Control
+
+cmd+shift+P 
+
+then type:
+"Package Control: Install Package"
+
+and select it!
+
+
+
+// to exit:
+cmd+shift+P 
+
+
+
+================================================================================================== erb plugin:
+
+// add ERB to sublime:
+
+cmd+shift+P to get the command menu,
+ then type:
+ "Package Control: Install Package" 
+ 
+ and select it
+
+then type: 
+
+ "SublimeERB"
+
+ and select it
+
+
+ ==================================================================================================
+
+ cmd+shift+P  then type: "install"
+
+
+ "SCSS" <- plugin
+ 
+ 
+ ================================================================================================== subl command line
+
+// https://www.sublimetext.com/docs/command_line.html
+
+
+// add subl commandline (bash profile):
+export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+
+// Or, if you are lazy, just run a command to do it:
+$ echo 'export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"' >> ~/.bash_profile
+
+// Or, using symlink:
+$ ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
+
+
+// configure sublime as editor (bash profile)
+export EDITOR='subl -w'
+
+------------------------- If not working:
+
+- restart sublime (worked last time!)
+
+// you might need to remove an existing one:
+$ cd /usr/local/bin  
+$ rm -rf subl
+$ ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
+ 
+ 
+ ==================================================================================================

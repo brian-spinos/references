@@ -1,0 +1,313 @@
+
+// form docs:
+https://guides.rubyonrails.org/form_helpers.html
+
+
+==============================================================================================================================
+
+
+https://medium.com/@michellekwong2/form-tag-vs-form-for-vs-form-with-fa6e0ac73aac#:~:text=Another%20difference%20between%20form_with%20compared,to%20be%20a%20bad%20thing.
+
+
+
+==============================================================================================================================
+
+// https://apidock.com/rails/v5.2.3/ActionView/Helpers/FormHelper/form_with ???
+<%= form_with(
+{  
+  model: @post, 
+  data: { behavior: "autosave" }, 
+  html: { name: "go", id: "aaa", class: "bbb" }
+}
+) do |form| %>
+
+
+
+==============================================================================================================================
+
+
+form_for ...
+
+
+
+form_with ...
+
+
+
+<%= form_with model: [@post, Comment.new] do |form| %>
+    <%= form.text_area :content, size: "20x5" %>
+    <%= form.submit %>
+<% end %>
+
+
+
+
+
+<h1>New Article</h1>
+
+<%= form_with model: @article do |form| %>    <!--  form_with:  When you pass it a model, it will act the same way as form_for would. -->
+  <div>                                       <!--               And if you don’t pass a model, form_with behaves like form_tag -->
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+========================================================================================================================== fields_for helper
+
+https://guides.rubyonrails.org/form_helpers.html#the-fields-for-helper
+
+
+
+
+<%= form_with model: @person do |person_form| %>
+  <%= person_form.text_field :name %>
+  <%= fields_for :contact_detail, @person.contact_detail do |contact_detail_form| %>
+    <%= contact_detail_form.text_field :phone_number %>
+  <% end %>
+<% end %>
+
+
+==============================================================================================================================
+
+<% # the model to be used:
+@fake_user = FakeModel.new({
+      field1: "f1",
+      field2: true, # checkbox (ruby boolean)
+      field3: "f3", # radio_button
+      field4: "f4", # text_area
+      field5: "f5", # hidden_field
+      field6: "f6", # password_field
+      field7: "f7", # number_field
+      field8: "f8", # 
+      field9: "f9", # 
+      field10: Time.now, # 
+      field11: Time.now, #
+      field12: Time.now, # 
+      field13: Time.now, # 
+      field14: Time.now, # 
+      field15: "f15", # 
+      field16: "f16", # 
+      field17: "f17", # 
+      field18: "f18", # 
+      field19: "#00FF00"  # 
+    })
+%>
+
+<!-- 
+  f.label
+
+  f.text_field
+  f.check_box
+  f.radio_button
+  f.text_area
+  f.hidden_field
+  f.password_field
+  f.number_field
+  f.select -- many examples
+  f.range_field
+  f.date_field
+  f.time_field
+  f.datetime_local_field
+  f.month_field
+  f.week_field
+  f.search_field
+  f.email_field
+  f.telephone_field
+  f.url_field
+  f.color_field
+
+  f.submit
+-->
+
+<!-- 
+  form_with:  When you pass it a model, it will act the same way as form_for would.
+  And if you don’t pass a model, form_with behaves like form_tag
+-->
+<%= form_with model: @fake_user do |f| %>  
+  <div>                                     
+    <%= f.label :field1, "***Field1***" %><br>
+    <%= f.text_field :field1 %>
+  </div>
+
+  <div>                                     
+    <%= f.label :field1 %><br>
+    <%= f.text_field :field1 %>
+  </div>
+
+  <div>                                     
+    <%= f.label :field2, "I own a dog" %>
+    <%= f.check_box :field2 %>
+  </div>
+
+  <div> 
+    <!-- Not sure this is correct -->
+    <%= f.radio_button :field3, "child" %>
+    <%= f.label :field3_child, "I am younger than 21" %>
+    <br>
+    <%= f.radio_button :field3, "adult" %>
+    <%= f.label :field3_adult, "I am over 21" %>
+  </div>
+
+  <div>    
+    <%= f.label :field4 %><br>
+    <%= f.text_area :field4, size: "70x5" %><br>
+  </div>
+
+  <div>
+    <%= f.label :field5 %><br>
+    <p>HIDDEN FIELD</p>
+    <%= f.hidden_field :field5, value: "123" %>
+  </div>
+
+  <div>
+    <%= f.label :field6 %><br>
+    <%= f.password_field :field6, value: "abc123" %>
+  </div>
+
+  <div>
+    <%= f.label :field7 %><br>
+    <%= f.number_field :field7, in: 1.0..20.0, step: 0.5 %>
+  </div>
+
+  <div>
+    <%= f.label :field8 %><br>
+    <%= f.select :field8, ["Berlin", "Chicago", "Madrid"] %>
+  </div>
+
+  <div>
+    <%= f.label :field8 %><br>
+    <%= f.select :field8, [["Berlin2", "BE"], ["Chicago2", "CHI"], ["Madrid2", "MD"]] %>
+  </div>
+
+  <div>
+    <%= f.label :field8 %><br>
+    <%= f.select :field8, [["Berlin", "BE"], ["Chicago", "CHI"], ["Madrid", "MD"]], selected: "CHI" %>
+  </div>
+
+  <div>
+    <%= f.label :field8 %><br>
+    <%= f.select :field8,
+      {
+        "Europe" => [ ["Berlin", "BE"], ["Madrid", "MD"] ],
+        "North America" => [ ["Chicago", "CHI"] ],
+      },
+      selected: "CHI" %>
+  </div>
+
+  <div>
+    <%= f.label :field9 %><br>
+    <%= f.range_field :field9, in: 1..100 %> 
+  </div>
+
+  <div>
+    <%= f.label :field10 %><br>
+    <%= f.date_field :field10 %>
+  </div>
+
+  <div>
+    <%= f.label :field11 %><br>
+    <%= f.time_field :field11 %>
+  </div>
+
+  <div>
+    <%= f.label :field12 %><br>
+    <%= f.datetime_local_field :field12 %>
+  </div>
+
+  <div>
+    <%= f.label :field13 %><br>
+    <%= f.month_field :field13 %>
+  </div>
+
+  <div>
+    <%= f.label :field14 %><br>
+    <%= f.week_field :field14 %>
+  </div>
+
+  <div>
+    <%= f.label :field15 %><br>
+    <%= f.search_field :field15 %>
+  </div>
+
+  <div>
+    <%= f.label :field16 %><br>
+    <%= f.email_field :field16 %>
+  </div>
+
+  <div>
+    <%= f.label :field17 %><br>
+    <%= f.telephone_field :field17 %>
+  </div>
+
+  <div>
+    <%= f.label :field18 %><br>
+    <%= f.url_field :field18 %>
+  </div>
+
+  <div>
+    <%= f.label :field19 %><br>
+    <%= f.color_field :field19 %>
+  </div>
+
+  <!-- =============================================================== -->
+
+  <%# f.radio_button :age, "child" %>
+  <%# f.label :age_child, "I am younger than 21" %>
+  <%# f.radio_button :age, "adult" %>
+  <%# f.label :age_adult, "I am over 21" %>
+
+  <%# f.text_area :message, size: "70x5" %>
+  <%# f.hidden_field :parent_id, value: "foo" %>
+  <%# f.password_field :password %>                        
+  <%# f.number_field :price, in: 1.0..20.0, step: 0.5 %>
+  <%# f.range_field :discount, in: 1..100 %> 
+  <%# f.date_field :born_on %>
+  <%# f.time_field :started_at %>
+  <%# f.datetime_local_field :graduation_day %>
+  <%# f.month_field :birthday_month %>
+  <%# f.week_field :birthday_week %>
+  <%# f.search_field :name %>
+  <%# f.email_field :address %>
+  <%# f.telephone_field :phone %>
+  <%# f.url_field :homepage %>
+  <%# f.color_field :favorite_color %>
+
+  <div>
+    <%= f.submit "Create!" %>
+  </div>
+<% end %>
+
+
+
+==============================================================================================================================
+
+
+
+
+
+
+
+==============================================================================================================================
+
+
+
+
+
+
+==============================================================================================================================
+
+
+
+
+
+

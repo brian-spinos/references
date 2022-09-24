@@ -1,0 +1,117 @@
+Heroku 
+
+
+
+-- THIS NEEDS IMPROVEMENTS...
+-- THIS NEEDS IMPROVEMENTS...
+-- THIS NEEDS IMPROVEMENTS...
+-- THIS NEEDS IMPROVEMENTS...
+-- THIS NEEDS IMPROVEMENTS...
+-- THIS NEEDS IMPROVEMENTS...
+
+
+================================================================================================================
+
+// youtube
+https://www.youtube.com/watch?v=bQ2wXZf9irA
+https://www.youtube.com/watch?v=TZkRZsLsjFM # we might not need this...
+
+
+================================================================================================================
+
+
+$ heroku update
+
+$ heroku login  # will open the browser to log in
+
+$ heroku open -a spinos-rails-july-2022 # open a specific app on the browser  # https://spinos-rails-july-2022.herokuapp.com/
+
+ heroku ps  -a spinos-rails-july-2022
+
+
+# push to heroku
+$ git push heroku master
+
+
+# restart server
+$ heroku restart
+
+================================================================================================================
+
+
+
+
+// push your changes to git 
+
+$ heroku create 
+$ git push heroku main
+$ bundle lock --add-platform x86_64-linux # if there is an error... ???
+// add git changes 
+$ git push heroku main # again
+$ heroku run rake db:migrate
+$ heroku addons:create heroku-redis:hobby-dev -a mighty-tundra-27310  # use my heroku app name
+
+// add root route in rails app 
+
+// visit heroku link provided in logs
+
+
+
+================================================================================================================
+
+// login 
+https://id.heroku.com/login
+
+
+https://dashboard.heroku.com/apps
+
+
+// create new app:
+https://dashboard.heroku.com/new-app
+
+// my app name: spinos-rails-july-2022
+// click: create app
+
+
+// link to my app in heroku dashboard:
+https://dashboard.heroku.com/apps/spinos-rails-july-2022/deploy/heroku-git
+    - there is documentation on how to connect heroku to your github app
+
+
+
+================================================================================================================ Dyno
+
+- what is it? like 1 process ?
+
+- Think of a dyno as a lightweight container that runs the command specified in the Procfile.
+
+
+================================================================================================================
+
+rails credentials:edit --environment=development
+rails credentials:edit --environment=production
+
+
+
+================================================================================================================ heroku CLI
+
+#
+# I am not sure if I have an old version
+#
+$ which heroku
+/usr/local/bin/heroku
+
+
+#
+# on my machine: 
+#
+$ heroku git:remote -a <your-app-name-here>
+
+$ git push heroku master # pushes your changes, triggers deploy
+
+$ heroku run rails db:migrate
+
+$ heroku run rails console
+
+
+================================================================================================================
