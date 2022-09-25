@@ -15,3 +15,9 @@ Base64 converts data to 6 bits
 The way it does it is: 
 Takes 3 bytes, and turns it into 4 pieces of 6 bit information.
 
+=======
+
+- takes every 6 bits of a binary data (everything is binary, really) and maps to one of the
+64 charactes of base64
+- used when we are limited to transfer ASCII data
+  And we need to transfer images, files, etc (any binary data)
