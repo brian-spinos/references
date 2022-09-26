@@ -94,6 +94,17 @@ y = Foo::MY_CONSTANT # 123
 #  exceptions
 #===========================================================================
 # class
+
+class SayHello
+  def self.from_the_class
+    "Hello, from a class method"
+  end
+
+  def from_an_instance
+    "Hello, from an instance method"
+  end
+end
+
 #===========================================================================
 
 
