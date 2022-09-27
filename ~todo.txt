@@ -1,0 +1,10 @@
+- pry
+- jwt 
+- http
+- sql
+- has_one association 
+- ruby closures
+- ruby `debugger`
+    https://edgeguides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+
+- react hooks
