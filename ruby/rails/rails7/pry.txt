@@ -1,0 +1,63 @@
+Pry
+
+
+// create a rails app:
+$ rails new blog
+$ cd blog
+$ bundle install
+$ rails g scaffold user firstname:string lastname:string
+$ bin/rails db:migrate
+$ bin/rails server
+
+
+
+=======================================================
+
+http://pry.github.io/
+https://github.com/pry/pry
+
+gem 'pry', '~> 0.14.1'
+
+$ gem install pry # did not work
+
+# foo.rb
+require 'pry'
+# start a REPL session
+binding.pry
+
+
+$ exit # to exit 
+$ exit! # to exit the rails server also
+
+=======================================================
+
+gem 'pry-rails', '~> 0.3.9' # Use Pry as your rails console
+
+======================================================= other debugging strategies
+
+https://www.youtube.com/watch?v=JnQ72lZeQyI
+
+<%#= debug(params) %>
+
+
+
+// in the view, so you can play with the scope in the terminal:
+// https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+// You can exit the debugging session at any time and continue your 
+// application execution with the continue (or c) command. Or, to exit both 
+// the debugging session and your application, use the quit (or q) command.
+//
+<% debugger %>
+// `Ctrl-D` ??? maybe not
+// $ continue -> to exit
+// $ help -> for help
+
+// to kill the rails server:
+$ lsof -i tcp:3000
+$ kill -9 <PID>
+
+
+// displays a 'terminal' in the rails app itself - in the browser
+<% console %>
+
+=======================================================
