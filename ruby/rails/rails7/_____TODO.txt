@@ -1,7 +1,6 @@
-
-
 - bootstrap container, rows
 - Rails hotwire-TURBO - replacing html
+    - turbo: https://www.youtube.com/watch?v=0CSGsHnci2I
 - add header from bootstrap
 - bootstrap modals
 - add real model for our form example - with generators
@@ -12,7 +11,8 @@
 - background jobs (rails jobs) -- https://guides.rubyonrails.org/active_job_basics.html  ???
 - file storage
 
-
+- Why do new rails 7.0.2.4 apps come with bin/dev, but rails 7.0.3 apps do not?
+    - https://stackoverflow.com/questions/72531796/why-do-new-rails-7-0-2-4-apps-come-with-bin-dev-but-rails-7-0-3-apps-do-not
 
 - Rails hotwire-stimulus - like react.js - js controllers and html views
 - Rails hotwire-strada - for mobile??
@@ -22,15 +22,11 @@
 - chat ? hotwire ?  or action cable ?
 - gem stripe - for payment
 - redis
-- debugging:   just type: `debugger` in rails !!!
-    - https://edgeguides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-
 - heroku
 - amazon s3
 - amazon ec2 ?
-- esbuild
-
 
 ============================================================================= DONE
-- Importmaps
 
+- debugging:   just type: `debugger` in rails !!!
+    - https://edgeguides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
