@@ -1,1 +1,59 @@
+JWT
 
+========================================================================================================================================
+// https://jwt.io/
+
+========================================================================================================================================
+- Server validation:
+    - basically the server grabs the header and payload and encrypts it with the servers private key
+    - and it should match the 'signature' part of the JWT token.
+
+========================================================================================================================================
+// example:
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+
+========================================================================================================================================
+// example with details:
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9 (header in base64)
+.
+eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ (payload in base64)
+.
+SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c (signature in base64)
+
+========================================================================================================================================
+// format
+{header in base64}.{payload in base64}.{signed-with-server-private-key(header + payload)}
+
+========================================================================================================================================
+// when the server receives a JWT token, it first checks if it is valid (if it was signed with the servers private key)
+// then the server can use it
+
+- the client holds the session data in the JWt token
+- no need to be stored in the server
+
+========================================================================================================================================
+// JS can do base64:
+window.btoa("brian") //=> 'YnJpYW4='
+window.atob('YnJpYW4=') //=> 'brian'
+
+
+window.atob('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9')
+// '{"alg":"HS256","typ":"JWT"}'
+
+
+window.atob('eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ')
+// '{"sub":"1234567890","name":"John Doe","iat":1516239022}'
+
+
+window.atob('SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c') // not valid base64, because it is of this calculation:
+    HMACSHA256(
+    base64UrlEncode(header) + "." + base64UrlEncode(payload), // header and payload
+    "your-256-bit-secret"                                     // secret key
+    )
+
+========================================================================================================================================
+// For reference
+window.encodeURI("___ ___%___^___`___<___>___[___]___|____\"___")
+'___%20___%25___%5E___%60___%3C___%3E___%5B___%5D___%7C____%22___'
+
+========================================================================================================================================

@@ -1,4 +1,3 @@
-- jwt 
 - http
 - sql
 - has_one association 
