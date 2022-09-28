@@ -1,0 +1,7 @@
+//...
+
+$ brew install mysql
+$ brew info mysql
+$ brew uninstall mysql --ignore-dependencies # not tested
+$ brew services list
+$ brew uninstall  mysql
