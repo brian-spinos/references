@@ -1,4 +1,5 @@
 - http
+- redis
 - sql
 - has_one association 
 - ruby closures
