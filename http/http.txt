@@ -1,13 +1,13 @@
+HTTP
+
+----------------------------------------------------------------------------------------------------
 
 https://youtu.be/iYM2zFP3Zn0
 
-
-
+----------------------------------------------------------------------------------------------------
 HEADERS:
-
 // has multiple key values in it!
 Cookie: foo=bar; foo2=bar2; foo3=bar3
-
 
 ----------------------------------------------------------------------------------------------------
 Http lifecycle
@@ -15,10 +15,15 @@ Http lifecycle
 // extremely good, but long
 https://dev.to/dangolant/things-i-brushed-up-on-this-week-the-http-request-lifecycle-
 
- Browser - data - http - port - tcp (3 way handshake) - break data into pieces - ip - add source and dest ip - send data
+Browser - data - http - port - tcp (3 way handshake) - break data into pieces - ip - add source and dest ip - send data
 
 The 3 way handshake os to establish a tcp connection session with the server!
 
-
 Http request and response are sent through TCP, which breaks it into packets!
 
+----------------------------------------------------------------------------------------------------
+# HTTP
+- request
+- response
+- headers
+----------------------------------------------------------------------------------------------------

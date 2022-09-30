@@ -1,7 +1,0 @@
-# HTTP
-
-- request
-
-- response
-
-- headers

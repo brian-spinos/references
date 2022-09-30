@@ -2,31 +2,79 @@
 ----------------------------------------------------------------------------------------------------
 
 #
-# find files in a folder
+# Find files in a folder, shows list of file paths
 #
 $ find . -type f -name '*.hs'
 
+----------------------------------------------------------------------------------------------------
+
+# backup a file:
+$ cp a.txt b.txt
+
+# copy multiple files to a folder:
+$ cp a.txt b.txt myFolder
+
+# copy contents of 'Src_directory' to inside the 'Dest_directory' folder
+cp -R Src_directory Dest_directory
+
+----------------------------------------------------------------------------------------------------
+# List of processes
+$ ps aux
+$ top
+
+#
+# Size of folder?
+# $ du -sh myfolder
+# 
+$ du -sh . # 6.7M	.
+
+
+#
+# TCP/IP connections?
+#
+$ netstat
+$ netstat -a 
+$ netstat -p tcp
+$ netstat -a | grep -i "LISTEN"
+
+----------------------------------------------------------------------------------------------------
+# Lsof displays files currently open in apps
+# Run lsof -i to see the list of applications communicating over the internet.
+# -i displays open network connections and the name of the process that is using the connection
+# -iTCP  -iUDP
+# -i@111.222.333.444  # IP
+
+$ lsof -i 
+$ lsof -i tcp:3000
+$ lsof -i udp:57579
+$ lsof -i | grep TCP
+$ lsof -i | grep UDP
 ---------------------------------------------------------------------------------------------------- (Need review) 
 
 $ sudo netstat -tulpn
 $ ps aux | nginx
 $ service ???
-$ top
-$du -sh myfolder
 $ df -ah
 $ ip addr show eth0
 
 ------------------------------------------------ Terminal vs shell vs bash
 
-The terminal is the GUI window that you see on the screen. It takes commands and shows output. 
+- Terminal:
+The terminal is the GUI window that you see on the screen. 
+It takes commands and shows output. 
 
-The shell is the software that interprets and executes the various commands that we type in the terminal. 
+- Shell:
+The shell is the software that interprets and executes 
+the various commands that we type in the terminal. 
 
+- Bash:
 Bash is a particular shell.
 
 
-------
-
-Terminal is a program that run a shell , in the past it was a physical device (Before terminals were monitors with keyboards, they were teletypes) and then its concept was transferred into software , like Gnome-Terminal .
+Terminal is a program that runs a shell, 
+in the past it was a physical device 
+(Before terminals were monitors with keyboards, they were teletypes) 
+and then its concept was transferred into software, 
+like Gnome-Terminal.
 
 ----------------------------------------------------------------------------------------------------

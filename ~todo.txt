@@ -1,9 +1,9 @@
+- react hooks
+- docker
 - http
-- redis
 - sql
 - has_one association 
 - ruby closures
-- react hooks
 
 
 HTML
@@ -13,8 +13,8 @@ GIT
 HTTP
 UDP
 IP
-
-JWT
+TCP/IP
+networking / internet 
 ssl / key store / trust store
 
 Websockets
@@ -27,11 +27,8 @@ XSRF
 OWASP
 Grammar 
 base64
-TCP/IP
 Sockets
 OSI
-Docker
 Scrum
-networking / internet 
 radio signal
 Bash
