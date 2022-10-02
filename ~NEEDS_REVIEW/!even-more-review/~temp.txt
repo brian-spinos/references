@@ -1,5 +1,4 @@
 
-
 ---------------------------------------------------------------------------------------------------- TODO
 SCRUM 
 GIT diagrams
@@ -7,8 +6,6 @@ get from iphone browser
 get from iphone notes 
 fet from iphon todo-app 
 write my own react.js framework 
-
-
 
 ----------------------------------------------------------------------------------------------------
 Ports
@@ -140,8 +137,7 @@ Websockets - https://medium.com/@martin.sikora/node-js-websocket-simple-chat-tut
 Shift command 5 - record screen
 
 ---------------------------------------------------------------------------------------------------- Nasm
- https://youtu.be/5eWiz3soaEM
-
+https://youtu.be/5eWiz3soaEM
 
 // Nasm cool
 https://cs.lmu.edu/~ray/notes/nasmtutorial/
@@ -202,5 +198,27 @@ RFC? ACL request?
 Acl - access control list - a list of users and permissions on files, folders, programs
 
 Rfc - request for comment
+
+----------------------------------------------------------------------------------------------------
+Play with mongoDB, mysql, and 1 million records and see the performance
+Rails GIT SEE FIRST COMMIT!!!
+Make a live rails app that I can add stuff I want
+A closure is a function that can be used as an argument, and has access to variable references in its body that are no longer in scope, namely, the parent scope at the moment of the closure's definition.
+Build web framework in php
+See email about rails routes
+http://code.jeremyevans.net/presentations/mwrc2015/#1
+Inspinia
+Finish c pointer tutorial
+http://programmers.stackexchange.com/questions/152240/how-do-i-completely-self-study-computer-science
+http://matteomelani.wordpress.com/2011/11/11/a-simple-web-server-is-ruby/
+http://net.tutsplus.com/tutorials/ruby/active-record-the-rails-database-bridge/
+http://lccezinha.github.io/ruby/2013/01/30/playing-with-socket-in-ruby/
+https://m.youtube.com/watch?v=_-CD_5YhJTA - angular 2
+http://www.eecs.wsu.edu/~ananth/CptS223/Lectures/index.htm
+http://stackoverflow.com/questions/16046364/origin-http-localhost-is-not-allowed-by-access-control-allow-origin
+- work on design patterns
+- work on graph databases
+- write a node chat-app, file-uploader...
+- add OSI model and TCP/IP
 
 ----------------------------------------------------------------------------------------------------
