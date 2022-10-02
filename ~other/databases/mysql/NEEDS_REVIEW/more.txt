@@ -1,0 +1,89 @@
+
+
+
+SQL:
+
+
+distinct: add repeated values
+
+column with some ordered values, just numbers, and letters // SELECT MIN(column_name) MAX // AVG(col) //  SUM(column_name)
+
+
+null values // WHERE column_name IS NULL; // WHERE column_name IS NOT NULL;
+
+
+fields with patterns // WHERE columnN LIKE pattern;  "brian" "br%" "_rian" // the `_` matches 1 character
+
+
+// WHERE Country IN ('Germany', 'France', 'UK');  // NOT IN
+
+
+
+// join: join two tables based on a field to be matched
+
+// inner join: return only matched records
+
+// left join: return all left table records, and the matched records from the other table
+
+//  full join: return all records (might not have a match)
+
+
+// GROUP BY: COUNT(), MAX(), MIN(), SUM(), AVG()
+//  - have a field that repeats in groups, like country: USA, USA, USA, Brasil, Brasil, Brazil
+
+
+// HAVING  -- to be used with GROUP BY + aggreate functions and has a role of a 'WHERE' clause,
+//             since the 'WHERE' clause cant be used with GROUP BY
+
+
+
+// EXISTS - check for existence of a row
+
+
+
+// IFNULL(col, "default-value") // COALESCE(col, "default-value") // same?
+
+
+
+
+
+// // stored procedures: ???
+// CREATE PROCEDURE SelectAllCustomers @City nvarchar(30), @PostalCode nvarchar(10)
+// AS
+// SELECT * FROM Customers WHERE City = @City AND PostalCode = @PostalCode
+// GO;
+
+
+
+// EXEC SelectAllCustomers @City = 'London', @PostalCode = 'WA1 1DP';
+
+
+
+
+// BACKUP DATABASE databasename
+// TO DISK = 'filepath';
+
+
+
+
+
+
+// ALTER TABLE Customers
+// ADD Email varchar(255);
+
+
+// CREATE UNIQUE INDEX index_name
+// ON table_name (column1, column2, ...);
+
+
+
+// dates
+// DATE - format YYYY-MM-DD
+// DATETIME - format: YYYY-MM-DD HH:MI:SS
+// TIMESTAMP - format: YYYY-MM-DD HH:MI:SS
+// YEAR - format YYYY or YY
+
+
+// data types: https://www.w3schools.com/sql/sql_datatypes.asp
+
+
