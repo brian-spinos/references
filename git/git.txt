@@ -4,13 +4,21 @@ git checkout:
 git reset:
     - moves head
 
-
+#
 # list configs
+#
 $ git config --list
 $ git config --local --list
 $ git config --global --list
 $ git config --system --list
 
+#
 # get config entry
+#
 $ git config --get user.name
 $ git config --get user.email
+
+#
+# Git reflog - records the movement of the HEAD
+#
+$ git reflog # show HEAD movement history
