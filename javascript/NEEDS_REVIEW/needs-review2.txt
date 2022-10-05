@@ -1,0 +1,147 @@
+//----------------------------------------------------------------------------------------------
+
+https://axios-http.com/docs/post_example
+https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+
+axios.post(url, {name: "brian"})
+.then(response => {
+	console.log(response)
+}).catch(error => {
+	console.log(error)
+})
+
+// fu (MHB) TJ TD C
+fetch(url, {
+	method: 'POST',
+	headers: {
+		'Content-Type': 'application/json'
+	},
+	body: JSON.stringify(data)
+}).then(response => response.json())
+.then(data => {
+	console.log(data)
+}).catch(error => {
+	console.log(error)
+})
+
+
+//----------------------------------------------------------------------------------------------
+
+// ================= ASYNC
+// async means a fn returns a promise
+// await works ONLY inside async functions
+
+
+const foo = async () => { 
+	let x = null
+	try{
+		x = await bar()
+	} catch(error){
+		console.log(error)
+	}
+
+	return 123 // returns a resolved promise !!!
+}
+
+//----------
+
+let getUsers = async () => {
+	let p = new Promise((res,rej) => {
+		res("hey")
+		// rej("ERROR")
+	})
+
+	return p
+}
+
+getUsers()
+    .then((data) => {
+    	console.log(data)
+    })
+    .catch((err) => {
+    	console.log(err)
+    })
+
+
+
+//----------------------------------------------------------------------------------------------
+
+
+// Promise
+let promise = new Promise((resolve, reject) => {
+    resolve(data)
+    // reject(error)
+})
+
+
+promise
+    .then((data) => {
+        console.log(data)
+    })
+    .catch((error) => {
+        console.log(error.message)
+    })
+
+
+/////
+
+
+new Promise(fnRR) .then .catch 
+
+Promise.resolve(data)
+Promise.reject(error)
+//----------------------------------------------------------------------------------------------
+// hoisting
+
+move declarations to top of scope (script or fn)
+
+// "=" is not hoisted
+//----------------------------------------------------------------------------------------------
+fetch(url, {
+	'method': 'POST',
+	headers: {
+		'Content-Type': 'application/json'
+	},
+	body: JSON.stringify(body)
+}).then(res => res.json())
+.then(data => {
+  doSomething(data);
+});
+
+//----------------------------------------------------------------------------------------------
+
+// ts - get month and year
+// from epoch  and string
+
+ts = new Date()  // Thu Jul 14 2022 21:20:58 GMT-0700 (Mountain Standard Time)
+ts.getFullYear() // 2022
+ts.getMonth()    // 6    -- it is ZERO BASED, so just add 1.
+
+ts2 = +new Date() // 1657858889972
+
+x = new Date(1657858889972)
+x.getFullYear() // 2022
+x.getMonth()  // 6    -- it is ZERO BASED, so just add 1.
+
+y = new Date("Thu Jul 14 2022 21:20:58 GMT-0700 (Mountain Standard Time)")
+y.getFullYear() // 2022
+y.getMonth()  // 6    -- it is ZERO BASED, so just add 1.
+
+
+new Date("Fri Feb 14 2009") // Sat Feb 14 2009 00:00:00 GMT-0700 (Mountain Standard Time)
+
+//----------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------
+
+
+
+

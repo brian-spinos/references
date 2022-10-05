@@ -95,3 +95,65 @@ vertx.executeBlocking(future -> {
 });
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+class FutureUtil {
+
+	/**
+	 * convert from future to normal value
+	 */
+	public static Object get(Vertx vertx, Future<T> future) throws Exception {
+		Object result = null;
+		vertx.executeBlocking(fut -> {
+			future.setHandler(ar -> {
+				if (ar.succeeded()) {
+					fut.complete(ar.result());
+				}else{
+					fut.fail(ar.cause());
+				}
+			})
+		}, res -> {
+		    //handle result...
+		    if (res.succeeded()) {
+		    	result = res.result();
+		    }else{
+		    	throw res.cause();
+		    }
+		});
+
+		return result;
+	}
+}
+
+
+
+class Foo {
+	public static int getInt(){
+		try{
+			int res = FutureUtil.get(vertx, MyIntFuture());
+		}catch(Exception ex){
+
+		}
+	}
+	
+}
+
+
+// Thread.sleep(5000);
+
+
+//==========
+
+vertx.executeBlocking(future -> {
+    executeLongRunningBlockingOperation();
+    future.complete();
+}, res -> {
+    // ... handle result
+});
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
