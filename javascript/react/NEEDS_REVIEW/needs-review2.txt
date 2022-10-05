@@ -1073,6 +1073,31 @@ const Child = forwardRef((props, ref) => {
 });
 
 //----------------------------------------------------------------------------------------------
+useRef
+
+useCallback - can take params ?, whats with deps
+
+useLayoutEffect
+
+
+
+// Hooks
+//   MyHook: "heeey"
+
+
+-----
+
+import {useSelector, useDispatch} from 'react-redux';
+  const users = useSelector(state => state.users);
+  const DISPATCH = useDispatch();
+
+
+
+
+React.memo()
+
+-----
+
 //----------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------
