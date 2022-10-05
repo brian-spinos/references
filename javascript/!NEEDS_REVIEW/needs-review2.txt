@@ -132,6 +132,47 @@ new Date("Fri Feb 14 2009") // Sat Feb 14 2009 00:00:00 GMT-0700 (Mountain Stand
 
 //----------------------------------------------------------------------------------------------
 
+// coins
+
+
+// vac 
+
+// values [1,2,3,4,5]
+
+// ammount: 7
+
+// coin count
+
+// a  a-v + 1
+
+
+
+// GOTCHA:   ammount + 1
+// dp[0] = 0
+// if(v <= a)
+// return -1;
+
+const getMinCoinCountForChange = (ammount, coinValues) => {
+    const dp = Array(ammount + 1);
+    dp.fill(999,0,ammount + 1);
+    dp[0] = 0;
+
+    for(let a=1;a<(ammount + 1);a++){
+        coinValues.forEach(v => {
+            // if(v <= a) console.log(`dp[${a}] = Math.min(dp[${a}], dp[${a - v}] + 1);`);
+            if(v <= a) dp[a] = Math.min(dp[a], dp[a - v] + 1);
+        });
+    }
+
+    // console.log(dp);
+    if(dp[ammount] === 999) return -1;
+    return dp[ammount]; 
+
+}
+
+
+getMinCoinCountForChange(7, [1,3,4,5]); // 2
+
 //----------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------
