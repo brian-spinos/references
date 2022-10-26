@@ -14,3 +14,55 @@ export NVM_DIR="$HOME/.nvm"
 $ nvm ls
 $ nvm install <version>
 $ nvm use <version>
+
+
+
+=============
+
+-- seems I need to run the command for every new terminal window :(
+nvm install 4
+nvm use 4
+
+
+// change npm version:
+npm install -g npm@8.17.0
+
+
+nvm install node # "node" is an alias for the latest version
+nvm install 14.7.0 # or 16.3.0, 12.22.1, etc
+
+
+// list versions:
+nvm ls-remote
+nvm ls
+
+
+// get the path:
+nvm which 12.22
+
+
+
+// do I need to reinstall yarn ???
+npm uninstall yarn
+npm install --global yarn
+
+
+
+======================================================================================== set default Node.js version 
+
+- seems that in a new terminal window, the node.js is set to the default version of node.js
+- to update that:
+
+
+$ nvm alias default v16.13.0
+$ node -v         # v16.13.0
+
+$ npm -g list
+
+========================================================================================
+ // try 
+ $ nvm alias default v14.17.4  # for persistent node version ???
+
+ npm cache clean
+
+npm install --verbose
