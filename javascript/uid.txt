@@ -1,0 +1,17 @@
+
+========================================================================================
+
+
+// npm package
+https://www.npmjs.com/package/uid
+
+
+// import { uid } from "uid"; // not secure
+import { uid } from 'uid/secure';
+// import { uid } from 'uid/single'; // not secure
+
+
+
+uid(64) // "cb02f50fff81677a2b9af3cd2d96ec5846246f0c5038979344fa846500758e69"
+
+========================================================================================
