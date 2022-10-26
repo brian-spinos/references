@@ -1,4 +1,47 @@
 //----------------------------------------------------------------------------------------------
+
+
+https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+
+
+//---------------------------------------------------------------------------------------------- GET
+
+const url = "https://jsonplaceholder.typicode.com/users/1"
+fetch(url, {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+}).then(res => res.json())
+.then(data => {
+    console.log(data)
+}).catch(error => {
+    console.log(error)
+})
+
+
+//---------------------------------------------------------------------------------------------- POST
+
+const url = "https://jsonplaceholder.typicode.com/users"
+let data = {
+    name: 'aaa',
+    lname: 'bbb'
+};
+
+fetch(url, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+}).then(res => res.json())
+.then(data => {
+    console.log(data)
+}).catch(error => {
+    console.log(error)
+})
+
+//----------------------------------------------------------------------------------------------
 // fu (MHB) TJ TD C
 fetch(url, {
 	method: 'POST',
@@ -15,5 +58,14 @@ fetch(url, {
 })
 
 
+
+//---------------------------------------------------------------------------------------------- APIs
+
+https://jsonplaceholder.typicode.com/users/1
+
+
+https://www.anapioficeandfire.com/
+https://www.anapioficeandfire.com/api/books/1
+https://www.anapioficeandfire.com/api/characters/1
 
 //----------------------------------------------------------------------------------------------

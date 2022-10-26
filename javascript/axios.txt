@@ -1,7 +1,61 @@
 //----------------------------------------------------------------------------------------------
 
+
+//docs
+https://axios-http.com/docs/intro
 https://axios-http.com/docs/post_example
-https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+https://axios-http.com/docs/example
+
+
+$ npm install axios
+
+import axios from 'axios';
+
+//---------------------------------------------------------------------------------------------- POST
+
+
+const url = "https://jsonplaceholder.typicode.com/users"
+let data = {
+    name: 'aaa',
+    lname: 'bbb'
+};
+
+axios.post(url, data)
+    .then(response => {
+        console.log(response)
+    }).catch(error => {
+        console.log(error)
+    })
+
+//---------------------------------------------------------------------------------------------- GET
+
+
+const url = "https://jsonplaceholder.typicode.com/users/1"
+let data = {
+    name: 'aaa',
+    lname: 'bbb'
+};
+
+axios.get(url)
+  .then(function (response) {
+    // handle success
+    console.log(response);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+  });
+
+
+
+//----------------------------------------------------------------------------------------------
+
+
+
+
 
 axios.post(url, {name: "brian"})
 .then(response => {
