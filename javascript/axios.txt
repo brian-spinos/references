@@ -1,6 +1,5 @@
 //----------------------------------------------------------------------------------------------
 
-
 //docs
 https://axios-http.com/docs/intro
 https://axios-http.com/docs/post_example
@@ -12,7 +11,6 @@ $ npm install axios
 import axios from 'axios';
 
 //---------------------------------------------------------------------------------------------- POST
-
 
 const url = "https://jsonplaceholder.typicode.com/users"
 let data = {
@@ -49,13 +47,7 @@ axios.get(url)
     // always executed
   });
 
-
-
 //----------------------------------------------------------------------------------------------
-
-
-
-
 
 axios.post(url, {name: "brian"})
 .then(response => {
@@ -63,3 +55,5 @@ axios.post(url, {name: "brian"})
 }).catch(error => {
 	console.log(error)
 })
+
+//----------------------------------------------------------------------------------------------

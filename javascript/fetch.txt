@@ -68,4 +68,8 @@ https://www.anapioficeandfire.com/
 https://www.anapioficeandfire.com/api/books/1
 https://www.anapioficeandfire.com/api/characters/1
 
+
+https://reqres.in/ - there are tokens here also! good for testing login
+https://reqres.in/api/users/1
+
 //----------------------------------------------------------------------------------------------

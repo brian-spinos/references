@@ -11,3 +11,18 @@ window.encodeURI("___ ___%___^___`___<___>___[___]___|____\"___")
 // in chrome: sources TAB -- if you move to the 'Console' TAB, you can play with the variables and functions in scope !!!
 
 ================================================================================
+
+// There are only six falsey values in JavaScript: 
+undefined
+null
+NaN 
+0
+"" 
+false
+
+// truthy
+[]
+{}
+"aaa"
+123
+//...

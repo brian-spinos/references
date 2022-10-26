@@ -1,0 +1,60 @@
+========================================================================================
+
+Firebase
+
+https://www.youtube.com/watch?v=jCY6DH8F4oc - firestore database
+https://www.youtube.com/watch?v=azdwN_4IDKA  - realtime database <<<<<<<<<<
+
+========================================================================================
+
+- has hosting for our react app?
+- has auth stuff ?
+
+========================================================================================
+
+
+$ npm install firebase 
+
+
+firebase.google.com - create an account
+
+
+
+    - click on "Get started" button within the big blue area in the center 
+
+    - click on "+ Add project"
+    - name it "foo-bar-db" ??
+    - click on continue
+
+    - analytics account - select the default ?
+    - click on "create project" - takes some time
+    - click on "continue"
+
+    - you will be redirected to the console    --- it has AUTHENTICATION :) 
+
+
+
+
+- connect your react app to the DB:
+    - in firebase console 
+        - top left: click on "project overview" > "project settings" 
+        - scroll down to "your apps" section
+            - click on "</>"
+            - choose a name for your app: "foo-bar-app"
+
+
+- create your DB 
+
+- add to your RULES
+
+======================================================================================== in your react app: 
+
+
+// src/firebase-config.js
+<copy the code from firebase console here> // BUT USE .env files 
+< export the db variable >
+
+
+
+
+========================================================================================
