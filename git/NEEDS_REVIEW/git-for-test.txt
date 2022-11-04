@@ -1,0 +1,8 @@
+mkdir reflog-demo && cd reflog-demo && git init
+echo "file 1 content" > file1.txt && git add . && git commit -m "add file1"
+echo "file 2 content" > file2.txt && git add . && git commit -m "add file2"
+git checkout -b my-new-branch
+echo "new branch file content" > newBranchFile.txt && git add . && git commit -m "add newBranchFile"
+git checkout master
+echo "file 3 content" > file3.txt && git add . && git commit -m "add file3"
+git checkout my-new-branch
