@@ -28,3 +28,9 @@ $ git reflog # show HEAD movement history
 # revert to the state is was 100 minutes ago ???
 #
 $ git reset --hard my-branch@{"100 minutes ago"}
+
+#
+# list branches in order
+#
+ $ git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+ 
