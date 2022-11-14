@@ -1,0 +1,10 @@
+Github
+
+==================================================================================== Reset tokens
+https://github.com/settings/tokens
+
+- click on the token title
+- 2FA
+- click on "Regenerate token"
+- copy the token to a safe place
+
