@@ -7,4 +7,9 @@ https://github.com/settings/tokens
 - 2FA
 - click on "Regenerate token"
 - copy the token to a safe place
+- in your terminal: $ git clone <repo> # and put in your username and the token for the password
+
+==================================================================================== Deleting a pull request
+
+- Seems that if you close the PR and delete the branch, the PR will be deleted
 
