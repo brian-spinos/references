@@ -1,1 +1,8 @@
 //...
+
+#
+# negative look-ahead:
+#
+regex: /aaa-(?!ccc|ddd)/
+string: "aaa-bbb aaa-ccc aaa-ddd aaa-eee aaa-fff"
+# => will not match aaa-ccc and aaa-ddd
