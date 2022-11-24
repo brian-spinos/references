@@ -6,7 +6,7 @@ $ npx create-react-app@latest foo-bar
 $ cd foo-bar
 $ npm start
 
-$ npm install axios uid firebase
+$ npm install axios uid firebase react-router-dom@5
 
 // create folders: src/main/* src/test/*
 
