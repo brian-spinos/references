@@ -66,3 +66,6 @@ $ npm -g list
  npm cache clean
 
 npm install --verbose
+
+// update npm
+npm install -g npm@8.17.0
