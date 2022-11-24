@@ -9,6 +9,7 @@ $ npm start
 $ npm install axios uid firebase react-router-dom@5
 
 // create folders: src/main/* src/test/*
+$  mkdir -p src/main/ src/test/
 
 ================================================================================================================
 
