@@ -2,3 +2,9 @@
 // reopen closed tab:
 Right click on the top of the browser, 
 and select "reopen closed tab"
+
+
+// prevent desktops re-order
+// https://apple.stackexchange.com/questions/214348/how-to-prevent-mac-from-changing-the-order-of-desktops-spaces
+// System Preferences > Mission Control > Uncheck Automatically rearrange Spaces based on most recent use.
+
