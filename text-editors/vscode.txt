@@ -21,6 +21,12 @@ or (in your settings.json enter this directly)
 
 "ES7 React snippets extension" // to use "rafce" template
 
+"Prettier - Code formatter"
+// Command + Shift + P (Mac)
+// "Preferences: Open User Settings" 
+// Search for "format on save" setting and check the checkbox.
+// Search for "default formatter" and set it to prettier
+
 ================================================================================================== settings.json
 
 // Edit settings.json in VScode:
