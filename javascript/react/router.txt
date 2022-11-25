@@ -1,0 +1,191 @@
+React Router
+
+//-------------------------------------------------------------------------------------------------------
+
+$ npx create-react-app@latest foo-bar
+$ cd foo-bar
+$ npm start
+
+$ npm install react-router-dom@5
+
+// create folders: src/main/* src/test/*
+$  mkdir -p src/main/ src/test/
+
+//------------------------------------------------------------------------------------------------------- src/App.js
+
+import { BrowserRouter, Link, Redirect, Route, Switch } from "react-router-dom";
+import Bar from "./main/components/Bar";
+import FirstPage from "./main/components/FirstPage";
+import Foo from "./main/components/Foo";
+import NotFound from "./main/components/NotFound";
+import Post from "./main/components/Post";
+
+const IS_SIGNED_IN = false;
+
+function App() {
+  return (
+    <BrowserRouter 
+      basename="/myapp" // sets a prefix to the links: http://localhost:3000/myapp/foo
+      // forceRefresh
+    > 
+      <div className="App">
+        <h1>hello</h1>
+        <Link to="/">first-page</Link>
+        <br /> 
+        <Link to="/foo">foo</Link>
+        <br /> 
+        <Link to="/bar">bar</Link>
+        <br /> 
+        <Link to="/post/1">post/1</Link>
+
+        <hr />
+
+        <Switch>
+          <Route path="/" component={FirstPage} exact/>
+          <Route path="/foo" component={Foo} />
+          <Route path="/bar" /*component={Bar}*/>
+            {IS_SIGNED_IN ? <Bar /> : <Redirect to="/" />}
+          </Route>
+          <Route path="/post/:id" component={Post} />
+          <Route component={NotFound} />
+        </Switch>
+      </div>
+    </BrowserRouter>
+  );
+}
+
+export default App;
+
+//------------------------------------------------------------------------------------------------------- src/main/components/Post.js
+
+import React from 'react'
+import { Link, Route, Switch, useHistory, useLocation, useParams, useRouteMatch } from 'react-router-dom'
+import PostLinkA from './PostLinkA';
+import PostLinkB from './PostLinkB';
+
+const Post = () => {
+    const {id} = useParams();
+    const location = useLocation();
+    const history = useHistory();
+    const {path, url} = useRouteMatch();
+
+    const query = new URLSearchParams(useLocation().search);
+
+  return (
+    <div>
+        <p>Post (id: {id})</p>
+        <p>location: {JSON.stringify(location)}</p>
+        <p>name: {JSON.stringify(query.get("name"))}</p>
+        <p>age: {JSON.stringify(query.get("age"))}</p>
+        {/* 
+        
+        http://localhost:3000/myapp/post/123?name=brian&age=30
+
+        location: {"pathname":"/post/123","search":"?name=brian&age=30","hash":""}
+
+        */}
+
+        {/**
+         *
+         * Link to go home,
+         * 
+         * We can use a `useEffect` to check if the user is logged in, 
+         * and if not, redirect them to the root page!
+         * 
+         */}
+        <button onClick={() => {
+            history.push("/");
+        }}>Go Home</button>
+
+        <hr />
+
+        <p><Link to={`${url}/post-link1`}>post-link1</Link></p>
+        <p><Link to={`${url}/post-link2`}>post-link2</Link></p>
+
+        <Switch>
+            <Route path={`${path}/post-link1`} component={PostLinkA} />
+            <Route path={`${path}/post-link2`} component={PostLinkB} />
+        </Switch>
+
+        {/* <p>path: {JSON.stringify(path)}</p> */}
+        {/* <p>url: {JSON.stringify(url)}</p> */}
+        </div>
+  )
+}
+
+export default Post
+
+
+//------------------------------------------------------------------------------------------------------- src/main/components/Bar.js
+
+import React from 'react'
+
+const Bar = () => {
+  return (
+    <div>Bar</div>
+  )
+}
+
+export default Bar
+
+//------------------------------------------------------------------------------------------------------- src/main/components/FirstPage.js
+
+import React from 'react'
+
+const FirstPage = () => {
+  return (
+    <div>FirstPage</div>
+  )
+}
+
+export default FirstPage
+
+//------------------------------------------------------------------------------------------------------- src/main/components/Foo.js
+
+import React from 'react'
+
+const Foo = () => {
+  return (
+    <div>Foo</div>
+  )
+}
+
+export default Foo
+
+//------------------------------------------------------------------------------------------------------- src/main/components/NotFound.js
+
+import React from 'react'
+
+const NotFound = () => {
+  return (
+    <div>NotFound</div>
+  )
+}
+
+export default NotFound
+
+//------------------------------------------------------------------------------------------------------- src/main/components/PostLinkA.js
+
+import React from 'react'
+
+const PostLinkA = () => {
+  return (
+    <div>PostLinkA</div>
+  )
+}
+
+export default PostLinkA
+
+//------------------------------------------------------------------------------------------------------- src/main/components/PostLinkB.js
+
+import React from 'react'
+
+const PostLinkB = () => {
+  return (
+    <div>PostLinkB</div>
+  )
+}
+
+export default PostLinkB
+
+//------------------------------------------------------------------------------------------------------- src/main/components/Bar.js
