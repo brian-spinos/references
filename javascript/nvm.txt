@@ -68,6 +68,8 @@ $ npm ls
 // search for node module:
 $ npm search express
 
+// $ npm install <foo> # -D, --save-dev
+
 ========================================================================================
  // try 
  $ nvm alias default v14.17.4  # for persistent node version ???
