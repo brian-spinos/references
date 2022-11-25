@@ -6,7 +6,7 @@ $ npx create-react-app@latest foo-bar
 $ cd foo-bar
 $ npm start
 
-$ npm install axios uid firebase react-router-dom@5 @reduxjs/toolkit react-redux axios
+$ npm install axios uid firebase react-router-dom@5 @reduxjs/toolkit react-redux
 
 // create folders: src/main/* src/test/*
 $  mkdir -p src/main/ src/test/
