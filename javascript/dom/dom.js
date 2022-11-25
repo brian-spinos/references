@@ -9,3 +9,9 @@ const foo = document.querySelectorAll('foo')
 foo.addEventListener("click", (e) => {
     // console.log(e);
 })
+
+//-------------------------------------------------------- Not tested
+
+window.scroll(0,0);
+
+//--------------------------------------------------------
