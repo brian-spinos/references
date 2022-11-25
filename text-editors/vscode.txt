@@ -27,6 +27,13 @@ or (in your settings.json enter this directly)
      Search for "format on save" setting and check the checkbox.
      Search for "default formatter" and set it to prettier
      youtube video: https://www.youtube.com/watch?v=__eiQumLOEo
+     
+"Mithril Emmet"
+    Command + Shift + P (Mac)
+    "Preferences: Open User Settings" 
+    search for "emmet include languages"
+    - add item:
+        "javascript" -> "javascriptreact"
 
 ================================================================================================== settings.json
 
