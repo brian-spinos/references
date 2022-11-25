@@ -19,6 +19,6 @@ or (in your settings.json enter this directly)
 ================================================================================================== plugins:
 "Reactjs code snippets"
 
-"ES7 React snippets extension"
+"ES7 React snippets extension" // to use "rafce" template
 
 ==================================================================================================
