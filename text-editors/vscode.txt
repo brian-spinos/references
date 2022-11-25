@@ -21,4 +21,11 @@ or (in your settings.json enter this directly)
 
 "ES7 React snippets extension" // to use "rafce" template
 
+================================================================================================== settings.json
+
+// Edit settings.json in VScode:
+// Command + Shift + P (Mac)
+// type in: "Preferences: Open User Settings (JSON)"
+//    -> COMMAND + , // settings.json on VScode // not working for .json
+
 ==================================================================================================
