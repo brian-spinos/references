@@ -62,6 +62,12 @@ $ npm -g list
 // You can use the following command to check all the modules installed globally
 $ npm ls -g
 
+// list node modules in your projecy
+$ npm ls
+
+// search for node module:
+$ npm search express
+
 ========================================================================================
  // try 
  $ nvm alias default v14.17.4  # for persistent node version ???
