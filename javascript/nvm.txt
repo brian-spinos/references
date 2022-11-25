@@ -59,6 +59,9 @@ $ node -v         # v16.13.0
 
 $ npm -g list
 
+// You can use the following command to check all the modules installed globally
+$ npm ls -g
+
 ========================================================================================
  // try 
  $ nvm alias default v14.17.4  # for persistent node version ???
