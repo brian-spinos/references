@@ -9,6 +9,6 @@ $ npm start
 $ npm install axios uid firebase react-router-dom@5 @reduxjs/toolkit react-redux
 
 // create folders: src/main/* src/test/*
-$  mkdir -p src/main/ src/test/
+$  mkdir -p src/main/components/ src/test/components/
 
 ================================================================================================================
