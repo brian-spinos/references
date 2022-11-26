@@ -1,0 +1,68 @@
+HOC
+
+
+//------------------------------------------------------------------------------------------------------ src/App.js
+
+import Foo from "./main/components/Foo";
+
+const MyHOC1 = ({ component }) => {
+  return (
+    <>
+      <p>MyHOC1:</p>
+      {component()}
+    </>
+  );
+};
+
+const myHOC2 = (Component) => {
+  const WrapperComponent = () => {
+    return (
+      <>
+        <p>myHOC2:</p>
+        <Component />
+      </>
+    );
+  };
+
+  return WrapperComponent;
+};
+
+const Foo2 = myHOC2(Foo);
+
+function App() {
+  return (
+    <div>
+      <MyHOC1 component={Foo} />
+
+      <Foo2 />
+
+      {myHOC2(Foo)()}
+    </div>
+  );
+}
+
+export default App;
+
+//------------------------------------------------------------------------------------------------------ src/main/components/Foo.js
+
+import React from "react";
+
+const Foo = () => {
+  return (
+    <div
+      style={{
+        backgroundColor: "green",
+        width: "100px",
+      }}
+    >
+      Foo
+    </div>
+  );
+};
+
+export default Foo;
+
+
+//------------------------------------------------------------------------------------------------------
+
+
