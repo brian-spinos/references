@@ -1,6 +1,9 @@
 HOC
 
 
+const EnhancedFoo = enhanceComponent(Foo);
+<EnhancedFoo />
+
 //------------------------------------------------------------------------------------------------------ src/App.js
 
 import Foo from "./main/components/Foo";
