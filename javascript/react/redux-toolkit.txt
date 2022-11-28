@@ -1,28 +1,28 @@
-redux toolkit
+// redux toolkit
 
 
--------------------------------------------------------------------- Browser dev tool
-Redux Dev Tools in chrome
+//-------------------------------------------------------------------- Browser dev tool
+// Redux Dev Tools in chrome
 
-chrome://extensions
+// chrome://extensions
 
 // chrome webstore:
-https://chrome.google.com/webstore/category/extensions?hl=en-US
+// https://chrome.google.com/webstore/category/extensions?hl=en-US
 
-search for: "Redux DevTools"
+// search for: "Redux DevTools"
 
---------------------------------------------------------------------
+//--------------------------------------------------------------------
 // youtube video:
 // https://www.youtube.com/watch?v=bbkBuqC1rU4
 
 // JSON API:
 // https://course-api.com/react-useReducer-cart-project
 
--------------------------------------------------------------------- installation
+//-------------------------------------------------------------------- installation
 
-$ npm i @reduxjs/toolkit react-redux
+// $ npm i @reduxjs/toolkit react-redux
 
--------------------------------------------------------------------- src/App.js
+//-------------------------------------------------------------------- src/App.js
 
 import { Provider } from "react-redux";
 import { store } from "./main/store";
@@ -42,7 +42,7 @@ const App = () => {
 
 export default App;
 
--------------------------------------------------------------------- src/main/store.js
+//-------------------------------------------------------------------- src/main/store.js
 
 import { configureStore } from "@reduxjs/toolkit";
 import fooSlice from "./foo/fooSlice";
@@ -51,10 +51,12 @@ import fooSlice from "./foo/fooSlice";
 export const store = configureStore({
     reducer: {
         foo: fooSlice,
+        // bar: barSlice,
+        // baz: bazSlice,
     },
 })
 
--------------------------------------------------------------------- src/main/foo/FooComponent.js
+//-------------------------------------------------------------------- src/main/foo/FooComponent.js
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -62,14 +64,11 @@ import { clearFoos, getFooItems } from "./fooSlice";
 
 const FooComponent = () => {
     const dispatch = useDispatch();
-
     const {test} = useSelector(store => store.foo);
-
 
     useEffect(() => {
         dispatch(getFooItems('getFooItems-input'));
     }, [dispatch]);
-
 
     return(
     <>
@@ -82,12 +81,11 @@ const FooComponent = () => {
 
 export default FooComponent;
 
--------------------------------------------------------------------- src/main/foo/fooSlice.js
+//-------------------------------------------------------------------- src/main/foo/fooSlice.js
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
 const JSON_API_URL = 'https://course-api.com/react-useReducer-cart-project';
-
 
 export const getFooItems = createAsyncThunk('foo/getFooItems', async (_, thunkAPI) => {
     console.log('thunkAPI', thunkAPI);
@@ -113,14 +111,14 @@ const initialState = {
 const fooSlice = createSlice({
     name: 'foo', // name of slice
     initialState,
-    reducers: {
+    reducers: {// for non-createAsyncThunk actions (simple actions)
         clearFoos: (state, action) => {
             console.log(action.payload);
             state.fooItems = ['clear'];
             state.count = state.count + 1;
         }
     },
-    extraReducers: {
+    extraReducers: { // for createAsyncThunk actions (actions that return a promise)
         [getFooItems.pending]: (state) => {
             state.isLoadeing = true;
         },
@@ -138,4 +136,4 @@ const fooSlice = createSlice({
 export const {clearFoos} = fooSlice.actions;
 export default fooSlice.reducer;
 
---------------------------------------------------------------------
+//--------------------------------------------------------------------
