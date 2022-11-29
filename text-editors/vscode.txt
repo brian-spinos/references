@@ -53,4 +53,14 @@ or (in your settings.json enter this directly)
 // type in: "Preferences: Open User Settings (JSON)"
 //    -> COMMAND + , // settings.json on VScode // not working for .json
 
+================================================================================================== Reload VsCode
+
+- Command + Shift + P (Mac)
+- search for: "Reload Window"
+    - click it
+
+- then at the bottom right corner, click to update
+    - all screens will disappear, but will be back again, the same as before
+        - there is no loss of files, go ahead!
+
 ==================================================================================================
