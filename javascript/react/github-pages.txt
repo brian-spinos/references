@@ -1,0 +1,49 @@
+
+// github pages (react app)
+
+
+// https://blog.logrocket.com/deploying-react-apps-github-pages/
+
+
+$ npx create-react-app@latest brian-gh-test
+
+$ cd brian-gh-test
+$ npm start
+
+
+$ npm install gh-pages --save-dev
+
+// package.json
+// scripts:
+"predeploy" : "npm run build",
+"deploy" : "gh-pages -d build",
+
+
+In the package.json file,
+ add a homepage property that follows this structure: http://{github-username}.github.io/{repo-name}
+"homepage": "http://{github-username}.github.io/{repo-name}"
+"homepage": "http://brianspinos777.github.io/brian-gh-test"
+
+
+
+// create github repo 
+
+
+
+
+// …or push an existing repository from the command line
+git remote add origin https://github.com/brianspinos777/brian-gh-test.git
+git branch -M main
+git push -u origin main
+
+
+// to deploy:   ... it takes some time, maybe 5min to work
+$ npm run deploy
+
+
+
+
+
+// https://brianspinos777.github.io/brian-gh-test/
+
+
