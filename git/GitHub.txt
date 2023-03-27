@@ -15,7 +15,7 @@ https://github.com/settings/tokens
 
 ==================================================================================== CLI
 
-https://cli.github.com/
+https://cli.github.com/ # has some examples of what we can do
 $ brew install gh
 $ gh auth login # many steps, can login using the browser, and sms codes
 $ gh pr list --search "user-review-requested:@me" -w # will open the browser
