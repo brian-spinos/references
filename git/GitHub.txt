@@ -13,3 +13,9 @@ https://github.com/settings/tokens
 
 - Seems that if you close the PR and delete the branch, the PR will be deleted
 
+==================================================================================== CLI
+
+https://cli.github.com/
+$ brew install gh
+$ gh auth login # many steps, can login using the browser, and sms codes
+$ gh pr list --search "user-review-requested:@me" -w # will open the browser
