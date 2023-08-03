@@ -1,0 +1,6 @@
+
+# WORKS !!!
+$ export REACT_APP_BRIAN=spinos # vars need to prefix `REACT_APP_`
+# re-start the app...
+const BRIAN = process.env.REACT_APP_BRIAN; # works
+const BRIAN = process.env.BRIAN;           # does not work
