@@ -26,38 +26,73 @@ import axios from "axios";
 
 const Brian = () => {
   const [res, setRes] = useState({});
+  const [resPost, setResPost] = useState({});
 
-  useEffect(() => {
+  const fetchData = async () => {
+    let response = await axios.get(
+      "https://jsonplaceholder.typicode.com/todos/1"
+    );
+    setRes(response.data);
+
     // axios
-    //   .get("https://jsonplaceholder.typicode.com/todos/2")
+    //   .get("https://jsonplaceholder.typicode.com/todos/1")
     //   .then((response) => {
-    //     console.log("data", response.data);
     //     setRes(response.data);
     //   });
-  }, []);
+  };
+
+  const postData = async () => {
+    const url = "https://jsonplaceholder.typicode.com/users";
+    let data = {
+      firstName: "John",
+      lastName: "Smith",
+    };
+
+    let response = await axios.post(url, data);
+    setResPost(response.data);
+
+    // axios
+    //   .post(url, data)
+    //   .then((response) => {
+    //     setResPost(response.data);
+    //   })
+    //   .catch((error) => {
+    //     setResPost({ error: "failed" });
+    //   });
+  };
 
   return (
     <div>
-      Brian
+      <p>Brian</p>
+      {/*
+       *
+       * Axios GET
+       *
+       */}
       <button
         data-testid="my-button"
         onClick={async () => {
-          let response = await axios.get(
-            "https://jsonplaceholder.typicode.com/todos/1"
-          );
-          console.log("data1", response.data);
-          setRes(response.data);
-          axios
-            .get("https://jsonplaceholder.typicode.com/todos/1")
-            .then((response) => {
-              console.log("data2", response.data);
-              setRes(response.data);
-            });
+          fetchData();
         }}
       >
         click me
       </button>
       <p data-testid="my-result">{JSON.stringify(res)}</p>
+
+      {/*
+       *
+       * Axios Post
+       *
+       */}
+      <button
+        data-testid="my-button-post"
+        onClick={async () => {
+          postData();
+        }}
+      >
+        click me post
+      </button>
+      <p data-testid="my-result-post">{JSON.stringify(resPost)}</p>
     </div>
   );
 };
@@ -118,7 +153,32 @@ describe("Brian", () => {
       expect(pTag).toHaveTextContent(JSON.stringify(mockData));
     });
   });
+
+  it("mock axios post request", async () => {
+    // mock get
+    const mockDataPost = {
+      mockResult: 2000,
+      brian: "spinos",
+    };
+    axios.post = jest.fn(() => Promise.resolve({ data: mockDataPost }));
+
+    let wrapper = render(<Brian />);
+    let pTag = screen.getByTestId("my-result-post");
+
+    const btn = screen.getByTestId("my-button-post");
+    fireEvent.click(btn);
+
+    // Wait for the API call and state update to complete
+    await waitFor(() => {
+      expect(axios.post).toHaveBeenCalledWith(`${BASE_URL}/users`, {
+        firstName: "John",
+        lastName: "Smith",
+      });
+      expect(pTag).toHaveTextContent(JSON.stringify(mockDataPost));
+    });
+  });
 });
+
 
 ```
 
