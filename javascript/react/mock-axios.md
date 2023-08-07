@@ -16,7 +16,7 @@
     ]
   }
 }
-
+```
 
 ```js
 // src/main/components/brian/Brian.jsx
