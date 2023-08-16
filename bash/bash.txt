@@ -54,6 +54,8 @@ $ lsof -i tcp:3000
 $ lsof -i udp:57579
 $ lsof -i | grep TCP
 $ lsof -i | grep UDP
+
+$ lsof -i :3000 | grep LISTEN
 ---------------------------------------------------------------------------------------------------- (Need review) 
 
 $ sudo netstat -tulpn
