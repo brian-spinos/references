@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Function to run when Ctrl+C is pressed
+cleanup() {
+    echo ""
+    echo "Ctrl+C detected. Cleaning up..."
+    # Perform cleanup tasks here
+    # For example: close files, release resources, etc.
+    exit 1  # Exit the script with an error status
+}
+
+# Set up the trap to call the cleanup function when Ctrl+C is pressed
+trap cleanup SIGINT
+
+# Your main script logic goes here
+echo "Running the main script..."
+
+# Simulate a long-running process
+while true; do 
+    echo "working..."
+    sleep 1
+done
+
+# This part will only be reached if the sleep is completed, not interrupted by Ctrl+C
+echo "Script completed."
+
