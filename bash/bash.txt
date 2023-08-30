@@ -10,6 +10,7 @@ $  mkdir -p src/main/ src/test/
 # Find files in a folder, shows list of file paths
 #
 $ find . -type f -name '*.hs'
+$ find ~/foo/bar -name ".DS_Store"
 
 ----------------------------------------------------------------------------------------------------
 
