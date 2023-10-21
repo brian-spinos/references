@@ -1,1 +1,86 @@
-//...
+<html>
+  <head>
+    <title>CSS Flexbox</title>
+
+    <style>
+      /* youtube: https://www.youtube.com/watch?v=phWxA89Dy94 */
+
+      .parent {
+        background-color: #eee;
+        border: 1px solid #000;
+        margin: 50px;
+        padding: 10px;
+        /* width: 300px; */
+        /* height: 300px; */
+      }
+
+      .parent-flex {
+        display: flex;
+        flex-direction: row; /* column | row | column-reverse | row-reverse // row is default */
+        justify-content: center; /* X axis: flex-start | flex-end | center | space-between | space-around | space-evenly */
+        align-items: center; /* Y axis: flex-start | flex-end | center | baseline */
+        flex-wrap: wrap; /* wrap | nowrap // nowrap is default */
+
+        align-content: center; /* applies when there are multiple lines */
+        /* | flex-start | flex-end | center |  space-between | space-around | space-evenly | stretch - default */
+
+        gap: 10px;
+      }
+
+      .item {
+        width: 100px;
+        height: 100px;
+        background-color: #ccc;
+      }
+
+      .item-special {
+        background-color: red;
+
+        /* flex-grow: 1;  */
+        /* grow if there is space */
+
+        /* flex-shrink: 5;  */
+        /* 5 | 0 - shrink faster than other items */
+
+        /* flex-basis: 0;  */
+        /* 0 | 300px - set initial width */
+
+        /* flex: 1 1 300px; */
+        /*  1 5 0 - shorthand for the above! */
+
+        /* align-self: flex-end; */
+        /* overrides container's `align-items` */
+
+        /* order: -1; */
+        /* -1 | 0 | 1 | 2 - default is 0 */
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ----------------------------------------------------------------- -->
+    <h1>CSS flexbox</h1>
+
+    <!-- ----------------------------------------------------------------- -->
+
+    <div class="parent parent-flex">
+      <div class="item"></div>
+      <div class="item item-special"></div>
+      <div class="item"></div>
+    </div>
+
+    <!-- ----------------------------------------------------------------- -->
+
+    <div class="parent parent-flex">
+      <div class="item"></div>
+      <div class="item item-special"></div>
+      <div class="item"></div>
+
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+
+    <!-- ----------------------------------------------------------------- -->
+  </body>
+</html>
