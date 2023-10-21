@@ -1,1 +1,21 @@
-//...
+// not tested
+
+p { ... }
+.foo { ... }
+#foo { ... }
+.foo > .bar { ... } // direct descendant
+.foo .bar { ... }
+
+h2 + p { ... } // selects p element that comes immediately after h2
+h2 ~ p { ... } // selects all p elements that are siblings of an h2
+[data-toggle] { ... }
+[class="button"] { ... }
+
+[href^="https://"] { ... } // stars with
+[src$=".jpg"] { ... }      // ends with
+[title*="example"] { ... } // contains
+
+//  :hover, :active, :focus, :first-child, and :nth-child(n).
+//  ::before and ::after
+
+h1, h2, h3 { ... } // multiple
