@@ -1,1 +1,97 @@
-//...
+<html>
+  <head>
+    <title>CSS Grid</title>
+
+    <style>
+      /* youtube: https://www.youtube.com/watch?v=EiNiSFIPIQE */
+
+      .parent {
+        background-color: #eee;
+        border: 1px solid #000;
+        margin: 50px;
+        padding: 10px;
+        /* width: 300px; */
+        height: 200px;
+      }
+
+      .parent-grid {
+        display: grid;
+        grid-gap: 10px 10px; /* for rows columns */
+
+        grid-template-rows: 1fr 2fr 1fr; /* 3 rows // minmax(100px, 3fr)  // repeat(3, 1fr) */
+        grid-template-columns: 1fr 2fr 1fr; /* 3 columns // minmax(100px, 3fr)  // repeat(3, 1fr) */
+
+        /**
+         * grid-template-areas:
+         *  "header header header"   // .item-1 { grid-area: header} 
+         *  "main   main   side"
+         *  "footer footer footer";
+        */
+
+        /* justify-content: center; */
+        /* | start | center | end | space-between | space-around | space-evenly | */
+        /* moves all the items together */
+
+        justify-items: center;
+        /* X axis: justify-items: stretch | start | end | center      // justify-self in the child overrides this */
+
+        align-items: center;
+        /* Y axis: align-items: stretch | start | end | center        // align-self in the child overrides this  */
+      }
+
+      .item {
+        width: 100%;
+        height: 100%;
+        background-color: #ccc;
+      }
+
+      /**
+       * Define item positioning in the grid individually:
+       */
+      .item-special {
+        background-color: red;
+
+        /* align-self: center; */
+        /* justify-self: center; */
+        /* align-self: center; */
+
+        grid-row-start: 1; /* top to bottom - a grid with 2 rows nas actually 3 rows */
+        grid-row-end: 3; /* -1 is the end */
+        grid-column-start: 1; /* a grid with 2 columns has actually 3 columns */
+        grid-column-end: 5; /* -1 is the end */
+
+        /*  shortcut for above */
+        grid-row: 1 / 3;
+        grid-column: 1 / 5;
+
+        grid-row: span 2;
+        grid-column: span 2;
+
+        grid-area: 1 / 1 / 3 / 3; /* row-start col-start  row-end col-end */
+
+        /*  Items can go on top of each other, if you want !!! -- use z-index also */
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ----------------------------------------------------------------- -->
+    <h1>CSS Grid</h1>
+
+    <div class="parent parent-grid">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+
+    <!-- ----------------------------------------------------------------- -->
+  </body>
+</html>
