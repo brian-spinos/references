@@ -1,0 +1,97 @@
+<html>
+  <head>
+    <title>CSS Positioning</title>
+
+    <style>
+      /* youtube: https://www.youtube.com/watch?v=MxEtxo_AaZ4 */
+
+      /* STATIC RELATIVE ABSOLUTE FIXED STICKY */
+
+      .parent {
+        background-color: #eee;
+        border: 1px solid #000;
+        width: 100px;
+        height: 100px;
+        margin: 20px;
+      }
+
+      .child {
+        width: 50px;
+        height: 50px;
+        background-color: #ccc;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ----------------------------------------------------------------- -->
+    <h1>CSS positioning</h1>
+
+    <hr />
+
+    <!-- ----------------------------------------------------------------- -->
+
+    <h1>Static</h1>
+    <p>default (moves when you scroll)</p>
+    <p>properties top/bottom right/left z-index do not work</p>
+
+    <div class="parent" style="position: static">
+      <p>Static</p>
+    </div>
+
+    <hr />
+
+    <!-- ----------------------------------------------------------------- -->
+
+    <h1>Absolute</h1>
+    <p>removed from the layout (like its on top of everything)</p>
+    <p>goes up the tree to find a non-static element</p>
+    <p>Use top/bottom right/left</p>
+    <p>can use z-index: -1</p>
+
+    <div class="parent" style="position: relative">
+      <div class="child" style="position: absolute; top: 0px; right: 0px"></div>
+      <p>AAA BBB CCC DDD EEE FFF</p>
+    </div>
+
+    <div class="parent" style="position: relative">
+      <div
+        class="child"
+        style="position: absolute; top: -10px; right: -10px; z-index: -1"
+      ></div>
+      <p>AAA BBB CCC DDD EEE FFF</p>
+    </div>
+
+    <hr />
+
+    <!-- ----------------------------------------------------------------- -->
+
+    <h1>Relative</h1>
+    <p>moves a bit from its original position</p>
+
+    <div class="parent" style="position: relative; top: 100px; left: 100px">
+      <p>Relative</p>
+    </div>
+
+    <div style="margin-bottom: 200px"></div>
+
+    <hr />
+
+    <!-- ----------------------------------------------------------------- -->
+
+    <h1>Fixed</h1>
+    <p>does not move when page scrolls</p>
+    <p>removed from the flow (goes on top of everything)</p>
+    <p>top/bottom left/right always refer to the page</p>
+
+    <div class="parent" style="position: fixed; bottom: 0px; left: 500px">
+      <p>Fixed</p>
+    </div>
+
+    <div style="margin-bottom: 200px"></div>
+
+    <hr />
+
+    <!-- ----------------------------------------------------------------- -->
+  </body>
+</html>
