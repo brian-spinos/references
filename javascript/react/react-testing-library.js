@@ -93,7 +93,7 @@ describe("FooCounter", () => {
 
 // seems to be the same as the function in the `render` object... BUT, it searches all the screen, NOT just the rendered component
 
-// ================================================================================ act
+// ================================================================================ act (we might not need it)
 
 // to ensure that all updates to the component are complete before we make any
 // assertions about the component's state or behavior.
