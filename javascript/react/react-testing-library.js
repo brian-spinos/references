@@ -86,6 +86,7 @@ describe("FooCounter", () => {
 //   const asyncContent = getByText('Here is some async content!');
 //   expect(asyncContent).toBeInTheDocument();
 // });
+// Docs: https://testing-library.com/docs/dom-testing-library/api-async/#waitfor
 
 // ================================================================================ screen
 
