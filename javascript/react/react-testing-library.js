@@ -18,6 +18,48 @@
 //
 //
 
+
+/*
+
+// Useful links
+
+// Queries: 
+https://testing-library.com/docs/queries/about
+
+// Firing events
+https://testing-library.com/docs/dom-testing-library/api-events
+
+// mock uploading files ???
+https://testing-library.com/docs/dom-testing-library/api-events/#fireeventeventname
+
+// async 
+https://testing-library.com/docs/dom-testing-library/api-async
+
+// userEvent
+https://testing-library.com/docs/user-event/intro // <-- as a user, for more robust tests
+
+// router
+https://testing-library.com/docs/example-react-router
+
+// API mocks?
+https://testing-library.com/docs/react-testing-library/example-intro#mock
+
+// Test forms ???
+https://testing-library.com/docs/react-testing-library/faq (How do I test input onChange handlers?)
+
+// cofig (like timeouts)
+https://testing-library.com/docs/dom-testing-library/api-configuration
+
+// findBy* docs
+https://testing-library.com/docs/dom-testing-library/api-async/#findby-queries
+
+*/
+
+
+//
+//
+//
+
 import React from "react";
 import {
   render,
