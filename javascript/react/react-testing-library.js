@@ -24,7 +24,7 @@ import {
   fireEvent,
   screen,
   waitFor,
-  act,
+  act, // seem you dont need it, I tried to find a usecase, but didnt find it
   cleanup,
 } from "@testing-library/react";
 import FooCounter from "../../main/components/FooCounter";
