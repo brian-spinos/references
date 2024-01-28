@@ -63,4 +63,27 @@ or (in your settings.json enter this directly)
     - all screens will disappear, but will be back again, the same as before
         - there is no loss of files, go ahead!
 
+================================================================================================== jsconfig.json
+
+- solution to make VsCode give you the option to import a react component:
+
+https://stackoverflow.com/questions/60637561/auto-import-of-react-components-in-visual-studio-code
+
+- create a ./jsconfig.json file with content:
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "checkJs": true,
+    "jsx": "react"
+  }
+}
+
+
+
+
+
+
+
+
+
 ==================================================================================================
