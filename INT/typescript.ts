@@ -116,8 +116,6 @@ let myGenericArray: Array<number> = [1, 2, 3];
 
 //===
 
-// TODO:  <A extends Animal> // for inheritance stuff
-
 class Foo10<T, U> {
   private f1: T;
   private f2: U;
@@ -137,8 +135,8 @@ class Foo10<T, U> {
 }
 
 let foo10: Foo10<string, number> = new Foo10("brian", 30);
-console.log(foo10.getF1()); // 'brian'
-console.log(foo10.getF2()); // 30
+foo10.getF1(); // 'brian'
+foo10.getF2(); // 30
 
 //==================================================================== Generics (Interfaces)
 
@@ -170,6 +168,7 @@ let t6: string = "hello";
 let t7: number = 123; // 3.14 - is valid too
 let t8: object = { name: "brian", age: 30 };
 
+//==================================================================== Non primitive Types
 // MNEMONIC FROM-SAD
 
 let t13: Function = () => {};
@@ -184,10 +183,14 @@ let t16: Set<string> = new Set();
 let t9: Array<number> = [1, 2, 3];
 let t10: Date = new Date("Jan 1, 2025");
 
+//===
+
 let t11: unknown = "aaa";
 t11 = 456; // can be reassigned with another type
 let t12: any = "can be anything";
 t12 = 100; // can be reassigned with another type
+
+// TODO: never -- I do have this somewhere in here...
 
 //==================================================================== typeof (for primitives)
 
@@ -204,13 +207,6 @@ typeof function () {}; // 'function'
 typeof /abc/; // 'object' <----------------------
 typeof [1, 2, 3]; // 'object' <----------------------
 typeof new Date("Jan 1, 2025"); // 'object' <----------------------
-
-//==================================================================== Tuples
-
-const myTuple: [string, number] = ["brian", 30];
-
-//=== named-tuple
-const myTuple2: [name: string, age: number] = ["brian", 30];
 
 //==================================================================== instanceof (for classes, Date,Array,Object,String)
 
@@ -247,6 +243,13 @@ date instanceof Date; // true
 
 str1 instanceof String; // false <-------- because its a primitive
 str2 instanceof String; // true
+
+//==================================================================== Tuples
+
+const myTuple: [string, number] = ["brian", 30];
+
+//=== named-tuple
+const myTuple2: [name: string, age: number] = ["brian", 30];
 
 //========================================================= Arrays
 
@@ -389,8 +392,6 @@ let myEnum: Color = Color.RED; // 'red'
 
 //==================================================================== Interfaces
 
-// TODO: missing: - reopen interface
-
 interface User1 {
   name: string;
   age: number;
@@ -400,7 +401,7 @@ interface User1 {
   [k: string]: any; // to allow any extra keys
 }
 
-// I can re-open the interface ??? seems so
+// I can re-open the interface !!!
 interface User1 {
   anotherField: number;
 }
@@ -471,7 +472,7 @@ type MyType1 = {
   age: number;
   isAdmin?: boolean; // optional
   readonly id: number;
-  // TODO: function
+  myFunc: (a: number, b: number) => number;
   [k: string]: any; // allow extra keys
 };
 
@@ -480,12 +481,17 @@ let myType1: MyType1 = {
   age: 30,
   isAdmin: false, // optional
   id: 123,
+  myFunc: (a, b) => {
+    return a + b;
+  },
   country: "USA", // extra keys
 };
 
 // myType1.id = 456; // Error
 
-//=============== Union types
+// myType1.myFunc(1,2) // 3
+
+//=============== Union types ( `|` )
 
 type Status1 = "Y" | "N";
 let status1: Status1 = "N";
@@ -494,7 +500,7 @@ type MyUnionType1 = string | number;
 let myUnion: MyUnionType1 = "abc";
 myUnion = 123;
 
-//=============== Intersection Types
+//=============== Intersection Types ( `&` )
 
 type User52 = { isUser: boolean };
 type Admin = { isAdmin: boolean };
@@ -505,11 +511,18 @@ let myUser: UserAndAdmin = { isUser: true, isAdmin: true };
 
 //=============== Literal Types
 
+type FooId = "foo123";
+type FavNum = 42;
+
+let myFooId: FooId = "foo123";
+let myFavNum: FavNum = 42;
+
 let myLiteral: "foo" = "foo";
 let myLiteral2: 42 = 42;
 
 // Literal types allow you to specify the exact value a variable can hold.
 type Direction = "up" | "down" | "left" | "right";
+let myDirection: Direction = "right";
 
 //=============== Type Aliases for Functions
 
@@ -525,9 +538,7 @@ const add: AddFunction = (a, b) => a + b;
 
 // TODO
 
-//==================================================================== Types (Advanced)
-
-//==================================================================== Union Types  ( `&` and `|` )
+//==================================================================== Union/Intersection Types for interfaces ( `|` and `&` )
 
 // - you can combine multiple interfaces
 
@@ -558,6 +569,14 @@ u4 = "hello";
 u4 = 123;
 
 //==================================================================== Type Guards (just IF statements, or helper function)
+
+// Type of Guards
+
+// typeof – for primitive types (string, number, boolean, etc.).
+// instanceof – for classes.
+// User-Defined Guards – like isUser.
+// `in` operator – to check if a property exists in an object.
+// color is "red" - for unions
 
 type Foo7 = number | string;
 
@@ -591,7 +610,7 @@ const fn3 = (u: User6 | Person6): string => {
 
 //==================================================================== Utility Types
 
-// My MNEMONIC: A P 3R PO, NEE LUCU
+// My MNEMONIC: AP 3R PO, NEE LUCU
 
 interface User7 {
   f1: string;
@@ -604,11 +623,12 @@ interface User7 {
 
 // Awaited<T> - gets the resolved type of a Promise
 let u111: Awaited<Promise<number>> = 100;
+// let u111: Awaited<typeof myPromise> = 100;
 
-// Partial<User7> - all fields are optional
+// Partial<T> - all fields are optional
 let u100: Partial<User7> = { f1: "a", f2: "b" };
 
-// Required<User7> - all fields are required
+// Required<T> - all fields are required
 let u101: Required<User7> = {
   f1: "a",
   f2: "b",
@@ -618,7 +638,7 @@ let u101: Required<User7> = {
   f6: true,
 };
 
-// Readonly<User7> - all fields are readonly
+// Readonly<T> - all fields are readonly
 let u102: Readonly<User7> = {
   f1: "a",
   f2: "b",
@@ -629,22 +649,23 @@ let u102: Readonly<User7> = {
 };
 // u102.f1 = 'aa' // ERROR
 
-// Record<string, User7> - key/value pair
+// Record<K, V> - key/value pair
 let u105: Record<string, User7> = {
   "user-105A": { f1: "a", f2: "b", f3: 10, f4: 20, f5: true, f6: true },
   "user-105B": { f1: "x", f2: "z", f3: 30, f4: 40, f5: false, f6: false },
 };
 
-// Pick<User7, 'f1' | 'f2'> - pick some fields
+// Pick<T, 'f1' | 'f2'> - pick some fields
 let u103: Pick<User7, "f1" | "f2"> = { f1: "a", f2: "b" };
 
-// Omit<User7, 'f1' | 'f2'> - omit some fields
+// Omit<T, 'f1' | 'f2'> - omit some fields
 let u104: Omit<User7, "f1" | "f2"> = { f3: 10, f4: 20, f5: true, f6: true };
 
 //---
 
 // NonNullable<T> - removes null and undefined from T
 let u108: NonNullable<string | null | undefined> = "valid"; // Cannot be null or undefined
+// let u108: NonNullable<User7> = {...}; // Cannot be null or undefined
 
 // Exclude<T, U> - exclude specific types from T
 // Removes 'string' from the union type
@@ -671,10 +692,10 @@ let u119: Uncapitalize<"HelloThere"> = "helloThere";
 //
 
 // ReturnType<T> - gets the return type of a function
-function exampleFunction() {
+function myFunc4() {
   return { name: "TypeScript" };
 }
-let u109: ReturnType<typeof exampleFunction> = { name: "TS" };
+let u109: ReturnType<typeof myFunc4> = { name: "TS" };
 
 // InstanceType<T> - gets the instance type of a constructor function
 class ExampleClass {
@@ -683,8 +704,8 @@ class ExampleClass {
 let u110: InstanceType<typeof ExampleClass> = new ExampleClass();
 
 // Parameters<T> - gets the parameters of a function as a tuple
-function sampleFunction(a: number, b: string) {}
-type T115 = Parameters<typeof sampleFunction>; // [number, string]
+function myFunc5(a: number, b: string) {}
+type T115 = Parameters<typeof myFunc5>; // [number, string]
 
 // ConstructorParameters<T> - gets the constructor parameter types as a tuple
 type T114 = ConstructorParameters<typeof ExampleClass>; // [] (empty tuple since no constructor params)
@@ -695,6 +716,10 @@ type T112 = ThisParameterType<typeof thisExample>; // { val: string }
 
 // OmitThisParameter<T> - removes 'this' from a function type
 let u113: OmitThisParameter<typeof thisExample> = () => {}; // Now 'this' is omitted
+
+//
+//
+//
 
 /* =============utility types
   Partial<T>
@@ -754,12 +779,15 @@ function getArea(shape: Shape): number {
       return 10 * 10;
     default:
       // TypeScript ensures that all cases are handled
+
+      // GOTCHA: assign to `never` var and throw var as error
       const _exhaustiveCheck: never = shape;
       throw new Error(`Unhandled case: ${_exhaustiveCheck}`);
   }
 }
 
-// - never : can be assigned as a return type for functions that 'never complete' like throwing errors, or infinite loop
+// - `never` can be assigned as a return type for functions that 'never complete'
+//    like throwing errors, or infinite loop
 function throwError(message: string): never {
   throw new Error(message);
 }
@@ -851,10 +879,34 @@ let x2: unknown = "hello";
 let len: number = (x2 as string).length;
 console.log(len);
 
-//==================================================================== as const
+//==================================================================== `as const` (simple)
+
+const colors2 = ["red", "green", "blue"]; // Type: string[]
+
+const colors3 = ["red", "green", "blue"] as const;
+// Type: readonly ["red", "green", "blue"]
+
+//==================================================================== `as const` (simple)
+
+let config2 = {
+  url: "https://foo.com",
+  ttl: 60,
+  other: {
+    foo: 123,
+    bar: 456,
+  },
+} as const;
+
+const func8 = (a: typeof config2.url, b: typeof config2.other.foo) => {
+  console.log({ a, b });
+};
+
+func8("https://foo.com", 123);
+
+//==================================================================== `as const`
 // --> (Good for configuration objects !!!)
 
-// as const makes all fields as readonly , and the values as literals ???
+// as const makes all fields as readonly , and the values as literals !!!
 
 // as const can be better than an ENUM, FYI (enums have known bugs)
 
@@ -925,11 +977,16 @@ const config = {
 
 //==================================================================== Boxing/Unboxing
 
+// --> AVOID THEM, unpredictable behavior
+//    (even thought it is done behind the scene, to allow method calling)
+
 let x: number = 10; // primitive
 let y: Number = new Number(10); // boxed version
 let z: number = y.valueOf(); // unboxing
 
-//==================================================================== ( is <my-type> ) need to check
+//==================================================================== ( <my-var> is <my-type> ) need to check
+
+// TODO: is this a duplicate section ???
 
 interface User {
   id: number;
@@ -1014,7 +1071,90 @@ class Student2 {
 let s2 = new Student2();
 console.log(s2.foo("aaa"));
 
-//========================================================= NEW FEATURES?
+//==================================================================== non-null assertion operators (!).
+
+let x3: { name: string } | null = null;
+console.log(x3!.name);
+
+let var8: string | null = "Hello";
+let length8: number = var8!.length; // Assert that 'var8' is not null
+
+//==================================================================== infer
+
+// TODO
+
+// used to extract types from other types
+
+// infer allows us to go inside a type an pull out another type  !!!!!
+
+// REMEMBER: `infer X`
+
+//=== extract type from function
+
+const func7 = (a: number, b: string): boolean => {
+  return true;
+};
+
+type MyType<T> = T extends (a: infer A, b: infer B) => infer C ? A : never;
+
+let res7: MyType<typeof func7> = 42;
+
+//=== extract type from promise
+
+let myPromise: Promise<number> = new Promise((res, rej) => res(123));
+
+type ReturnTypeOfPromise<T> = T extends Promise<infer U> ? U : never;
+
+let res8: ReturnTypeOfPromise<typeof myPromise> = 456;
+
+//=== extract type from Array ?
+
+type FromArray<T> = T extends (infer A)[] ? A : never; // string[] --> (infer A)[]
+let arr7: Array<string> = ["a", "b"];
+let x7: FromArray<typeof arr7> = "abc";
+
+//=== extract type from generic ???
+
+// TODO: not sure this makes sense
+
+//==================================================================== extends II
+
+interface User60 {
+  name: string;
+  age: number;
+}
+
+const func6 = <U extends User60, K extends keyof U>(u: U, k: K) => {
+  console.log(u);
+};
+
+interface Admin60 {
+  name: string;
+  age: number;
+  aaa: number;
+}
+
+// no extra fields
+func6({ name: "aaa", age: 120 }, "age");
+
+// with extra fields :)
+func6({ name: "aaa", age: 120, aaa: 3 }, "aaa");
+func6<Admin60, keyof Admin60>({ name: "aaa", age: 120, aaa: 3 }, "aaa");
+
+//==================================================================== Conditional Types
+
+// - If T extends U, the result is X, otherwise, it's Y.
+// Pseudo-code:
+// T extends U ? X : Y
+
+type IsString<T> = T extends string ? "Yes" : "No";
+
+type A = IsString<string>; // "Yes"
+type B = IsString<number>; // "No"
+
+// TODO: there is more...
+
+//==================================================================== NEW FEATURES?
 
 /*
 - Accessors : get set 
@@ -1031,13 +1171,14 @@ console.log(s2.foo("aaa"));
 - type inference - let num = 10;  // TypeScript infers 'num' to be 'number'
 - generic constraints -  <T extends string | number>
 - Type Assertions : `as` !!!
--
--
+- boxing/unboxing
 - abstract classes
+- literal types
+- Conditional Types
+- 
+-
 - decorators
 - type annotations
-- Conditional Types
-- literal types
 - template literal types
 - indexed access - use an interface as a hash of key to type
 -
@@ -1047,7 +1188,6 @@ console.log(s2.foo("aaa"));
 - mapped types
 - triple slash directives
 - Ambients
-- boxing/unboxing
 - Dynamic Import: Supports loading modules dynamically using import().
 - Destructuring with Types: Using type annotations with destructuring. -- just normal destructuring {x,y}
 - Indexed Type Queries
@@ -1059,7 +1199,21 @@ interface MyInterface1 {
   field1: number;
   field2: string;
   field3: (a: number, b: number) => number;
-  field4: <T>(a: T, b: T) => T;
+  field4: <T>(a: T, b: T) => T; // interface with generic function
 }
 
 let var7: unknown = { a: 1 } as { a: number };
+
+type RemoveFirst<T extends any[]> = T extends [infer First, ...infer Rest]
+  ? Rest
+  : never;
+
+//
+//
+
+export {};
+
+// INFER : create a type within a conditional type
+
+// conditional types
+type Result = true extends boolean ? 1 : 0;
