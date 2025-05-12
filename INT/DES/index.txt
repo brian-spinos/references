@@ -1,0 +1,784 @@
+
+
+================================ Rebase
+
+Rebase onto the latest main branch:
+
+# Make sure you're on your feature branch
+git checkout your-feature-branch
+
+# Update your local main
+git fetch origin
+git checkout main
+git pull origin main
+
+# Go back to your feature branch and rebase
+git checkout your-feature-branch
+git rebase main
+
+
+# This reapplies your branch’s commits on top of the latest main branch, creating a linear history.
+
+
+
+# Fix conflicts if any:
+If there are merge conflicts, Git will pause and let you resolve them. After fixing:
+
+git add .
+git rebase --continue
+
+# Repeat until the rebase is complete.
+
+
+# Force-push if your branch was already pushed:
+Because rebase rewrites history, you’ll need to force push:
+
+git push --force-with-lease
+
+================================ Squash  (combine commits)
+
+
+- To squash commits in Git (combine multiple commits into one), you typically use interactive rebase:
+
+
+# Start an interactive rebase for the last N commits --- it will combine the 3 commits into 1
+git rebase -i HEAD~3
+
+
+
+In the editor that opens:
+You'll see something like:
+
+
+
+pick 123abc First commit
+pick 456def Second commit
+pick 789ghi Third commit
+
+
+
+
+Change all but the first pick to squash (or just s):
+
+
+
+
+pick 123abc First commit
+squash 456def Second commit
+squash 789ghi Third commit
+
+
+# exit from vim 
+ESC :wq
+
+Then Git will open another editor:
+This lets you edit the commit message for the squashed commit. Keep one message or edit as you like.
+
+
+# if you dont want a line in the commit message, you can comment it, so it will not show!
+
+
+
+
+Finish:
+After you save and close, Git finishes the squash.
+
+
+
+
+Don’t forget:
+If you've already pushed the commits, you must force-push:
+
+git push --force-with-lease
+
+
+
+$ git log --oneline
+
+
+================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SSL
+
+// Creating a Local TLS Certificate (Self-Signed)
+$ openssl req -x509 -newkey rsa:2048 -nodes -keyout key.pem -out cert.pem -days 365
+
+Country Name (2 letter code) [AU]:US
+State or Province Name (full name) [Some-State]:WA
+Locality Name (eg, city) []:Lynnwood
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:MyCompanyABC
+Organizational Unit Name (eg, section) []:Engineering
+Common Name (e.g. server FQDN or YOUR name) []:Development
+Email Address []:foo@foo.com
+
+
+// files created:
+key.pem: Your private key.
+cert.pem: Your public certificate.
+
+
+
+// browser:
+you'll get a warning because it's self-signed.
+
+//
+// server code:
+//
+
+// server.js
+const https = require("https");
+const fs = require("fs");
+
+const options = {
+  key: fs.readFileSync("key.pem"),
+  cert: fs.readFileSync("cert.pem"),
+};
+
+https
+  .createServer(options, (req, res) => {
+    res.writeHead(200);
+    res.end("Hello, TLS!");
+  })
+  .listen(4433, () => {
+    console.log("HTTPS server running at https://localhost:4433");
+  });
+
+//
+// $ node server.js
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+================ word doc, in plain english describing the feature/system 
+
+- 3 to 12 pages
+
+
+- make questions?
+
+- functional requirements?
+    - what the app should do 
+            A user must be able to log in using email and password.
+            The system should send a confirmation email after registration.
+            Admins can generate monthly sales reports.
+
+
+
+- non-functional requirements?
+            Definition: Describe how the system performs its functions — its qualities or constraints.
+
+            Focus: Performance, usability, reliability, scalability, etc.
+            Examples:
+
+            The website must load within 2 seconds.
+            The system should be available 99.9% of the time.
+            The application must support up to 10,000 concurrent users.
+            All passwords must be stored encrypted.
+
+            - security 
+            - consistency 
+            - freshness 
+            - accuracy 
+            - performance
+            - scale
+
+
+SECTIONS
+- ...
+- API Design 
+    - THERE WILL BE 4 endpoints, and their paramenters, and responses (with types)
+
+
+- high level design diagram 
+    - diagrams with users, servers, DBs 
+
+
+- data model ans schemas 
+    - data access patterns 
+
+
+- design deepdive 
+    - potential issues 
+    - solutions / trade-offs
+
+- contencious issues: discussion section, on possible problems
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// =============================================================== Multiline strings
+
+
+String html = """
+    <html>
+        <body>Hello</body>
+    </html>
+    """;
+
+// =============================================================== Pattern matching (?)
+
+
+// New way:
+if (obj instanceof String s) {
+    System.out.println(s.toLowerCase());
+}
+
+// Old way:
+if (obj instanceof String) {
+    String s = (String) obj;
+    System.out.println(s.toLowerCase());
+}
+
+
+// =============================================================== Records
+
+// Concise syntax for data classes (immutable, auto-generated equals/hashCode/toString).
+
+// defines an immutable data class using a Java record
+
+// Two private final fields: x and y
+
+// Getters: public int x() and public int y()
+
+// Implementations of equals(), hashCode(), and toString() based on x and y
+
+public record Point(int x, int y) {}
+
+
+// Usage:
+
+Point p = new Point(3, 4);
+System.out.println(p.x()); // prints 3
+System.out.println(p);     // prints: Point[x=3, y=4]
+
+//
+// Equivalent class:
+//
+
+public final class Point {
+    private final int x;
+    private final int y;
+
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public int x() {
+        return x;
+    }
+
+    public int y() {
+        return y;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Point other = (Point) obj;
+        return x == other.x && y == other.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return 31 * x + y;
+    }
+
+    @Override
+    public String toString() {
+        return "Point[x=" + x + ", y=" + y + "]";
+    }
+}
+
+
+// =============================================================== Switch Expressions
+
+
+int day = 2;
+String result = switch (day) {
+    case 1 -> "Monday";
+    case 2 -> "Tuesday";
+    default -> "Other day";
+};
+
+// Day day = Day.MONDAY; // enum
+String result = switch (day) {
+    case MONDAY -> "Start";
+    case FRIDAY -> "End";
+    default -> "Mid";
+};
+
+
+// =============================================================== Sealed Classes 
+// Restrict which classes can extend or implement a class/interface.
+
+public sealed class Shape permits Circle, Square {}
+
+//
+
+public sealed class Vehicle permits Car, Truck {}
+
+public final class Car extends Vehicle {}
+public final class Truck extends Vehicle {}
+
+
+// =============================================================== var
+
+// var for local variable type inference
+
+var name = "Brian";  // inferred as String
+var list = List.of(1, 2, 3); // inferred as List<Integer>
+
+
+// =============================================================== modules
+
+
+/*
+    A module is a named collection of code (mainly packages and classes) 
+    with a module-info.java descriptor file. It explicitly declares:
+            - Which packages it exposes (exports)
+            - What other modules it requires (dependencies)
+            - Services it provides or uses (optional)
+
+
+    A typical module has:
+
+    /my.module/
+    ├── module-info.java
+    └── com/mycompany/MyClass.java
+    module-info.java defines the module:
+
+
+    Benefits:
+    - Strong encapsulation:
+    - Clear dependencies
+    - ...
+*/
+
+
+
+module my.module {
+    requires java.sql; // input, dependency?
+    exports com.mycompany; // output ?
+}
+
+// =============================================================== 
+
+
+// =============================================================== 
+
+
+// =============================================================== 
+
+
+// =============================================================== 
+
+
+// =============================================================== 
+
+
+// =============================================================== 
+
+
+// =============================================================== 
+
+
+// =============================================================== 
+
+
+// =============================================================== 
+
+
+// =============================================================== 
+
+
+// =============================================================== 
+
+
+// =============================================================== 
+
+
+// =============================================================== 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// =============================================================== Collection interface (ArrayList)
+
+        Collection<String> collection = new ArrayList<>();
+        collection.add("Java");
+        collection.add("Python");
+        collection.add("JavaScript");
+        System.out.println(collection);  // Output: [Java, Python, JavaScript]
+
+// =============================================================== List interface (ArrayList)
+
+        List<String> list = new ArrayList<>();
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Cherry");
+        System.out.println(list.get(1));  // Output: Banana
+        System.out.println(list);  // Output: [Apple, Banana, Cherry]
+
+// =============================================================== Set interface (HashSet)
+
+        Set<String> set = new HashSet<>();
+        set.add("A");
+        set.add("B");
+        set.add("C");
+        set.add("A");  // Duplicate will not be added
+        System.out.println(set);  // Output: [A, B, C]
+
+// =============================================================== Queue Interface (LinkedList)
+
+        Queue<String> queue = new LinkedList<>();
+        queue.add("One");
+        queue.add("Two");
+        queue.add("Three");
+        System.out.println(queue.poll());  // Output: One (removes from the front)
+
+// =============================================================== Deque interface (ArrayDeque)
+
+        Deque<String> deque = new ArrayDeque<>();
+        deque.addFirst("First");
+        deque.addLast("Last");
+        System.out.println(deque);  // Output: [First, Last]
+
+// =============================================================== Map interface (HashMap)
+
+        Map<String, String> map = new HashMap<>();
+        map.put("name", "John");
+        map.put("city", "New York");
+        System.out.println(map.get("name"));  // Output: John
+
+// =============================================================== TreeSet
+
+        Set<Integer> treeSet = new TreeSet<>();
+        treeSet.add(3);
+        treeSet.add(1);
+        treeSet.add(2);
+        System.out.println(treeSet);  // Output: [1, 2, 3] (sorted order)
+
+
+
+
+
+
+
+
+
+
+
+
+// =============================================================== Stream API
+
+//  Stream is a sequence of elements that supports functional-style operations to process data.
+
+// They're used primarily to perform operations on collections, such as filtering, mapping, and reducing, 
+// without modifying the original data source.
+
+
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        int sum = numbers.stream()
+                         .filter(n -> n % 2 == 0)
+                         .mapToInt(Integer::intValue)
+                         .sum();
+        System.out.println(sum);  // Output: 6 (2 + 4)
+
+
+
+
+        List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+        // Convert names to uppercase and print them
+        names.stream()
+            .map(String::toUpperCase)
+            .forEach(System.out::println);
+
+
+
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        List<Integer> evenNumbers = numbers.stream()
+                                           .filter(n -> n % 2 == 0)
+                                           .collect(Collectors.toList());
+        System.out.println(evenNumbers);  // Output: [2, 4]
+
+
+
+// Stream Operations:
+// Intermediate Operations – return a new stream (lazy):
+
+    // filter()
+    // map()
+    // sorted()
+
+// Terminal Operations – trigger the computation:
+
+    // collect()
+    // forEach()
+    // reduce()
+
+
+// ===============================================================
+
+// ===============================================================
+
+
+// ===============================================================
+
+
+// ===============================================================
+
+
+// ===============================================================
+
+
+// ===============================================================
+
+
+// ===============================================================
+
+
+// ===============================================================
+
+
+// ===============================================================
+
+
+// ===============================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+===== Java concepts
+
+- JVM : Java Virtual Machine 
+    - like a translator or interpreter that sits on each computer. 
+    - ou write your app in Java, and Java turns it into something called bytecode (kind of like a universal language).
+    - Then the JVM on each computer reads that bytecode and translates it into the computer’s own language, so it can run the app.
+
+    - JVM on any computer reads the bytecode ➝ runs your program
+    - The JVM makes Java apps "write once, run anywhere."
+
+
+The JVM (Java Virtual Machine) is a program 
+    — it's software that runs on your computer. 
+    - You don’t usually see it directly, 
+    - but it works behind the scenes whenever you run a Java program.
+
+    # you're telling the JVM to run the compiled Java bytecode for MyProgram.class.
+    - $ java MyProgram
+    - $ java ...
+    - $ javac MyProgram.java # compile MyProgram.java to MyProgram.class
+    - $ java -jar MyApp.jar  # tell the JVM to run the JAR file (it has java code in it!)
+
+    - bytecode is stored in a .class file on your computer.
+
+
+
+- JAR  (like a bundle, and it can be run as a java program!!! )
+    - stands for Java ARchive. It’s basically a .zip file that contains:
+        - One or more .class files (your bytecode)
+        - Optional: images, text files, config files, etc.
+        - A special file called MANIFEST.MF that can tell the JVM which class to run first
+
+
+
+
+- Class Loader
+    - loads .class files into JVM
+
+- Bytecode Verifier
+    - Checks that the bytecode is safe and doesn’t do anything harmful or illegal (like accessing memory the wrong way).
+
+
+- Runtime Data Areas (Memory) -- The JVM manages different chunks of memory:
+    - Heap: Stores objects (e.g., new Dog() goes here)
+    - Stack: Stores method calls and local variables (e.g., when you call a method)
+    - Method Area: Stores class-level data like method definitions
+    - Program Counter (PC) Register: Keeps track of where you are in the code
+    - Native Method Stack: Used when Java calls native code (e.g., C/C++ libraries)
+
+
+- Execution Engine
+    - The heart of the JVM — it runs the bytecode, It includes:
+        - Interpreter: Runs bytecode line by line (good for quick startup)
+        - JIT Compiler (Just-In-Time):   (  Speeds up repeated code  )
+            - Converts bytecode to machine code while the program runs, to make it faster
+            - for "hot" methods (methods called multiple times)
+            - This compilation is done in the background.
+            - happens at run-time 
+
+
+- Garbage Collector
+    - Frees up memory by removing objects that your program no longer uses.
+
+
+
+- Java Native Interface (JNI)
+    - Lets Java talk to native code written in languages like C or C++.
+    - Used when you need to do something low-level or platform-specific.
+
+
+
+- Security Manager (marked deprecated in JDK 17)
+    - Controls what your program is allowed to do (like reading files, accessing the internet).
+    - Especially important when running untrusted code (like in an applet or server).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ===============================================================
+
+//junit version 5.10
+
+
+@BeforeAll
+@BeforeEach
+@AfterEach
+@AfterAll
+
+@Test 
+// my test method
+
+
+Assertions.assertEquals(1,1);
+
