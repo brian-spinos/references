@@ -1,0 +1,348 @@
+
+#
+# Needs major cleanup, I was in a hurry
+#
+
+
+====================================================================== script to simulate environment for rebase
+
+#!/bin/bash
+
+
+REPO_NAME="git-branch-conflict"
+FILE="file.txt"
+
+# Cleanup any previous run
+rm -rf "$REPO_NAME"
+mkdir "$REPO_NAME"
+cd "$REPO_NAME"
+git init -b master
+
+# Commit A
+echo "Start of file" > $FILE
+git add $FILE
+git commit -m "A: Initial commit"
+
+# Commit B
+echo "Common line from B" >> $FILE
+git commit -am "B: Add line B"
+
+# Create 'topic' branch from here
+git checkout -b topic
+
+# Commit D
+echo "Topic line D" >> $FILE
+git commit -am "D: Add line D"
+
+# Commit E
+echo "Topic line E" >> $FILE
+git commit -am "E: Add line E"
+
+# Commit F (conflicting change)
+echo "CONFLICTING LINE from topic" > $FILE
+git commit -am "F: Overwrite file with conflicting line from topic"
+
+# Switch back to master
+git checkout master
+
+# Commit C (conflicting change)
+echo "CONFLICTING LINE from master" > $FILE
+git commit -am "C: Overwrite file with conflicting line from master"
+
+
+
+#
+# to delete the project:
+#
+# $ rm -rf .git; rm file.txt 
+
+# git log --oneline -n 10
+
+======================================================================
+
+
+It’s often used in two scenarios:
+
+To update a feature branch with the latest from main or master.
+
+To rewrite commits (e.g., fixup, squash, reorder) using interactive rebase.
+
+
+
+
+====================================================================== feature branch (2 branches) !!! WORKS !!!
+
+
+You have this structure:
+
+A---B---C master
+     \
+      D---E---F topic
+
+You want:
+
+A---B---C master
+         \
+          D'--E'--F' topic
+
+
+Commands:
+
+# Step 1: Checkout your feature branch
+git checkout topic
+
+# Step 2: Rebase it onto master
+git rebase master
+
+--> there could be conflicts here 
+
+            $ git status  # tells you 'you are currently rebasing ...'  <------
+
+            - now fix the files ( HEAD are my changes )
+
+            $ git add <file>  # add the files you fixed
+
+            $ git rebase --continue  # to move to the other commits
+
+            # git will open vim for you to edit the commit message, you can change it or not
+
+            ESC :wq!
+
+            # git will proceed to move to that next commit
+
+            # repeat previous instructions if necessary <------
+
+            $ git status # to check if you are done with the rebase 
+
+
+# Step 3: (Optional) If topic is pushed to remote already
+git push --force-with-lease # this command is safe, it it detects that someone pushed before you, it will fail, and you just need to start rebasing again !
+
+
+
+
+
+======================================================================  Rebasing a Feature Branch Onto master  -- NOT SURE ABOUT THIS...
+
+A---B-----C master
+     \
+      D---E---F topic
+
+// after:
+
+A---B---C master
+         \
+          D'--E'--F' topic (rebased)
+
+
+
+$ git checkout topic
+$ git rebase master
+
+
+# make changes 
+
+$ git status 
+
+$ git add  file.txt
+
+
+
+This will:
+Temporarily remove your commits D, E, and F.
+Replay them one by one on top of commit C.
+Create new commits D', E', F'.
+
+(Optional) Push forcefully if it's a shared branch:  (you might need to)
+$ git push --force
+
+
+
+
+
+
+====================================================================== Rebasing a Branch onto Itself (Interactive Rebase) -- YAY WORKS
+
+This is commonly used to clean up commit history on a branch. Let's say you want to squash or edit D, E, F.
+
+
+
+$ git checkout topic      # could be main branch too ???
+$ git log --oneline       # to see the order of logs
+$ git rebase -i HEAD~3    # 3 is the number of commits that will show up in vim, so last 3 commits
+
+
+----- This brings up an editor:
+pick D message for D
+pick E message for E
+pick F message for F
+
+
+
+----- Change the command (e.g., squash, reword, edit):
+// This will combine all 3 commits into one.
+pick D message for D
+squash E message for E
+squash F message for F
+
+
+// close vim
+ESC :wq!
+
+- vim will open again, to update the commit message
+
+// close vim
+ESC :wq!
+
+
+$ git log --oneline
+
+
+
+
+
+====================================================================== main branch (interactive)
+
+
+- This is used when you want to clean up your own commit history before pushing or creating a pull request.
+
+A---B---C---D---E---F topic (HEAD)
+
+
+Commits D, E, and F are recent and messy.
+
+- You want to clean them up by rewriting history — maybe squash them, reorder them, or edit their messages.
+
+
+
+Goal: Clean up the last 3 commits
+For example:
+
+Squash D, E, F into one commit
+Or rename them
+Or remove one
+Or reorder them
+
+Step 1: Make sure you’re on the branch you want to clean up
+$ git checkout topic
+
+
+Step 2: Start an interactive rebase for the last 3 commits
+$ git rebase -i HEAD~3
+
+
+- This will open an editor like:
+pick D Commit message D
+pick E Commit message E
+pick F Commit message F
+
+- Edit the rebase instructions
+
+// Example 1: Squash commits into one
+pick D Initial logic
+squash E Minor fixes
+squash F Debug removed
+
+
+
+Git will prompt you to combine commit messages — you can write a new one.
+
+
+
+- Save and close the editor
+
+$ git rebase --continue
+
+
+
+
+Step 5 (if needed): Force-push the cleaned history
+If you've already pushed these commits to a remote, you must force-push:
+
+$ git push --force
+
+
+
+ Force-pushing rewrites history — make sure no one else is working on the same branch!
+
+
+
+
+Final Result
+After squashing:
+
+A---B---C---D' topic (HEAD)
+
+
+Instead of 3 separate commits (D, E, F), you now have a single cleaned-up commit (D').
+
+
+====================================================================== interactive (same branch)
+
+
+Step 1: Make sure you’re on the branch you want to clean up
+$ git checkout topic # or main ???
+
+
+Step 2: Start an interactive rebase for the last 3 commits
+$ git rebase -i HEAD~3
+
+
+- This will open an editor like:  (OLDEST commits are on top)
+pick D Commit message D
+pick E Commit message E
+pick F Commit message F
+
+
+Git will prompt you to combine commit messages — you can write a new one.
+
+
+- Edit the rebase instructions, example: Squash commits into one
+pick D Initial logic
+squash E Minor fixes
+squash F Debug removed
+
+
+
+
+- Save and close the VIM editor
+
+$ git rebase --continue
+
+
+
+Step 5 (if needed): Force-push the cleaned history
+If you've already pushed these commits to a remote, you must force-push:   seems it will change history in github
+
+$ git push --force
+
+
+
+ Force-pushing rewrites history — make sure no one else is working on the same branch!
+
+
+
+
+Final Result
+After squashing:
+
+A---B---C---D' topic (HEAD)
+
+
+Instead of 3 separate commits (D, E, F), you now have a single cleaned-up commit (D').
+
+
+
+
+======================================================================
+
+
+$ bit branch -a # see remote branches
+
+
+$ git rebase --abort # to start over !!!
+
+
+
+
+
