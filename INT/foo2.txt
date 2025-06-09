@@ -1,0 +1,422 @@
+/*
+
+================================================== junit
+
+
+================================================== Dagger
+
+
+================================================== Smithy
+
+// gradle plugin:
+id 'software.amazon.smithy' version '0.6.0'
+
+
+
+
+
+================================================== AWS Route 53
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+================================================== intellij
+
+- how to create java project in intellij with gradle
+    - Open IntelliJ → New Project
+        - smithy-demo
+        - select folder
+    - Select Gradle (Java) → JDK 21 → Next → 
+    - Finish and wait for Gradle to sync
+
+    - gradle -- not sure if I did it right...
+
+                    plugins {
+                        id 'java'
+                        id 'software.amazon.smithy' version '0.5.9'
+                    }
+
+                    repositories {
+                        mavenCentral()
+                    }
+
+                    dependencies {
+                        implementation 'software.amazon.smithy:smithy-model:1.41.0'
+                        implementation 'software.amazon.smithy:smithy-core:1.41.0'
+                    }
+
+                    smithy {
+                        // Path where your smithy models are
+                        sources = files("src/main/smithy")
+                    }
+
+    - $ mkdir -p src/main/smithy   # example.smithy
+
+    - intellij will suggest you install the smithy pluggin !!! -->  'Smithy 2.0.19'
+            - website: https://plugins.jetbrains.com/plugin/18717-smithy
+
+    // generate code:
+    - ./gradlew smithyBuild
+
+    - This will generate code in build/smithyprojections/smithy-demo/source.
+
+
+
+
+
+
+- intellij plugins: smithy, graddle -- how to install and use a pluggin
+
+- do I need to install gradle inside intellij ???
+
+
+
+
+
+
+
+
+
+
+
+================================================== graddle 
+
+Gradle. - These tools manage dependencies and compile/run/test the code.
+
+- $ brew install gradle
+- $ gradle -v            #  8.14.2! -- try 7.4.2
+- $ gradle init          # will go through a wizard
+
+
+
+You can have multi-module projects.
+Use the Gradle Wrapper (gradlew) for version consistency.
+Cache and parallel builds make it fast.
+Integrates with IDEs like IntelliJ and Android Studio.
+
+
+
+
+Gradle is a build automation tool used to compile, test, and package code in jar/war. 
+
+- download dependencies
+
+- Publish artifacts to repositories
+
+
+my-app/
+├── build.gradle        <-- main build script
+├── settings.gradle     <-- project settings
+├── gradle/             <-- optional scripts
+├── src/
+│   ├── main/
+│   |   ├── java/
+│   |   |   └── App.java
+│   │   └── resources/       ← Resources (e.g., config files)
+│   └── test/
+│       ├── java/            ← Test code
+│       └── resources/       ← Test resources
+└── build/              <-- auto-generated output
+
+
+/build/libs/my-app-0.0.1-SNAPSHOT.jar
+$ java -jar ./my-app-0.0.1-SNAPSHOT.jar
+
+
+// test reports
+my-app/build/reports/tests/test/index.html
+
+
+//--------------- script to run a server in a remote machine:
+# cd to the folder that contains index.html
+cd /path/to/folder
+python3 -m http.server 8000
+# http://localhost:8080
+//---------------
+
+
+//--------------- build.gradle:
+
+plugins {
+    id 'application'
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2' // Creates fat JARs
+}
+
+group = 'com.example'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.google.guava:guava:32.1.2-jre'
+    testImplementation 'junit:junit:4.13.2'
+}
+
+application {
+    mainClass = 'com.example.App'
+}
+
+//---------------
+
+
+$ gradlew build
+$ gradlew test 
+$ gradlew test -p my-project-a ### if multi project/module app
+$ gradlew jar         # creates a .jar
+
+
+$ gradle tasks	Lists available tasks
+$ gradle build	Compiles and packages the app and tests
+$ gradle run	    Runs the application
+$ gradle test	    Runs unit tests
+$ gradle clean	Deletes the build/ directory
+
+
+-- build.gradle.kts 
+    If you prefer Kotlin, the file becomes:
+    with slightly different syntax.
+    build.gradle.kts 
+
+
+-- adding dependencies:
+        implementation 'com.google.guava:guava:31.1-jre'
+
+-- how to properly load a gradle project in intellij:
+        - open intellij
+        - click 'Open' top right
+        - select folder 
+        - it will 'load/import' the gradle project -- takes some time
+
+
+-- gradle plugins, they:
+        - Add tasks
+        - Configure settings
+        - Apply conventions
+
+
+================================================== java 17, 21
+
+
+Java 14 introduced records — concise immutable data carriers.
+
+Java 17 is a Long-Term Support (LTS) release.
+
+// Java 17:
+Sealed Classes, Records, Pattern Matching
+Richer APIs (e.g., HttpClient, Text Blocks)
+
+Modules (Project Jigsaw) – module-info.java enables modular applications.
+JShell – Interactive REPL for Java.
+Private Interface Methods – You can now write private methods in interfaces.
+Local Variable Type Inference (var) (Java 10)
+
+New HttpClient API – Replaces the old HttpURLConnection.
+String methods – isBlank(), lines(), strip(), repeat().
+var in Lambda Parameters
+Removed JavaFX and CORBA from JDK.
+
+
+Switch Expressions (preview) – More concise and expressive switch.
+
+Text Blocks (preview) – Multiline string literals using """.
+
+Records (preview in 14, stable in 16) – Concise data carrier classes.
+
+Sealed Classes – Restrict which classes can extend a superclass.
+
+
+Records Stable – Data classes with minimal boilerplate.
+
+Sealed Classes Stable
+
+Pattern Matching Improvements
+
+Strong Encapsulation of JDK Internals – Accessing sun.* packages is now restricted.
+
+New GC Improvements – G1 is now default, ZGC and Shenandoah are available.
+
+JEP 409: Sealed Classes
+
+JEP 406: Pattern Matching for switch (preview)
+
+
+
+
+// Java 21
+- Pattern Matching for switch
+            static String handle(Object obj) {
+                return switch (obj) {
+                    case String s -> "A string: " + s;
+                    case Integer i -> "An int: " + i;
+                    default -> "Unknown";
+                };
+            }
+
+
+- String Templates
+            String name = "Brian";
+            String msg = STR."Hello, \{name}!";
+
+
+- Record Patterns
+            record Point(int x, int y) {}
+
+            void print(Object o) {
+                if (o instanceof Point(int x, int y)) {
+                    System.out.println(x + ", " + y);
+                }
+            }
+
+
+
+- Scoped Values, 
+
+
+- Foreign Function & Memory API
+            try (Arena arena = Arena.ofConfined()) {
+                MemorySegment seg = arena.allocate(100);
+            }
+
+
+- Virtual Threads (stable), Structured Concurrency
+            try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
+                executor.submit(() -> System.out.println(Thread.currentThread()));
+            }
+
+
+
+- Small API Enhancements
+            String.stripIndent()
+            Collection.toList() returns unmodifiable list
+            New methods in Map, Stream, Optional
+
+
+================================================== java
+Streams API for processing collections.
+- Java supports OOP principles: encapsulation, inheritance, polymorphism, and abstraction.
+
+ArrayList, HashMap, and HashSet.
+
+- how java works ?
+
+
+- javac compiler - The compiler translates .java files into .class files.
+
+- .class files contain bytecode, not machine code.
+
+- Java bytecode runs on the Java Virtual Machine (JVM).
+
+- The JVM is an engine that executes bytecode.
+
+
+- Each platform (Windows, Linux, macOS) has its own JVM.
+
+- The JVM interprets bytecode or compiles it to native code using JIT.
+
+JIT stands for Just-In-Time compilation.
+
+JIT converts frequently used bytecode into machine code for performance.
+
+The JVM also manages memory and security.
+
+Java uses automatic garbage collection.
+
+- A package is like a folder containing related classes.
+
+Java has a synchronization mechanism to avoid race conditions.
+
+Annotations give metadata about code to compilers or frameworks.
+
+java.util, java.io, java.net.
+
+Java has a Scanner class for reading input.
+
+It has classes like File, InputStream, and BufferedReader for file I/O.
+
+Java includes Socket classes for networking.
+
+Java applications can be:
+        Console-based
+        GUI-based (via Swing, JavaFX)
+        Web-based (via Servlets, Spring, etc.)
+
+Java code can be compiled and run from the terminal using javac and java.
+
+
+
+
+-  logging using frameworks like java.util.logging or Log4j.
+
+Java runs inside a runtime environment: the Java Runtime Environment (JRE).
+    - The JRE includes the JVM and core libraries.
+
+
+Classloaders control how classes are loaded into the JVM.
+
+
+The JVM has a heap for storing objects.
+
+Developers can use var for local type inference (Java 10+).
+
+
+
+================================================== EJB:
+WildFly, GlassFish
+- Java application servers
+
+
+================================================== Search Servers
+
+ElasticSearch, Algolia 
+    – Convert raw text into indexed, searchable data 
+      using techniques like tokenization, stemming, 
+      and inverted indexes to enable fast and 
+      relevant search results.
+
+
+
+================================================== kibana
+KQL:
+user.name:"brian spinos"
+status:200 AND extension:"jpg"
+status:404 OR status:500
+extension:jp*
+bytes > 1000
+@timestamp >= "2024-01-01" and @timestamp < "2025-01-01"
+_exists_:user.name
+!_exists_:host.name
+(status:404 OR status:500) AND extension:"html"
+-- No wildcards on the left side of a value (*jpg ❌).
+
+Lucene:
+bytes:[1000 TO 2000]
+@timestamp:[2024-01-01 TO 2025-01-01]
+bytes:[500 TO *]
+host.name:server*         // starts with "server"
+user.name:jo?n            // "john" or "joan"
+user.name:/jo.+n/
+user.name:jon~1
+_user:* 
+NOT _user:*
+
+
+==================================================
+
+
+
+*/
