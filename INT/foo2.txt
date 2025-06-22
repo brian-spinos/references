@@ -1,5 +1,184 @@
 /*
 
+
+// https://www.programiz.com/java-programming/online-compiler/
+
+
+================================================== java.time
+
+LocalDate – date without time
+LocalTime – time without date
+LocalDateTime – date and time
+ZonedDateTime – date and time with time zone
+Instant – a point on the time-line (timestamp)
+Period and Duration – time between dates or times
+DateTimeFormatter – formatting and parsing
+
+LocalDate today = LocalDate.now(); // Current date
+LocalDate specificDate = LocalDate.of(2024, 6, 21); // Year, Month, Day
+LocalDate parsed = LocalDate.parse("2025-01-01");
+
+LocalTime now = LocalTime.now();
+LocalTime fixed = LocalTime.of(14, 30, 15); // 2:30:15 PM
+
+LocalDateTime now = LocalDateTime.now();
+LocalDateTime meeting = LocalDateTime.of(2025, 6, 21, 10, 0);
+
+ZonedDateTime zoned = ZonedDateTime.now(ZoneId.of("America/New_York"));
+Instant instant = Instant.now(); // UTC timestamp
+
+LocalDate today = LocalDate.now();
+LocalDate nextWeek = today.plusWeeks(1);
+LocalDate lastMonth = today.minusMonths(1);
+
+LocalDate birthDate = LocalDate.of(1990, 1, 1);
+LocalDate now = LocalDate.now();
+Period age = Period.between(birthDate, now);
+
+LocalDate date = LocalDate.now();
+DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy");
+
+String formatted = date.format(formatter);
+LocalDate parsed = LocalDate.parse("21 Jun 2025", formatter);
+
+
+================================================== java.io, java.nio.file 
+
+Class	Use
+File	Basic file metadata and operations
+FileReader / FileWriter	Reading/writing characters
+BufferedReader / BufferedWriter	Efficient I/O with buffering
+FileInputStream / FileOutputStream	Byte-level read/write
+Paths / Path	Modern way to handle file paths
+Files	Static methods for reading/writing files
+
+//---------
+
+File file = new File("example.txt");
+
+// Check existence
+file.exists();
+
+// Create file
+try {
+    boolean created = file.createNewFile();
+    System.out.println("Created: " + created);
+} catch (Exception e) {
+    e.printStackTrace();
+}
+
+// Get info
+file.getAbsolutePath();
+file.canRead();
+file.canWrite();
+
+//--------- FileReader / FileWriter (Character Streams)
+
+try (FileWriter writer = new FileWriter("output.txt")) {
+    writer.write("Hello, world!");
+} catch (IOException e) {
+    e.printStackTrace();
+}
+
+
+
+//---------
+
+try (FileReader reader = new FileReader("output.txt")) {
+    int ch;
+    while ((ch = reader.read()) != -1) {
+        System.out.print((char) ch);
+    }
+} catch (IOException e) {
+    e.printStackTrace();
+}
+//---------
+
+Path path = Paths.get("data.txt");
+
+// Write
+Files.write(path, List.of("Line 1", "Line 2"));
+
+// Read
+List<String> lines = Files.readAllLines(path);
+lines.forEach(System.out::println);
+
+
+Path path = Paths.get("data.txt");
+if (Files.exists(path)) {
+    Files.delete(path);
+}
+
+//---------
+
+import java.io.*;
+
+public class BufferedExample {
+    public static void main(String[] args) {
+        String inputFile = "input.txt";
+        String outputFile = "output.txt";
+
+        try (
+            BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))
+        ) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                writer.write("Line: " + line);
+                writer.newLine(); // Adds a line break
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+//---------
+
+import java.io.*;
+
+public class FileStreamExample {
+    public static void main(String[] args) {
+        String inputFile = "image.jpg";
+        String outputFile = "copy.jpg";
+
+        try (
+            FileInputStream fis = new FileInputStream(inputFile);
+            FileOutputStream fos = new FileOutputStream(outputFile)
+        ) {
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+
+            while ((bytesRead = fis.read(buffer)) != -1) {
+                fos.write(buffer, 0, bytesRead);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+//---------
+
+
+//---------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ================================================== junit
 
 
@@ -77,7 +256,7 @@ id 'software.amazon.smithy' version '0.6.0'
 
 
 
-- intellij plugins: smithy, graddle -- how to install and use a pluggin
+- intellij plugins: smithy, gradle -- how to install and use a pluggin
 
 - do I need to install gradle inside intellij ???
 
@@ -91,7 +270,7 @@ id 'software.amazon.smithy' version '0.6.0'
 
 
 
-================================================== graddle 
+================================================== gradle 
 
 Gradle. - These tools manage dependencies and compile/run/test the code.
 
